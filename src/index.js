@@ -2,13 +2,8 @@ import Notifications from './Notifications.vue'
 import { events }    from './events'
 
 function Notify(args = {}) {
+  Notify.params = args
   return (app) => {
-    if (this.installed) {
-      return
-    }
-
-    this.installed = true
-    this.params = args
 
     app.component(args.componentName || 'notifications', Notifications)
 
@@ -32,4 +27,4 @@ function Notify(args = {}) {
   }
 }
 
-export default Notify
+export default Notify;
