@@ -1,11 +1,15 @@
 <template>
   <transition-group :name="name">
-    <slot/>
+    <slot />
   </transition-group>
 </template>
 <script>
-export default {
+import { defineComponent } from "vue"
+
+export default defineComponent({
   name: 'CssGroup',
-  props: ['name']
-}
+  props: {
+    name: { type: String, required: true },
+  }
+})
 </script>
