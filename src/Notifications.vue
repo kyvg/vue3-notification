@@ -1,67 +1,66 @@
 <template>
-<div
-  class="vue-notification-group"
-  :style="styles"
->
-  <component
-    :is="componentName"
-    :name="animationName"
-    @enter="enter"
-    @leave="leave"
-    @after-leave="clean"
+  <div
+    class="vue-notification-group"
+    :style="styles"
   >
-    <div
-      v-for="item in active"
-      class="vue-notification-wrapper"
-      :style="notifyWrapperStyle(item)"
-      :key="item.id"
-      :data-id="item.id"
-      @mouseenter="pauseTimeout"
-      @mouseleave="resumeTimeout"
+    <component
+      :is="componentName"
+      :name="animationName"
+      @enter="enter"
+      @leave="leave"
+      @after-leave="clean"
     >
-      <slot
-        name="body"
-        :class="[classes, item.type]"
-        :item="item"
-        :close="() => destroy(item)"
+      <div
+        v-for="item in active"
+        :key="item.id"
+        class="vue-notification-wrapper"
+        :style="notifyWrapperStyle(item)"
+        :data-id="item.id"
+        @mouseenter="pauseTimeout"
+        @mouseleave="resumeTimeout"
       >
-        <!-- Default slot template -->
-        <div
-          :class="notifyClass(item)"
-          @click="destroyIfNecessary(item)"
+        <slot
+          name="body"
+          :class="[classes, item.type]"
+          :item="item"
+          :close="() => destroy(item)"
         >
+          <!-- Default slot template -->
           <div
-            v-if="item.title"
-            class="notification-title"
-            v-html="item.title"
+            :class="notifyClass(item)"
+            @click="destroyIfNecessary(item)"
           >
+            <div
+              v-if="item.title"
+              class="notification-title"
+              v-html="item.title"
+            />
+            <div
+              class="notification-content"
+              v-html="item.text"
+            />
           </div>
-          <div
-            class="notification-content"
-            v-html="item.text"
-          >
-          </div>
-        </div>
-      </slot>
-    </div>
-  </component>
-</div>
+        </slot>
+      </div>
+    </component>
+  </div>
 </template>
 <script>
 import plugin                         from './index'
 import { events }                     from './events'
-import { Id, split, listToDirection, Timer } from './util'
+import { Id, listToDirection, Timer } from './util'
 import defaults                       from './defaults'
 import VelocityGroup                  from './VelocityGroup.vue'
 import CssGroup                       from './CssGroup.vue'
 import parseNumericValue              from './parser'
+import { defineComponent } from '@vue/runtime-core'
 
 const STATE = {
   IDLE: 0,
   DESTROYED: 2
 }
 
-const Component = {
+export default defineComponent({
   name: 'Notifications',
   components: {
     VelocityGroup,
@@ -156,16 +155,13 @@ const Component = {
     }
 
   },
+  emits: ['click', 'destroy'],
   data () {
     return {
       list: [],
       velocity: plugin.params.velocity,
       timerControl: ""
     }
-  },
-  mounted () {
-    events.$on('add', this.addItem);
-    events.$on('close', this.closeItem);
   },
   computed: {
     actualWidth () {
@@ -208,8 +204,13 @@ const Component = {
     },
 
     botToTop () {
+      // eslint-disable-next-line no-prototype-builtins
       return this.styles.hasOwnProperty('bottom')
     },
+  },
+  mounted () {
+    events.$on('add', this.addItem);
+    events.$on('close', this.closeItem);
   },
   methods: {
     destroyIfNecessary (item) {
@@ -374,9 +375,7 @@ const Component = {
       this.list = this.list.filter(v => v.state !== STATE.DESTROYED)
     }
   }
-}
-
-export default Component
+});
 </script>
 <style>
 .vue-notification-group {
@@ -398,15 +397,15 @@ export default Component
 }
 
 .vue-notification-template {
-  display: block;	
-  box-sizing: border-box;	
-  background: white;	
-  text-align: left;	
+  display: block;
+  box-sizing: border-box;
+  background: white;
+  text-align: left;
 }
 
 .vue-notification {
   display: block;
-  box-sizing: border-box;  
+  box-sizing: border-box;
   text-align: left;
   font-size: 12px;
   padding: 10px;

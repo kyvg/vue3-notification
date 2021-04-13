@@ -1,3 +1,3 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 
-export const events = new Vue({ name: 'vue-notification' })
+export const events = {}

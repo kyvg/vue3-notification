@@ -1,7 +1,9 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
+  mode: 'production',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -28,6 +30,13 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -36,14 +45,14 @@ module.exports = {
       }
     ]
   },
-  externals: {
-    vue: 'vue'
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
-  },
+  // externals: {
+  //   vue: 'vue'
+  // },
+  // resolve: {
+  //   alias: {
+  //     'vue$': 'vue/dist/vue.esm.js'
+  //   }
+  // },
   devServer: {
     historyApiFallback: true,
     noInfo: true
@@ -51,15 +60,16 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#source-map',
+  // devtool: '#source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
+    new VueLoaderPlugin(),
+    // new webpack.LoaderOptionsPlugin({
+    //   minimize: true
+    // })
   ]
 }
