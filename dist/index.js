@@ -646,9 +646,9 @@ function Timer(callback, delay, notifItem) {
     }
   }
 });
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/VelocityGroup.vue?vue&type=template&id=0541c31a
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/VelocityGroup.vue?vue&type=template&id=99d2c4f8
 
-function VelocityGroupvue_type_template_id_0541c31a_render(_ctx, _cache, $props, $setup, $data, $options) {
+function VelocityGroupvue_type_template_id_99d2c4f8_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,external_vue_.openBlock)(), (0,external_vue_.createBlock)(external_vue_.TransitionGroup, {
     tag: "span",
     css: false,
@@ -666,12 +666,15 @@ function VelocityGroupvue_type_template_id_0541c31a_render(_ctx, _cache, $props,
   /* PROPS */
   , ["onEnter", "onLeave", "onAfterLeave"]);
 }
-;// CONCATENATED MODULE: ./src/VelocityGroup.vue?vue&type=template&id=0541c31a
+;// CONCATENATED MODULE: ./src/VelocityGroup.vue?vue&type=template&id=99d2c4f8
 
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/VelocityGroup.vue?vue&type=script&lang=js
 
 /* harmony default export */ const VelocityGroupvue_type_script_lang_js = ((0,external_vue_.defineComponent)({
   name: 'VelocityGroup',
+  components: {
+    TransitionGroup: external_vue_.TransitionGroup
+  },
   emits: ['afterLeave', 'leave', 'enter'],
   methods: {
     enter: function enter(el, complete) {
@@ -697,12 +700,12 @@ function VelocityGroupvue_type_template_id_0541c31a_render(_ctx, _cache, $props,
 
 
 
-VelocityGroupvue_type_script_lang_js.render = VelocityGroupvue_type_template_id_0541c31a_render
+VelocityGroupvue_type_script_lang_js.render = VelocityGroupvue_type_template_id_99d2c4f8_render
 
 /* harmony default export */ const VelocityGroup = (VelocityGroupvue_type_script_lang_js);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/CssGroup.vue?vue&type=template&id=3e35ffc2
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/CssGroup.vue?vue&type=template&id=02850a88
 
-function CssGroupvue_type_template_id_3e35ffc2_render(_ctx, _cache, $props, $setup, $data, $options) {
+function CssGroupvue_type_template_id_02850a88_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,external_vue_.openBlock)(), (0,external_vue_.createBlock)(external_vue_.TransitionGroup, {
     tag: "span",
     name: _ctx.name
@@ -717,12 +720,15 @@ function CssGroupvue_type_template_id_3e35ffc2_render(_ctx, _cache, $props, $set
   /* PROPS */
   , ["name"]);
 }
-;// CONCATENATED MODULE: ./src/CssGroup.vue?vue&type=template&id=3e35ffc2
+;// CONCATENATED MODULE: ./src/CssGroup.vue?vue&type=template&id=02850a88
 
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/CssGroup.vue?vue&type=script&lang=js
 
 /* harmony default export */ const CssGroupvue_type_script_lang_js = ((0,external_vue_.defineComponent)({
   name: 'CssGroup',
+  components: {
+    TransitionGroup: external_vue_.TransitionGroup
+  },
   props: {
     name: {
       type: String,
@@ -736,7 +742,7 @@ function CssGroupvue_type_template_id_3e35ffc2_render(_ctx, _cache, $props, $set
 
 
 
-CssGroupvue_type_script_lang_js.render = CssGroupvue_type_template_id_3e35ffc2_render
+CssGroupvue_type_script_lang_js.render = CssGroupvue_type_template_id_02850a88_render
 
 /* harmony default export */ const CssGroup = (CssGroupvue_type_script_lang_js);
 ;// CONCATENATED MODULE: ./src/parser.js

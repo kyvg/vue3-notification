@@ -7,10 +7,13 @@
   </transition-group>
 </template>
 <script>
-import { defineComponent } from "vue"
+import { defineComponent, TransitionGroup } from "vue"
 
 export default defineComponent({
   name: 'CssGroup',
+  components: {
+    TransitionGroup,
+  },
   props: {
     name: { type: String, required: true },
   }

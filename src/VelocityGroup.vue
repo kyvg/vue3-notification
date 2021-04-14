@@ -11,10 +11,13 @@
 </template>
 
 <script>
-import { defineComponent } from "vue"
+import { defineComponent, TransitionGroup } from "vue"
 
 export default defineComponent({
   name: 'VelocityGroup',
+  components: {
+    TransitionGroup,
+  },
   emits: ['afterLeave', 'leave', 'enter'],
   methods: {
     enter (el, complete) {
