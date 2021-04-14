@@ -19,10 +19,6 @@ Add dependencies to your `main.js`:
 import { createApp } from 'vue'
 import Notifications from '@iwannabecool/vue3-notification'
 
-/*
-or for SSR:
-import Notifications from '@iwannabecool/vue3-notification/dist/ssr.js'
-*/
 const app = createApp({...})
 app.use(Notifications())
 ```
