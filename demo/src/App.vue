@@ -2,9 +2,9 @@
   <div id="app">
     <h2>Vue.js Notification
       <br>
-      <a href="https://github.com/euvl/vue-notification/blob/master/README.md"
+      <a href="https://github.com/iwannabecool/vue-notification/blob/master/README.md"
          target="readme">Readme</a>
-      <a href="https://github.com/euvl/vue-notification/"
+      <a href="https://github.com/iwannabecool/vue-notification/"
          target="issues">Github</a>
     </h2>
     <!-- CSS animation example -->
@@ -32,14 +32,14 @@
                    animation-name="v-fade-left"
                    position="top left">
 
-       <template slot="body" slot-scope="props">
+       <template #body="{ item }">
         <div class="custom-template">
           <div class="custom-template-icon">
             <i class="icon ion-android-checkmark-circle"></i>
           </div>
           <div class="custom-template-content">
             <div class="custom-template-title">
-              {{props.item.title}}
+              {{item.title}}
 
               <p>
                 Random number: {{props.item.data.randomNumber}}

@@ -53,17 +53,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue.runtime.esm-bundler.js'
+      'vue$': 'vue.esm-bundler.js'
     }
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true
-  },
-  performance: {
-    hints: false
-  },
-  // devtool: '#source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

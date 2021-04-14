@@ -1,5 +1,6 @@
 <template>
   <transition-group
+    tag="span"
     :css="false"
     @enter="enter"
     @leave="leave"

@@ -44,6 +44,7 @@
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "@vue/compiler-sfc": "^3.0.11",
+    "@vue/server-renderer": "^3.0.11",
     "babel-loader": "^8.2.2",
     "babel-preset-env": "^1.7.0",
     "babel-preset-latest": "^6.0.0",

@@ -176,8 +176,8 @@ export default defineComponent({
 
     componentName () {
       return this.isVA
-        ? 'VelocityGroup'
-        : 'CssGroup'
+        ? 'velocity-group'
+        : 'css-group'
     },
 
     styles () {
@@ -355,6 +355,7 @@ export default defineComponent({
 
     enter (el, complete) {
       if (!this.isVA) {
+        complete();
         return;
       }
       const animation = this.getAnimation('enter', el)
@@ -367,6 +368,7 @@ export default defineComponent({
 
     leave (el, complete) {
       if (!this.isVA) {
+        complete();
         return;
       }
       let animation = this.getAnimation('leave', el)
@@ -441,7 +443,7 @@ export default defineComponent({
   transition: all .5s;
 }
 
-.vn-fade-enter, .vn-fade-leave-to {
+.vn-fade-enter-from, .vn-fade-leave-to {
   opacity: 0;
 }
 

@@ -1,5 +1,8 @@
 <template>
-  <transition-group :name="name">
+  <transition-group
+    tag="span"
+    :name="name"
+  >
     <slot />
   </transition-group>
 </template>

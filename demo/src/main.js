@@ -1,17 +1,10 @@
-import { createApp, h } from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import plugin from 'plugin'
 import velocity from 'velocity-animate'
 
-const app = createApp({
-  render: () => h(App),
-})
+const app = createApp(App)
 
-app.use(plugin(), {
-  velocity,
-  /*
-  name: 'foo'
-  */
-})
+app.use(plugin({ velocity }))
 
 app.mount('#app')
