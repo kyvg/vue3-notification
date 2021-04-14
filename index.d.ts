@@ -20,6 +20,8 @@ declare module '@vue/runtime-core' {
   }
 }
 
-export function VueNotification(args?: NotificationPluginOptions): Plugin;
+declare function VueNotification(args?: NotificationPluginOptions): Plugin;
+
+export declare function notify(data: NotificationOptions): void;
 
 export default VueNotification;

@@ -1,11 +1,4 @@
-<p align="right">
-  <a href="https://www.buymeacoffee.com/yev" target="_blank">
-  <img width="200" alt="screen shot 2018-03-01 at 10 33 39" src="https://user-images.githubusercontent.com/1577802/36840220-21beb89c-1d3c-11e8-98a4-45fc334842cf.png">
-  </a>
-</p>
-
-[![npm version](https://badge.fury.io/js/vue-notification.svg)](https://badge.fury.io/js/vue-notification)
-[![npm](https://img.shields.io/npm/dm/vue-notification.svg)](https://www.npmjs.com/package/vue-notification)
+[![npm](https://img.shields.io/npm/dm/vue-notification.svg)](https://www.npmjs.com/package/@iwannabeacool/vue-notification)
 
 # Vue.js notifications
 
@@ -13,30 +6,25 @@
   <img src="https://media.giphy.com/media/xUn3C6FmbGmszMem64/giphy.gif">
 </p>
 
-## Demo
-
-
-- http://vue-notification.yev.io/
-
 ## Setup
 
 
 ```bash
-npm install --save vue-notification
+npm install --save @iwannabecool/vue-notification
 ```
 
 Add dependencies to your `main.js`:
 
 ```javascript
-import Vue           from 'vue'
-import Notifications from 'vue-notification'
+import { createApp } from 'vue'
+import Notifications from '@iwannabecool/vue-notification'
 
 /*
 or for SSR:
-import Notifications from 'vue-notification/dist/ssr.js'
+import Notifications from '@iwannabecool/vue-notification/dist/ssr.js'
 */
-
-Vue.use(Notifications)
+const app = createApp({...})
+app.use(Notifications())
 ```
 
 Add the global component to your `App.vue`:
@@ -44,6 +32,8 @@ Add the global component to your `App.vue`:
 ```vue
 <notifications/>
 ```
+
+## Usage
 
 Trigger notifications from your `.vue` files:
 
@@ -61,15 +51,13 @@ this.$notify({
 Or trigger notifications from other files, for example, your router:
 
 ```javascript
-import Vue from 'vue'
+import { notify } from '@iwannabecool/vue-notification'
 
-Vue.notify({
+notify({
   title: 'Authorization',
   text: 'You have been logged in!'
 })
 ```
-
-## Usage
 
 ### Component props
 
@@ -146,7 +134,7 @@ this.$notify({
 Configure the plugin itself using an additional options object:
 
 ```js
-Vue.use(notifications, { name: 'alert' })
+app.use(Notifications({ name: 'alert' }))
 ```
 
 All options are optional:
@@ -276,7 +264,7 @@ Note that the default rules are:
   padding: 10px;
   font-size: 12px;
   color: #ffffff;
-  
+
   // default (blue)
   background: #44A4FC;
   border-left: 5px solid #187FE7;
@@ -336,11 +324,12 @@ To use, manually install `velocity-animate` & pass the library to the  `vue-noti
 In your `main.js`:
 
 ```javascript
-import Vue           from 'vue'
-import Notifications from 'vue-notification'
-import velocity      from 'velocity-animate'
+import { createApp } from 'vue'
+import Notifications from '@iwannabecool/vue-notification'
+import velocity from 'velocity-animate'
 
-Vue.use(Notifications, { velocity })
+const app = createApp({...})
+app.use(Notifications({ velocity }))
 ```
 
 In the template, set the `animation-type` prop:
@@ -372,7 +361,7 @@ computed: {
     return {
       /**
        * Animation function
-       * 
+       *
        * Runs before animating, so you can take the initial height, width, color, etc
        * @param  {HTMLElement}  element  The notification element
        */

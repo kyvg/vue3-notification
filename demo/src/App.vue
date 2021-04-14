@@ -134,8 +134,9 @@
 </template>
 
 <script>
+import { defineComponent } from "vue"
 
-export default {
+export default defineComponent({
   name: 'app',
   data () {
     return {
@@ -176,7 +177,7 @@ export default {
       this.$notify({ group, clean: true })
     }
   }
-}
+})
 </script>
 
 <style lang="scss">

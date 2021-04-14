@@ -474,7 +474,8 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ src)
+  "default": () => (/* binding */ Notification),
+  "notify": () => (/* binding */ notify)
 });
 
 // EXTERNAL MODULE: external "vue"
@@ -900,7 +901,7 @@ var STATE = {
   data: function data() {
     return {
       list: [],
-      velocity: src.params.velocity,
+      velocity: Notification.params.velocity,
       timerControl: ""
     };
   },
@@ -1122,36 +1123,32 @@ function src_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "fun
 
 
 
+var notify = function notify(params) {
+  if (typeof params === 'string') {
+    params = {
+      title: '',
+      text: params
+    };
+  }
 
-function Notify() {
+  if (src_typeof(params) === 'object') {
+    events.emit('add', params);
+  }
+};
+
+notify.close = function (id) {
+  events.emit('close', id);
+};
+
+function Notification() {
   var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  Notify.params = args;
+  Notification.params = args;
   return function (app) {
     app.component(args.componentName || 'notifications', Notifications);
-
-    var notify = function notify(params) {
-      if (typeof params === 'string') {
-        params = {
-          title: '',
-          text: params
-        };
-      }
-
-      if (src_typeof(params) === 'object') {
-        events.emit('add', params);
-      }
-    };
-
-    notify.close = function (id) {
-      events.emit('close', id);
-    };
-
     var name = args.name || 'notify';
     app.config.globalProperties['$' + name] = notify;
   };
 }
-
-/* harmony default export */ const src = (Notify);
 })();
 
 /******/ 	return __webpack_exports__;

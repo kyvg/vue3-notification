@@ -76,6 +76,7 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
-    "mitt": "^2.1.0"
+    "mitt": "^2.1.0",
+    "velocity-animate": "^1.5.2"
   }
 }
