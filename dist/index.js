@@ -11,7 +11,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 746:
+/***/ 882:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25,7 +25,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vue-notification-group {\n  display: block;\n  position: fixed;\n  z-index: 5000;\n}\n.vue-notification-wrapper {\n  display: block;\n  overflow: hidden;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n}\n.notification-title {\n  font-weight: 600;\n}\n.vue-notification-template {\n  display: block;\n  box-sizing: border-box;\n  background: white;\n  text-align: left;\n}\n.vue-notification {\n  display: block;\n  box-sizing: border-box;\n  text-align: left;\n  font-size: 12px;\n  padding: 10px;\n  margin: 0 5px 5px;\n\n  color: white;\n  background: #44A4FC;\n  border-left: 5px solid #187FE7;\n}\n.vue-notification.warn {\n  background: #ffb648;\n  border-left-color: #f48a06;\n}\n.vue-notification.error {\n  background: #E54D42;\n  border-left-color: #B82E24;\n}\n.vue-notification.success {\n  background: #68CD86;\n  border-left-color: #42A85F;\n}\n.vn-fade-enter-active, .vn-fade-leave-active, .vn-fade-move  {\n  transition: all .5s;\n}\n.vn-fade-enter, .vn-fade-leave-to {\n  opacity: 0;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vue-notification-group {\n  display: block;\n  position: fixed;\n  z-index: 5000;\n}\n.vue-notification-wrapper {\n  display: block;\n  overflow: hidden;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n}\n.notification-title {\n  font-weight: 600;\n}\n.vue-notification-template {\n  display: block;\n  box-sizing: border-box;\n  background: white;\n  text-align: left;\n}\n.vue-notification {\n  display: block;\n  box-sizing: border-box;\n  text-align: left;\n  font-size: 12px;\n  padding: 10px;\n  margin: 0 5px 5px;\n\n  color: white;\n  background: #44A4FC;\n  border-left: 5px solid #187FE7;\n}\n.vue-notification.warn {\n  background: #ffb648;\n  border-left-color: #f48a06;\n}\n.vue-notification.error {\n  background: #E54D42;\n  border-left-color: #B82E24;\n}\n.vue-notification.success {\n  background: #68CD86;\n  border-left-color: #42A85F;\n}\n.vn-fade-enter-active, .vn-fade-leave-active, .vn-fade-move  {\n  transition: all .5s;\n}\n.vn-fade-enter-from, .vn-fade-leave-to {\n  opacity: 0;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -105,19 +105,19 @@ module.exports = function (cssWithMappingToString) {
 
 /***/ }),
 
-/***/ 237:
+/***/ 311:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(746);
+var content = __webpack_require__(882);
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.id, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(346)/* .default */ .Z
-var update = add("7fa3239c", content, false, {});
+var update = add("7801e124", content, false, {});
 // Hot Module Replacement
 if(false) {}
 
@@ -480,7 +480,7 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: external "vue"
 var external_vue_ = __webpack_require__(103);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/Notifications.vue?vue&type=template&id=68208f72
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/Notifications.vue?vue&type=template&id=523bfa6f
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,external_vue_.openBlock)(), (0,external_vue_.createBlock)("div", {
@@ -547,7 +547,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STYLE */
   );
 }
-;// CONCATENATED MODULE: ./src/Notifications.vue?vue&type=template&id=68208f72
+;// CONCATENATED MODULE: ./src/Notifications.vue?vue&type=template&id=523bfa6f
 
 ;// CONCATENATED MODULE: ./node_modules/mitt/dist/mitt.es.js
 /* harmony default export */ function mitt_es(n){return{all:n=n||new Map,on:function(t,e){var i=n.get(t);i&&i.push(e)||n.set(t,[e])},off:function(t,e){var i=n.get(t);i&&i.splice(i.indexOf(e)>>>0,1)},emit:function(t,e){(n.get(t)||[]).slice().map(function(n){n(e)}),(n.get("*")||[]).slice().map(function(n){n(t,e)})}}}
@@ -646,10 +646,11 @@ function Timer(callback, delay, notifItem) {
     }
   }
 });
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/VelocityGroup.vue?vue&type=template&id=5c14681b
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/VelocityGroup.vue?vue&type=template&id=0541c31a
 
-function VelocityGroupvue_type_template_id_5c14681b_render(_ctx, _cache, $props, $setup, $data, $options) {
+function VelocityGroupvue_type_template_id_0541c31a_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,external_vue_.openBlock)(), (0,external_vue_.createBlock)(external_vue_.TransitionGroup, {
+    tag: "span",
     css: false,
     onEnter: _ctx.enter,
     onLeave: _ctx.leave,
@@ -665,7 +666,7 @@ function VelocityGroupvue_type_template_id_5c14681b_render(_ctx, _cache, $props,
   /* PROPS */
   , ["onEnter", "onLeave", "onAfterLeave"]);
 }
-;// CONCATENATED MODULE: ./src/VelocityGroup.vue?vue&type=template&id=5c14681b
+;// CONCATENATED MODULE: ./src/VelocityGroup.vue?vue&type=template&id=0541c31a
 
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/VelocityGroup.vue?vue&type=script&lang=js
 
@@ -696,13 +697,14 @@ function VelocityGroupvue_type_template_id_5c14681b_render(_ctx, _cache, $props,
 
 
 
-VelocityGroupvue_type_script_lang_js.render = VelocityGroupvue_type_template_id_5c14681b_render
+VelocityGroupvue_type_script_lang_js.render = VelocityGroupvue_type_template_id_0541c31a_render
 
 /* harmony default export */ const VelocityGroup = (VelocityGroupvue_type_script_lang_js);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/CssGroup.vue?vue&type=template&id=5dd2b179
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/CssGroup.vue?vue&type=template&id=3e35ffc2
 
-function CssGroupvue_type_template_id_5dd2b179_render(_ctx, _cache, $props, $setup, $data, $options) {
+function CssGroupvue_type_template_id_3e35ffc2_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,external_vue_.openBlock)(), (0,external_vue_.createBlock)(external_vue_.TransitionGroup, {
+    tag: "span",
     name: _ctx.name
   }, {
     "default": (0,external_vue_.withCtx)(function () {
@@ -715,7 +717,7 @@ function CssGroupvue_type_template_id_5dd2b179_render(_ctx, _cache, $props, $set
   /* PROPS */
   , ["name"]);
 }
-;// CONCATENATED MODULE: ./src/CssGroup.vue?vue&type=template&id=5dd2b179
+;// CONCATENATED MODULE: ./src/CssGroup.vue?vue&type=template&id=3e35ffc2
 
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/CssGroup.vue?vue&type=script&lang=js
 
@@ -734,7 +736,7 @@ function CssGroupvue_type_template_id_5dd2b179_render(_ctx, _cache, $props, $set
 
 
 
-CssGroupvue_type_script_lang_js.render = CssGroupvue_type_template_id_5dd2b179_render
+CssGroupvue_type_script_lang_js.render = CssGroupvue_type_template_id_3e35ffc2_render
 
 /* harmony default export */ const CssGroup = (CssGroupvue_type_script_lang_js);
 ;// CONCATENATED MODULE: ./src/parser.js
@@ -917,7 +919,7 @@ var STATE = {
       return this.animationType === 'velocity';
     },
     componentName: function componentName() {
-      return this.isVA ? 'VelocityGroup' : 'CssGroup';
+      return this.isVA ? 'velocity-group' : 'css-group';
     },
     styles: function styles() {
       var _listToDirection = listToDirection(this.position),
@@ -1076,6 +1078,7 @@ var STATE = {
     },
     enter: function enter(el, complete) {
       if (!this.isVA) {
+        complete();
         return;
       }
 
@@ -1087,6 +1090,7 @@ var STATE = {
     },
     leave: function leave(el, complete) {
       if (!this.isVA) {
+        complete();
         return;
       }
 
@@ -1105,9 +1109,9 @@ var STATE = {
 }));
 ;// CONCATENATED MODULE: ./src/Notifications.vue?vue&type=script&lang=js
  
-// EXTERNAL MODULE: ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/Notifications.vue?vue&type=style&index=0&id=68208f72&lang=css
-var Notificationsvue_type_style_index_0_id_68208f72_lang_css = __webpack_require__(237);
-;// CONCATENATED MODULE: ./src/Notifications.vue?vue&type=style&index=0&id=68208f72&lang=css
+// EXTERNAL MODULE: ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./src/Notifications.vue?vue&type=style&index=0&id=523bfa6f&lang=css
+var Notificationsvue_type_style_index_0_id_523bfa6f_lang_css = __webpack_require__(311);
+;// CONCATENATED MODULE: ./src/Notifications.vue?vue&type=style&index=0&id=523bfa6f&lang=css
 
 ;// CONCATENATED MODULE: ./src/Notifications.vue
 
