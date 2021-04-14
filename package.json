@@ -1,7 +1,7 @@
 {
   "name": "@iwannabecool/vue-notification",
   "description": "Vue.js Notification Library",
-  "version": "2.0.7-0",
+  "version": "2.0.8-0",
   "author": "iwannabecool",
   "private": false,
   "publishConfig": {
