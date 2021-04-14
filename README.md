@@ -10,18 +10,18 @@
 
 
 ```bash
-npm install --save @iwannabecool/vue-notification
+npm install --save @iwannabecool/vue3-notification
 ```
 
 Add dependencies to your `main.js`:
 
 ```javascript
 import { createApp } from 'vue'
-import Notifications from '@iwannabecool/vue-notification'
+import Notifications from '@iwannabecool/vue3-notification'
 
 /*
 or for SSR:
-import Notifications from '@iwannabecool/vue-notification/dist/ssr.js'
+import Notifications from '@iwannabecool/vue3-notification/dist/ssr.js'
 */
 const app = createApp({...})
 app.use(Notifications())
@@ -51,7 +51,7 @@ this.$notify({
 Or trigger notifications from other files, for example, your router:
 
 ```javascript
-import { notify } from '@iwannabecool/vue-notification'
+import { notify } from '@iwannabecool/vue3-notification'
 
 notify({
   title: 'Authorization',
@@ -325,7 +325,7 @@ In your `main.js`:
 
 ```javascript
 import { createApp } from 'vue'
-import Notifications from '@iwannabecool/vue-notification'
+import Notifications from '@iwannabecool/vue3-notification'
 import velocity from 'velocity-animate'
 
 const app = createApp({...})
