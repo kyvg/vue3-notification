@@ -93,6 +93,68 @@ var defaults = {
   }
 };
 
+var script$2 = vue.defineComponent({
+  name: 'velocity-group',
+  components: {
+    TransitionGroup: vue.TransitionGroup,
+  },
+  emits: ['afterLeave', 'leave', 'enter'],
+  methods: {
+    enter (el, complete) {
+      this.$emit('enter', { el, complete });
+    },
+    leave (el, complete) {
+      this.$emit('leave', { el, complete });
+    },
+    afterLeave () {
+      this.$emit('afterLeave');
+    }
+  }
+});
+
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  return (vue.openBlock(), vue.createBlock(vue.TransitionGroup, {
+    tag: "span",
+    css: false,
+    onEnter: _ctx.enter,
+    onLeave: _ctx.leave,
+    onAfterLeave: _ctx.afterLeave
+  }, {
+    default: vue.withCtx(() => [
+      vue.renderSlot(_ctx.$slots, "default")
+    ]),
+    _: 3 /* FORWARDED */
+  }, 8 /* PROPS */, ["onEnter", "onLeave", "onAfterLeave"]))
+}
+
+script$2.render = render$2;
+script$2.__file = "src/VelocityGroup.vue";
+
+var script$1 = vue.defineComponent({
+  name: 'css-group',
+  components: {
+    TransitionGroup: vue.TransitionGroup,
+  },
+  props: {
+    name: { type: String, required: true },
+  }
+});
+
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return (vue.openBlock(), vue.createBlock(vue.TransitionGroup, {
+    tag: "span",
+    name: _ctx.name
+  }, {
+    default: vue.withCtx(() => [
+      vue.renderSlot(_ctx.$slots, "default")
+    ]),
+    _: 3 /* FORWARDED */
+  }, 8 /* PROPS */, ["name"]))
+}
+
+script$1.render = render$1;
+script$1.__file = "src/CssGroup.vue";
+
 const floatRegexp = '[-+]?[0-9]*.?[0-9]+';
 
 const types = [
@@ -156,10 +218,10 @@ const STATE = {
 
 var script = vue.defineComponent({
   name: 'notifications',
-  // components: {
-  //   VelocityGroup,
-  //   CssGroup
-  // },
+  components: {
+    VelocityGroup: script$2,
+    CssGroup: script$1
+  },
   props: {
     group: {
       type: String,
@@ -258,13 +320,13 @@ var script = vue.defineComponent({
     }
   },
   computed: {
-    actualWidth() {
+    actualWidth () {
       return parse(this.width)
     },
     /**
       * isVelocityAnimation
       */
-    isVA() {
+    isVA () {
       return this.animationType === 'velocity'
     },
 
@@ -484,8 +546,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     class: "vue-notification-group",
     style: _ctx.styles
   }, [
-    vue.createVNode(vue.TransitionGroup, {
-      tag: "span",
+    (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(_ctx.componentName), {
       name: _ctx.animationName,
       onEnter: _ctx.enter,
       onLeave: _ctx.leave,
@@ -501,8 +562,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onMouseenter: _cache[1] || (_cache[1] = (...args) => (_ctx.pauseTimeout && _ctx.pauseTimeout(...args))),
             onMouseleave: _cache[2] || (_cache[2] = (...args) => (_ctx.resumeTimeout && _ctx.resumeTimeout(...args)))
           }, [
-            vue.renderSlot(_ctx.$slots, "default", {
-              classList: [_ctx.classes, item.type],
+            vue.renderSlot(_ctx.$slots, "body", {
+              class: [_ctx.classes, item.type],
               item: item,
               close: () => _ctx.destroy(item)
             }, () => [
@@ -528,7 +589,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }), 128 /* KEYED_FRAGMENT */))
       ]),
       _: 3 /* FORWARDED */
-    }, 8 /* PROPS */, ["name", "onEnter", "onLeave", "onAfterLeave"])
+    }, 8 /* PROPS */, ["name", "onEnter", "onLeave", "onAfterLeave"]))
   ], 4 /* STYLE */))
 }
 

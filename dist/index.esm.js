@@ -1,4 +1,4 @@
-import { defineComponent, openBlock, createBlock, createVNode, TransitionGroup, withCtx, Fragment, renderList, renderSlot, createCommentVNode } from 'vue';
+import { defineComponent, TransitionGroup, openBlock, createBlock, withCtx, renderSlot, resolveDynamicComponent, Fragment, renderList, createCommentVNode, createVNode } from 'vue';
 
 function mitt(n){return {all:n=n||new Map,on:function(t,e){var i=n.get(t);i&&i.push(e)||n.set(t,[e]);},off:function(t,e){var i=n.get(t);i&&i.splice(i.indexOf(e)>>>0,1);},emit:function(t,e){(n.get(t)||[]).slice().map(function(n){n(e);}),(n.get("*")||[]).slice().map(function(n){n(t,e);});}}}
 
@@ -89,6 +89,68 @@ var defaults = {
   }
 };
 
+var script$2 = defineComponent({
+  name: 'velocity-group',
+  components: {
+    TransitionGroup,
+  },
+  emits: ['afterLeave', 'leave', 'enter'],
+  methods: {
+    enter (el, complete) {
+      this.$emit('enter', { el, complete });
+    },
+    leave (el, complete) {
+      this.$emit('leave', { el, complete });
+    },
+    afterLeave () {
+      this.$emit('afterLeave');
+    }
+  }
+});
+
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createBlock(TransitionGroup, {
+    tag: "span",
+    css: false,
+    onEnter: _ctx.enter,
+    onLeave: _ctx.leave,
+    onAfterLeave: _ctx.afterLeave
+  }, {
+    default: withCtx(() => [
+      renderSlot(_ctx.$slots, "default")
+    ]),
+    _: 3 /* FORWARDED */
+  }, 8 /* PROPS */, ["onEnter", "onLeave", "onAfterLeave"]))
+}
+
+script$2.render = render$2;
+script$2.__file = "src/VelocityGroup.vue";
+
+var script$1 = defineComponent({
+  name: 'css-group',
+  components: {
+    TransitionGroup,
+  },
+  props: {
+    name: { type: String, required: true },
+  }
+});
+
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createBlock(TransitionGroup, {
+    tag: "span",
+    name: _ctx.name
+  }, {
+    default: withCtx(() => [
+      renderSlot(_ctx.$slots, "default")
+    ]),
+    _: 3 /* FORWARDED */
+  }, 8 /* PROPS */, ["name"]))
+}
+
+script$1.render = render$1;
+script$1.__file = "src/CssGroup.vue";
+
 const floatRegexp = '[-+]?[0-9]*.?[0-9]+';
 
 const types = [
@@ -152,10 +214,10 @@ const STATE = {
 
 var script = defineComponent({
   name: 'notifications',
-  // components: {
-  //   VelocityGroup,
-  //   CssGroup
-  // },
+  components: {
+    VelocityGroup: script$2,
+    CssGroup: script$1
+  },
   props: {
     group: {
       type: String,
@@ -254,13 +316,13 @@ var script = defineComponent({
     }
   },
   computed: {
-    actualWidth() {
+    actualWidth () {
       return parse(this.width)
     },
     /**
       * isVelocityAnimation
       */
-    isVA() {
+    isVA () {
       return this.animationType === 'velocity'
     },
 
@@ -480,8 +542,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     class: "vue-notification-group",
     style: _ctx.styles
   }, [
-    createVNode(TransitionGroup, {
-      tag: "span",
+    (openBlock(), createBlock(resolveDynamicComponent(_ctx.componentName), {
       name: _ctx.animationName,
       onEnter: _ctx.enter,
       onLeave: _ctx.leave,
@@ -497,8 +558,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onMouseenter: _cache[1] || (_cache[1] = (...args) => (_ctx.pauseTimeout && _ctx.pauseTimeout(...args))),
             onMouseleave: _cache[2] || (_cache[2] = (...args) => (_ctx.resumeTimeout && _ctx.resumeTimeout(...args)))
           }, [
-            renderSlot(_ctx.$slots, "default", {
-              classList: [_ctx.classes, item.type],
+            renderSlot(_ctx.$slots, "body", {
+              class: [_ctx.classes, item.type],
               item: item,
               close: () => _ctx.destroy(item)
             }, () => [
@@ -524,7 +585,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }), 128 /* KEYED_FRAGMENT */))
       ]),
       _: 3 /* FORWARDED */
-    }, 8 /* PROPS */, ["name", "onEnter", "onLeave", "onAfterLeave"])
+    }, 8 /* PROPS */, ["name", "onEnter", "onLeave", "onAfterLeave"]))
   ], 4 /* STYLE */))
 }
 
