@@ -10,7 +10,7 @@
 import { defineComponent, TransitionGroup } from "vue"
 
 export default defineComponent({
-  name: 'CssGroup',
+  name: 'css-group',
   components: {
     TransitionGroup,
   },

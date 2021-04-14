@@ -1,5 +1,6 @@
 import Notifications from './Notifications.vue'
-import { events }    from './events'
+import { events } from './events'
+import { params } from './params';
 
 export const notify = (params) => {
   if (typeof params === 'string') {
@@ -15,14 +16,14 @@ notify.close = function (id) {
   events.emit('close', id)
 }
 
-export default function Notification(args = {}) {
-  Notification.params = args;
-  return (app) => {
-
-    app.component(args.componentName || 'notifications', Notifications);
+export default {
+  install: (app, args = {}) => {
+    Object.entries(args).forEach((entry) => params.set(...entry));
 
     const name = args.name || 'notify'
 
     app.config.globalProperties['$' + name] = notify;
-  };
+
+    app.component(args.componentName || 'notifications', Notifications);
+  }
 }

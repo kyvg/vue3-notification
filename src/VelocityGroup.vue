@@ -14,7 +14,7 @@
 import { defineComponent, TransitionGroup } from "vue"
 
 export default defineComponent({
-  name: 'VelocityGroup',
+  name: 'velocity-group',
   components: {
     TransitionGroup,
   },

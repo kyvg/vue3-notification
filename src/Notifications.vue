@@ -46,14 +46,14 @@
   </div>
 </template>
 <script>
-import plugin                         from './index'
-import { events }                     from './events'
-import { Id, listToDirection, Timer } from './util'
-import defaults                       from './defaults'
-import VelocityGroup                  from './VelocityGroup.vue'
-import CssGroup                       from './CssGroup.vue'
-import parseNumericValue              from './parser'
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
+import { events } from './events';
+import { params } from './params';
+import { Id, listToDirection, Timer } from './util';
+import defaults from './defaults';
+import VelocityGroup from './VelocityGroup.vue';
+import CssGroup from './CssGroup.vue';
+import parseNumericValue from './parser'
 
 const STATE = {
   IDLE: 0,
@@ -61,7 +61,7 @@ const STATE = {
 }
 
 export default defineComponent({
-  name: 'Notifications',
+  name: 'notifications',
   components: {
     VelocityGroup,
     CssGroup
@@ -159,7 +159,7 @@ export default defineComponent({
   data () {
     return {
       list: [],
-      velocity: plugin.params.velocity,
+      velocity: params.get('velocity'),
       timerControl: ""
     }
   },
