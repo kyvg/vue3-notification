@@ -6,3 +6,4 @@ demo/dist
 test/unit/coverage
 *.map
 .vscode
+docs/
