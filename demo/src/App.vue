@@ -1,117 +1,133 @@
 <template>
   <div id="app">
-    <h2>Vue.js Notification
+    <h2>
+      Vue.js Notification
       <br>
-      <a href="https://github.com/kyvg/vue3-notification/blob/master/README.md"
-         target="readme">Readme</a>
-      <a href="https://github.com/kyvg/vue3-notification/"
-         target="issues">Github</a>
+      <a href="https://github.com/kyvg/vue3-notification/blob/master/README.md" target="readme">Readme</a>
+      <a href="https://github.com/kyvg/vue3-notification/" target="issues">Github</a>
     </h2>
     <!-- CSS animation example -->
-    <notifications group="foo-css"
-                   position="bottom left"
-                   :speed="500" />
+    <notifications
+      group="foo-css"
+      position="bottom left"
+      :speed="500"
+    />
 
     <!-- Velocity animation example -->
-    <notifications group="foo-velocity"
-                   position="bottom right"
-                   animation-type="velocity"
-                   :speed="500" />
+    <notifications
+      group="foo-velocity"
+      position="bottom right"
+      animation-type="velocity"
+      :speed="500"
+    />
 
     <!-- Custom style example -->
-    <notifications group="custom-style"
-                   position="top center"
-                   classes="n-light"
-                   :max="3"
-                   :width="400"/>
+    <notifications
+      group="custom-style"
+      position="top center"
+      classes="n-light"
+      :max="3"
+      :width="400"
+    />
 
     <!-- Custom template example -->
-    <notifications group="custom-template"
-                   :duration="5000"
-                   :width="500"
-                   animation-name="v-fade-left"
-                   position="top left">
-
-       <template #body="{ item }">
+    <notifications
+      group="custom-template"
+      :duration="5000"
+      :width="500"
+      animation-name="v-fade-left"
+      position="top left"
+    >
+      <template #body="{ item }">
         <div class="custom-template">
           <div class="custom-template-icon">
-            <i class="icon ion-android-checkmark-circle"></i>
+            <i class="icon ion-android-checkmark-circle" />
           </div>
           <div class="custom-template-content">
             <div class="custom-template-title">
-              {{item.title}}
+              {{ item.title }}
 
               <p>
-                Random number: {{props.item.data.randomNumber}}
+                Random number: {{ item.data.randomNumber }}
               </p>
             </div>
-            <div class="custom-template-text"
-                 v-html="props.item.text"></div>
+            <div
+              class="custom-template-text"
+              v-html="item.text"
+            />
           </div>
-          <div class="custom-template-close"
-               @click="props.close">
-            <i class="icon ion-android-close"></i>
+          <div
+            class="custom-template-close"
+            @click="close"
+          >
+            <i class="icon ion-android-close" />
           </div>
         </div>
       </template>
     </notifications>
 
     <!-- Full width example -->
-    <notifications group="full-width"
-                   width="100%" />
+    <notifications
+      group="full-width"
+      width="100%"
+    />
 
     <div class="content">
       <p>
         CSS animation:
       </p>
-      <div>
-        <button class="success"
-                style="width: 30%"
-                @click="show('foo-css', 'success')">
-          <i class="icon ion-information-circled"/>
+      <div class="block">
+        <button
+          class="success"
+          @click="show('foo-css', 'success')"
+        >
+          <i class="icon ion-information-circled" />
           SUCCESS
         </button>
-        <button class="warn"
-                style="width: 30%"
-                @click="show('foo-css', 'warn')">
-          <i class="icon ion-alert-circled"/>
+        <button
+          class="warn"
+          @click="show('foo-css', 'warn')"
+        >
+          <i class="icon ion-alert-circled" />
           WARNING
         </button>
-        <button class="error"
-                style="width: 30%"
-                @click="show('foo-css', 'error')">
-          <i class="icon ion-close-circled"/>
+        <button
+          class="error"
+          @click="show('foo-css', 'error')"
+        >
+          <i class="icon ion-close-circled" />
           ERROR
         </button>
       </div>
-
-      <div style="padding-top: 10px"></div>
 
       <p>
         Velocity animation:
       </p>
 
-      <div>
-        <button class="success"
-                style="width: 30%"
-                @click="show('foo-velocity', 'success')">
-          <i class="icon ion-information-circled"/>
+      <div class="block">
+        <button
+          class="success"
+          @click="show('foo-velocity', 'success')"
+        >
+          <i class="icon ion-information-circled" />
           SUCCESS
         </button>
-        <button class="warn"
-                style="width: 30%"
-                @click="show('foo-velocity', 'warn')">
-          <i class="icon ion-alert-circled"/>
+        <button
+          class="warn"
+          @click="show('foo-velocity', 'warn')"
+        >
+          <i class="icon ion-alert-circled" />
           WARNING
         </button>
-        <button class="error"
-                style="width: 30%"
-                @click="show('foo-velocity', 'error')">
-          <i class="icon ion-close-circled"/>
+        <button
+          class="error"
+          @click="show('foo-velocity', 'error')"
+        >
+          <i class="icon ion-close-circled" />
           ERROR
         </button>
       </div>
-      <div style="padding-top: 20px">
+      <div>
         <p>Custom style:</p>
         <button @click="show('custom-style')">
           top center (max=3)
@@ -120,11 +136,11 @@
         <button @click="show('custom-template')">
           show top left
         </button>
-        <p></p>
+        <p />
         <button @click="clean('custom-template')">
           <u>clean all</u> top left
         </button>
-        <p></p>
+        <p />
         <button @click="show('full-width')">
           show bottom (full width)
         </button>
@@ -134,33 +150,33 @@
 </template>
 
 <script>
-import { defineComponent } from "vue"
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'app',
-  data () {
+  data() {
     return {
       id: 0,
       animation: {
         enter: {
           opacity: [1, 0],
           translateX: [0, -300],
-          scale: [1, 0.2]
+          scale: [1, 0.2],
         },
         leave: {
           opacity: 0,
-          height: 0
-        }
-      }
-    }
+          height: 0,
+        },
+      },
+    };
   },
   methods: {
-    show (group, type = '') {
+    show(group, type = '') {
       const text = `
         This is notification text!
         <br>
         Date: ${new Date()}
-      `
+      `;
 
       this.$notify({
         group,
@@ -168,16 +184,16 @@ export default defineComponent({
         text,
         type,
         data: {
-          randomNumber: Math.random()
-        }
-      })
+          randomNumber: Math.random(),
+        },
+      });
     },
 
-    clean (group) {
-      this.$notify({ group, clean: true })
-    }
-  }
-})
+    clean(group) {
+      this.$notify({ group, clean: true });
+    },
+  },
+});
 </script>
 
 <style lang="scss">
@@ -337,6 +353,10 @@ body {
       font-weight: 600;
     }
   }
+}
+
+.block {
+  display: flex;
 }
 
 .v-fade-left-enter-active,

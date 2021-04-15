@@ -10,6 +10,7 @@
   "scripts": {
     "build": "rm -rf dist/ && rollup -c",
     "build:demo": "vite build",
+    "dev": "vite serve",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run",
     "unit:watch": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --watch",
     "test": "npm run unit",

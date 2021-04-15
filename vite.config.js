@@ -12,7 +12,7 @@ export default defineConfig({
   resolve: {
     alias: {
       vue: 'vue/dist/vue.runtime.esm-browser.js',
-    }
+    },
   },
   base: './',
-})
+});
