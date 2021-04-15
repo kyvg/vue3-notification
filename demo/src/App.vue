@@ -2,9 +2,9 @@
   <div id="app">
     <h2>Vue.js Notification
       <br>
-      <a href="https://github.com/iwannabecool/vue-notification/blob/master/README.md"
+      <a href="https://github.com/iwannabecool/vue3-notification/blob/master/README.md"
          target="readme">Readme</a>
-      <a href="https://github.com/iwannabecool/vue-notification/"
+      <a href="https://github.com/iwannabecool/vue3-notification/"
          target="issues">Github</a>
     </h2>
     <!-- CSS animation example -->

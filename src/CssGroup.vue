@@ -6,8 +6,8 @@
     <slot />
   </transition-group>
 </template>
-<script>
-import { defineComponent, TransitionGroup } from "vue"
+<script lang="ts">
+import { defineComponent, TransitionGroup } from 'vue';
 
 export default defineComponent({
   name: 'css-group',
@@ -16,6 +16,6 @@ export default defineComponent({
   },
   props: {
     name: { type: String, required: true },
-  }
-})
+  },
+});
 </script>

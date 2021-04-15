@@ -13,6 +13,7 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run",
     "unit:watch": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --watch",
     "test": "npm run unit",
+    "lint": "eslint ./src/index.ts",
     "preversion": "npm run build && git add -A dist"
   },
   "types": "index.d.ts",
@@ -20,10 +21,10 @@
   "module": "dist/index.esm.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iwannabecool/vue-notification.git"
+    "url": "https://github.com/iwannabecool/vue3-notification.git"
   },
   "bugs": {
-    "url": "https://github.com/iwannabecool/vue-notification/issues"
+    "url": "https://github.com/iwannabecool/vue3-notification/issues"
   },
   "license": "MIT",
   "peerDependencies": {
@@ -52,6 +53,11 @@
     "@vue/compiler-sfc": "^3.0.11",
     "@vue/server-renderer": "^3.0.11",
     "babel-preset-env": "^1.7.0",
+    "eslint": "^7.23.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "eslint-plugin-vue": "^7.8.0",
     "chai": "^4.3.4",
     "karma": "^6.3.2",
     "karma-coverage": "^2.0.3",
@@ -70,6 +76,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.30.0",
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.32.8",
     "sinon": "^10.0.0",
