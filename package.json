@@ -21,10 +21,10 @@
   "module": "dist/index.esm.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iwannabecool/vue3-notification.git"
+    "url": "https://github.com/iwannabecool/vue3-notifications.git"
   },
   "bugs": {
-    "url": "https://github.com/iwannabecool/vue3-notification/issues"
+    "url": "https://github.com/iwannabecool/vue3-notifications/issues"
   },
   "license": "MIT",
   "peerDependencies": {
