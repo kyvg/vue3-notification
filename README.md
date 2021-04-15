@@ -1,6 +1,7 @@
 [![npm](https://img.shields.io/npm/dm/vue-notification.svg)](https://www.npmjs.com/package/@iwannabeacool/vue-notification)
 
 # Vue.js notifications
+This is fork and port of Vue 2 vue-notifications created by euvl. Please use this version if you use Vue 2.x
 
 <p align="center">
   <img src="https://media.giphy.com/media/xUn3C6FmbGmszMem64/giphy.gif">
@@ -232,22 +233,22 @@ Then include custom css rules to style the notifications:
 ```scss
 // style of the notification itself
 .my-notification {
-  ...
+  /*...*/
 
   // style for title line
   .notification-title {
-    ...
+    /*...*/
   }
 
   // style for content
   .notification-content {
-    ...
+    /*...*/
   }
 
   // additional styling hook when using`type` parameter, i.e. this.$notify({ type: 'success', message: 'Yay!' })
-  &.success { ... }
-  &.info { ... }
-  &.error { ... }
+  &.success { /*...*/ }
+  &.info { /*...*/ }
+  &.error { /*...*/ }
 }
 ```
 

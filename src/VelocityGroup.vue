@@ -10,8 +10,8 @@
   </transition-group>
 </template>
 
-<script>
-import { defineComponent, TransitionGroup } from "vue"
+<script lang="ts">
+import { defineComponent, TransitionGroup } from 'vue';
 
 export default defineComponent({
   name: 'velocity-group',
@@ -20,15 +20,15 @@ export default defineComponent({
   },
   emits: ['afterLeave', 'leave', 'enter'],
   methods: {
-    enter (el, complete) {
-      this.$emit('enter', { el, complete })
+    enter(el: Element, complete: () => void) {
+      this.$emit('enter', { el, complete });
     },
-    leave (el, complete) {
-      this.$emit('leave', { el, complete })
+    leave(el: Element, complete: () => void) {
+      this.$emit('leave', { el, complete });
     },
-    afterLeave () {
-      this.$emit('afterLeave')
-    }
-  }
-})
+    afterLeave() {
+      this.$emit('afterLeave');
+    },
+  },
+});
 </script>

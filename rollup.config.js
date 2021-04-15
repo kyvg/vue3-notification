@@ -3,12 +3,11 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import replace from "rollup-plugin-replace";
 import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import alias from 'rollup-plugin-alias';
-import path from 'path';
 
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output:  [
     {
       file: 'dist/index.common.js',
@@ -25,13 +24,14 @@ export default {
       css: false,
       compileTemplate: true,
     }),
-    typescript({ tsconfig: path.resolve(__dirname, 'tsconfig.json')}),
+    typescript({
+      abortOnError: false,
+    }),
     replace({
       NODE_ENV: JSON.stringify('production'),
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     postcss(),
-    // css(),
     alias({
       resolve: [ '.js', '.ts', '.tsx' ],
       entries: [
