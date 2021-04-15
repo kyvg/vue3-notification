@@ -11,14 +11,14 @@ This is fork and port of Vue 2 vue-notifications created by euvl. Please use thi
 
 
 ```bash
-npm install --save @iwannabecool/vue3-notification
+npm install --save @kyvg/vue3-notification
 ```
 
 Add dependencies to your `main.js`:
 
 ```javascript
 import { createApp } from 'vue'
-import Notifications from '@iwannabecool/vue3-notification'
+import Notifications from '@kyvg/vue3-notification'
 
 const app = createApp({...})
 app.use(Notifications())
@@ -48,13 +48,16 @@ this.$notify({
 Or trigger notifications from other files, for example, your router:
 
 ```javascript
-import { notify } from '@iwannabecool/vue3-notification'
+import { notify } from '@kyvg/vue3-notification'
 
 notify({
   title: 'Authorization',
   text: 'You have been logged in!'
 })
 ```
+
+### Migration
+Migration from vue2 lib
 
 ### Component props
 
@@ -322,7 +325,7 @@ In your `main.js`:
 
 ```javascript
 import { createApp } from 'vue'
-import Notifications from '@iwannabecool/vue3-notification'
+import Notifications from '@kyvg/vue3-notification'
 import velocity from 'velocity-animate'
 
 const app = createApp({...})

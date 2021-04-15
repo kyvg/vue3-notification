@@ -1,8 +1,8 @@
 {
-  "name": "@iwannabecool/vue3-notification",
+  "name": "@kyvg/vue3-notification",
   "description": "Vue.js Notification Library",
   "version": "2.2.1",
-  "author": "iwannabecool",
+  "author": "kyvg",
   "private": false,
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -21,10 +21,10 @@
   "module": "dist/index.esm.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iwannabecool/vue3-notifications.git"
+    "url": "https://github.com/kyvg/vue3-notification.git"
   },
   "bugs": {
-    "url": "https://github.com/iwannabecool/vue3-notifications/issues"
+    "url": "https://github.com/kyvg/vue3-notification/issues"
   },
   "license": "MIT",
   "peerDependencies": {
