@@ -17,7 +17,7 @@ export const Id = (i => () => i++)(0);
 /**
   * Splits space/tab separated string into array and cleans empty string items.
   */
-export const split = (value: string | string[]): string[] => {
+export const split = (value: unknown): string[] => {
   if (typeof value !== 'string') {
     return [];
   }
@@ -76,7 +76,7 @@ export class Timer {
   resume(): void {
     this.start = Date.now();
     clearTimeout(this.notifyItem.timer);
-    // @ts-expect-error FIXME Node.js timer type
+    // @ts-ignore FIXME Node.js timer type
     this.notifyItem.timer = setTimeout(this.callback, this.remaining);
   }
 }
