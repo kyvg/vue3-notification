@@ -5,7 +5,7 @@ describe('util functions', () => {
     it('sequentially generates id starting with 0', () => {
       const results = [...Array(5)].map(() => Id());
 
-      expect(results).to.deep.eq([0,1,2,3,4]);
+      expect(results).toStrictEqual([0,1,2,3,4]);
     });
   });
 
@@ -14,21 +14,21 @@ describe('util functions', () => {
       const value = 'taco pizza sushi'
       const result = split(value);
 
-      expect(result).to.deep.eq(['taco', 'pizza', 'sushi']);
+      expect(result).toStrictEqual(['taco', 'pizza', 'sushi']);
     });
 
     it('splits tab-separated string into array', () => {
       const value = 'taco\tpizza\tsushi'
       const result = split(value);
 
-      expect(result).to.deep.eq(['taco', 'pizza', 'sushi']);
+      expect(result).toStrictEqual(['taco', 'pizza', 'sushi']);
     });
 
     it('removes empty string items', () => {
       const value = 'taco \n \n \n'
       const result = split(value);
 
-      expect(result).to.deep.eq(['taco']);
+      expect(result).toStrictEqual(['taco']);
     });
 
     it('returns empty array when not a string value', () => {
@@ -43,7 +43,7 @@ describe('util functions', () => {
       values.forEach((value) => {
         const result = split(value);
 
-        expect(result).to.deep.eq([]);
+        expect(result).toStrictEqual([]);
       });
     });
   });
@@ -63,7 +63,7 @@ describe('util functions', () => {
         scenarios.forEach((scenario) => {
           const result = listToDirection(scenario.value);
 
-          expect(result).to.deep.eq(scenario.result);
+          expect(result).toStrictEqual(scenario.result);
         });
       });
     });
@@ -82,7 +82,7 @@ describe('util functions', () => {
         scenarios.forEach((scenario) => {
           const result = listToDirection(scenario.value);
 
-          expect(result).to.deep.eq(scenario.result);
+          expect(result).toStrictEqual(scenario.result);
         });
       });
     });
@@ -99,7 +99,7 @@ describe('util functions', () => {
         scenarios.forEach((scenario) => {
           const result = listToDirection(scenario.value);
 
-          expect(result).to.deep.eq(scenario.result);
+          expect(result).toStrictEqual(scenario.result);
         });
       });
     });
