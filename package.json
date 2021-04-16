@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "rm -rf dist/ && rollup -c",
-    "release": "npm run build && npm run build:dts && rm --rf dist/src/",
+    "release": "npm run build && npm run build:dts",
     "build:demo": "vite build",
     "build:dts": "api-extractor run --local --verbose && tail -n +7 src/globalExtensions.ts >> dist/index.d.ts",
     "dev": "vite serve",
@@ -17,7 +17,7 @@
     "unit:watch": "jest --watch",
     "test": "npm run unit",
     "lint": "eslint ./src/index.ts",
-    "preversion": "npm run test && npm run build && git add -A dist"
+    "preversion": "npm run test && npm run release && git add -A dist"
   },
   "types": "dist/index.d.ts",
   "main": "dist/index.common.js",
