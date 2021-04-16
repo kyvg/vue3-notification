@@ -63,7 +63,7 @@ class Timer {
     resume() {
         this.start = Date.now();
         clearTimeout(this.notifyItem.timer);
-        // @ts-expect-error FIXME Node.js timer type
+        // @ts-ignore FIXME Node.js timer type
         this.notifyItem.timer = setTimeout(this.callback, this.remaining);
     }
 }
