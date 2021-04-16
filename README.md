@@ -1,14 +1,14 @@
 [![npm](https://img.shields.io/npm/dm/vue-notification.svg)](https://www.npmjs.com/package/@iwannabeacool/vue-notification)
 
 # Vue.js notifications
-This is fork and port of Vue 2 vue-notifications created by euvl. Please use this version if you use Vue 2.x
+
+This is fork and port of Vue 2 [vue-notifications](https://github.com/euvl/vue-notification) created by [euvl](https://github.com/euvl). Please use this version if you use Vue 2.x
 
 <p align="center">
   <img src="https://media.giphy.com/media/xUn3C6FmbGmszMem64/giphy.gif">
 </p>
 
 ## Setup
-
 
 ```bash
 npm install --save @kyvg/vue3-notification
@@ -27,7 +27,7 @@ app.use(Notifications())
 Add the global component to your `App.vue`:
 
 ```vue
-<notifications/>
+<notifications />
 ```
 
 ## Usage
@@ -36,27 +36,28 @@ Trigger notifications from your `.vue` files:
 
 ```javascript
 // simple
-this.$notify('Hello user!')
+this.$notify("Hello user!");
 
 // using options
 this.$notify({
-  title: 'Important message',
-  text: 'Hello user!'
+  title: "Important message",
+  text: "Hello user!",
 });
 ```
 
 Or trigger notifications from other files, for example, your router:
 
 ```javascript
-import { notify } from '@kyvg/vue3-notification'
+import { notify } from "@kyvg/vue3-notification";
 
 notify({
-  title: 'Authorization',
-  text: 'You have been logged in!'
-})
+  title: "Authorization",
+  text: "You have been logged in!",
+});
 ```
 
 ### Migration
+
 Migration from vue2 lib
 
 ### Component props
@@ -64,26 +65,26 @@ Migration from vue2 lib
 The majority of settings for the Notifications component are configured using props:
 
 ```vue
-<notifications position="bottom right" classes="my-custom-class"/>
+<notifications position="bottom right" classes="my-custom-class" />
 ```
 
 Note that all props are optional.
 
-| Name             | Type          | Default            | Description                                                  |
-| ---------------- | ------------- | ------------------ | ------------------------------------------------------------ |
-| position         | String/Array  | 'top right'        | Part of the screen where notifications will pop out          |
-| width            | Number/String | 300                | Width of notification holder, can be `%`, `px` string or number.<br>Valid values: '100%', '200px', 200 |
-| classes          | String/Array  | 'vue-notification' | List of classes that will be applied to notification element |
-| group            | String        | null               | Name of the notification holder, if specified                |
+| Name             | Type          | Default            | Description                                                                                                             |
+| ---------------- | ------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| position         | String/Array  | 'top right'        | Part of the screen where notifications will pop out                                                                     |
+| width            | Number/String | 300                | Width of notification holder, can be `%`, `px` string or number.<br>Valid values: '100%', '200px', 200                  |
+| classes          | String/Array  | 'vue-notification' | List of classes that will be applied to notification element                                                            |
+| group            | String        | null               | Name of the notification holder, if specified                                                                           |
 | duration         | Number        | 3000               | Time (in ms) to keep the notification on screen (if **negative** - notification will stay **forever** or until clicked) |
-| speed            | Number        | 300                | Time (in ms) to show / hide notifications                    |
-| animation-type   | String        | 'css'              | Type of animation, currently supported types are `css` and `velocity` |
-| animation-name   | String        | null               | Animation name required for `css` animation                  |
-| animation        | Object        | Custom             | Animation configuration for [Velocity](#Animation]) animation |
-| max              | Number        | Infinity           | Maximum number of notifications that can be shown in notification holder |
-| reverse          | Boolean       | false              | Show notifications in reverse order                          |
-| ignoreDuplicates | Boolean       | false              | Ignore repeated instances of the same notification           |
-| closeOnClick     | Boolean       | true               | Close notification when clicked                              |
+| speed            | Number        | 300                | Time (in ms) to show / hide notifications                                                                               |
+| animation-type   | String        | 'css'              | Type of animation, currently supported types are `css` and `velocity`                                                   |
+| animation-name   | String        | null               | Animation name required for `css` animation                                                                             |
+| animation        | Object        | Custom             | Animation configuration for [Velocity](#Animation]) animation                                                           |
+| max              | Number        | Infinity           | Maximum number of notifications that can be shown in notification holder                                                |
+| reverse          | Boolean       | false              | Show notifications in reverse order                                                                                     |
+| ignoreDuplicates | Boolean       | false              | Ignore repeated instances of the same notification                                                                      |
+| closeOnClick     | Boolean       | true               | Close notification when clicked                                                                                         |
 
 ### API
 
@@ -124,9 +125,9 @@ To remove notifications, include the `clean: true` parameter.
 
 ```javascript
 this.$notify({
-  group: 'foo', // clean only the foo group
-  clean: true
-})
+  group: "foo", // clean only the foo group
+  clean: true,
+});
 ```
 
 ### Plugin Options
@@ -134,17 +135,17 @@ this.$notify({
 Configure the plugin itself using an additional options object:
 
 ```js
-app.use(Notifications({ name: 'alert' }))
+app.use(Notifications({ name: "alert" }));
 ```
 
 All options are optional:
 
-| Name          | Type   | Default       | Description                                                  |
-| ------------- | ------ | ------------- | ------------------------------------------------------------ |
+| Name          | Type   | Default       | Description                                                                   |
+| ------------- | ------ | ------------- | ----------------------------------------------------------------------------- |
 | name          | String | notify        | Defines the instance name. It's prefixed with the dollar sign. E.g. `$notify` |
-| componentName | String | notifications | The component's name                                         |
+| componentName | String | notifications | The component's name                                                          |
 
->  **Note**: setting `componentName` can cause issues when using SSR.
+> **Note**: setting `componentName` can cause issues when using SSR.
 
 ## Features
 
@@ -153,7 +154,7 @@ All options are optional:
 Position the component on the screen using the `position` prop:
 
 ```vue
-<notifications position="bottom right"/>
+<notifications position="bottom right" />
 ```
 
 It requires a `string` with **two keywords** for vertical and horizontal postion.
@@ -170,10 +171,10 @@ Default is `"top right"`.
 Width can be set using a `number` or `string` with optional `%` or `px` extensions:
 
 ```vue
-<notifications :width="100"/>
-<notifications width="100"/>
-<notifications width="100%"/>
-<notifications width="100px"/>
+<notifications :width="100" />
+<notifications width="100" />
+<notifications width="100%" />
+<notifications width="100px" />
 ```
 
 ### Type
@@ -181,7 +182,7 @@ Width can be set using a `number` or `string` with optional `%` or `px` extensio
 Set the `type` of a notification (**warn**, **error**, **success**, etc) by adding a `type` property to the call:
 
 ```js
-this.$notify({ type: 'success', text: 'The operation completed' })
+this.$notify({ type: "success", text: "The operation completed" });
 ```
 
 This will add the `type` (i.e. "success") as a CSS class name to the `.vue-notification` element.
@@ -198,14 +199,14 @@ For different classes of notifications, i.e...
 ...specify the `group` attribute:
 
 ```vue
-<notifications group="auth" position="top"/>
-<notifications group="app"  position="bottom right"/>
+<notifications group="auth" position="top" />
+<notifications group="app" position="bottom right" />
 ```
 
 Trigger a notification for a specific group by specifying it in the API call:
 
 ```javascript
-this.$notify({ group: 'auth', text: 'Wrong password, please try again' })
+this.$notify({ group: "auth", text: "Wrong password, please try again" });
 ```
 
 ## Customisation
@@ -217,7 +218,7 @@ Vue Notifications comes with default styling, but it's easy to replace with your
 Specify one or more class hooks via the `classes` prop on the global component:
 
 ```vue
-<notifications classes="my-notification"/>
+<notifications classes="my-notification" />
 ```
 
 This will add the supplied class/classes to individual notification elements:
@@ -249,9 +250,15 @@ Then include custom css rules to style the notifications:
   }
 
   // additional styling hook when using`type` parameter, i.e. this.$notify({ type: 'success', message: 'Yay!' })
-  &.success { /*...*/ }
-  &.info { /*...*/ }
-  &.error { /*...*/ }
+  &.success {
+    /*...*/
+  }
+  &.info {
+    /*...*/
+  }
+  &.error {
+    /*...*/
+  }
 }
 ```
 
@@ -266,13 +273,13 @@ Note that the default rules are:
   color: #ffffff;
 
   // default (blue)
-  background: #44A4FC;
-  border-left: 5px solid #187FE7;
+  background: #44a4fc;
+  border-left: 5px solid #187fe7;
 
   // types (green, amber, red)
   &.success {
-    background: #68CD86;
-    border-left-color: #42A85F;
+    background: #68cd86;
+    border-left-color: #42a85f;
   }
 
   &.warn {
@@ -281,8 +288,8 @@ Note that the default rules are:
   }
 
   &.error {
-    background: #E54D42;
-    border-left-color: #B82E24;
+    background: #e54d42;
+    border-left-color: #b82e24;
   }
 }
 ```
@@ -306,6 +313,7 @@ To completely replace notification content, use Vue's slots system:
   </template>
 </notifications>
 ```
+
 The `props` object has the following members:
 
 | Name  | Type     | Description                          |
@@ -319,7 +327,7 @@ The `props` object has the following members:
 
 Vue Notification can use the [Velocity](https://github.com/julianshapiro/velocity) library to power the animations using JavaScript.
 
-To use, manually install `velocity-animate` & pass the library to the  `vue-notification` plugin (the reason for doing that is to reduce the size of this plugin).
+To use, manually install `velocity-animate` & pass the library to the `vue-notification` plugin (the reason for doing that is to reduce the size of this plugin).
 
 In your `main.js`:
 
@@ -335,7 +343,7 @@ app.use(Notifications({ velocity }))
 In the template, set the `animation-type` prop:
 
 ```vue
-<notifications animation-type="velocity"/>
+<notifications animation-type="velocity" />
 ```
 
 The default configuration is:
@@ -350,7 +358,7 @@ The default configuration is:
 To assign a custom animation, use the `animation` prop:
 
 ```vue
-<notifications animation-type="velocity" :animation="animation"/>
+<notifications animation-type="velocity" :animation="animation" />
 ```
 
 Note that `enter` and `leave` can be an `object` or a `function` that returns an `object`:
