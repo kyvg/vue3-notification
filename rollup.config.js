@@ -30,7 +30,6 @@ export default {
         compilerOptions: {
           declaration: true,
           declarationDir: 'dist/src',
-          declarationMap: true,
         },
         exclude: ['test', 'demo'],
       },

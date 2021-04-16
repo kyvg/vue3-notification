@@ -1,5 +1,5 @@
 
-export interface NotificationOptions {
+export interface NotificationsOptions {
   id?: number;
   title?: string;
   text?: string;
@@ -12,13 +12,12 @@ export interface NotificationOptions {
   clear?: boolean;
   ignoreDuplicates?: boolean;
 }
-
-export interface NotificationPluginOptions {
+export interface NotificationsPluginOptions {
   name?: string;
   componentName?: string;
   velocity?: any;
 }
 
-export type NotificationItem = Pick<NotificationOptions, 'id' | 'title' | 'text' | 'type' | 'speed' | 'data'> & {
+export type NotificationItem = Pick<NotificationsOptions, 'id' | 'title' | 'text' | 'type' | 'speed' | 'data'> & {
   length: number;
 }

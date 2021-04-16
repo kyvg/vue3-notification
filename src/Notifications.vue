@@ -55,7 +55,7 @@ import defaults from './defaults';
 import VelocityGroup from './VelocityGroup.vue';
 import CssGroup from './CssGroup.vue';
 import parseNumericValue, { ValueType } from './parser';
-import { NotificationOptions } from './index';
+import { NotificationsOptions } from './types';
 
 const STATE = {
   IDLE: 0,
@@ -216,7 +216,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    events.on<NotificationOptions>('add', this.addItem);
+    events.on<NotificationsOptions>('add', this.addItem);
     events.on('close', this.closeItem);
   },
   methods: {
@@ -236,7 +236,7 @@ export default defineComponent({
         this.timerControl?.resume();
       }
     },
-    addItem(event: NotificationOptions = {}): void {
+    addItem(event: NotificationsOptions = {}): void {
       event.group ||= '';
       event.data ||= {};
 
