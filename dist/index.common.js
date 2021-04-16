@@ -565,13 +565,16 @@ const notify = (args) => {
 notify.close = function (id) {
     events.emit('close', id);
 };
+
+function install(app, args = {}) {
+    Object.entries(args).forEach((entry) => params.set(...entry));
+    const name = args.name || 'notify';
+    app.config.globalProperties['$' + name] = notify;
+    app.component(args.componentName || 'notifications', script);
+}
+
 var index = {
-    install: (app, args = {}) => {
-        Object.entries(args).forEach((entry) => params.set(...entry));
-        const name = args.name || 'notify';
-        app.config.globalProperties['$' + name] = notify;
-        app.component(args.componentName || 'notifications', script);
-    },
+    install,
 };
 
 exports.default = index;
