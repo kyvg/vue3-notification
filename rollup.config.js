@@ -1,6 +1,6 @@
 import vue from 'rollup-plugin-vue';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import replace from "rollup-plugin-replace";
+import replace from 'rollup-plugin-replace';
 import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
@@ -16,7 +16,7 @@ export default {
     {
       file: 'dist/index.esm.js',
       format: 'es',
-    }
+    },
   ],
   plugins: [
     vue({
@@ -25,7 +25,15 @@ export default {
       compileTemplate: true,
     }),
     typescript({
-      abortOnError: false,
+      useTsconfigDeclarationDir: true,
+      tsconfigOverride: {
+        compilerOptions: {
+          declaration: true,
+          declarationDir: 'dist/src',
+          declarationMap: true,
+        },
+        exclude: ['test', 'demo'],
+      },
     }),
     replace({
       NODE_ENV: JSON.stringify('production'),
@@ -35,8 +43,8 @@ export default {
     alias({
       resolve: [ '.js', '.ts', '.tsx' ],
       entries: [
-        { find: 'vue', replacement: '@vue/runtime-dom' }
-      ]
+        { find: 'vue', replacement: '@vue/runtime-dom' },
+      ],
     }),
     resolve(),
     peerDepsExternal(),

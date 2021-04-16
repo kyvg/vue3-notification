@@ -1,31 +1,11 @@
+
+import { App } from 'vue';
 import Notifications from './Notifications.vue';
 import { events } from './events';
 import { params } from './params';
-import { App } from 'vue';
+import { NotificationOptions, NotificationPluginOptions } from './types';
 
-export interface NotificationOptions {
-  id?: number;
-  title?: string;
-  text?: string;
-  type?: string;
-  group?: string;
-  duration?: number;
-  speed?: number;
-  data?: unknown;
-  clean?: boolean;
-  clear?: boolean;
-  ignoreDuplicates?: boolean;
-}
-
-export type NotificationItem = Pick<NotificationOptions, 'id' | 'title' | 'text' | 'type' | 'speed' | 'data'> & {
-  length: number;
-}
-
-export interface NotificationPluginOptions {
-  name?: string;
-  componentName?: string;
-  velocity?: any;
-}
+export { NotificationOptions, NotificationPluginOptions };
 
 export const notify = (args: NotificationOptions | string): void => {
   if (typeof args === 'string') {

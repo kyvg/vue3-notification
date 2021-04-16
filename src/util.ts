@@ -1,4 +1,4 @@
-import type { NotificationItem } from './index';
+import type { NotificationItem } from './types';
 interface Direction {
   x: null | string;
   y: null | string;

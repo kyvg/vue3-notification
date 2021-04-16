@@ -80,4 +80,12 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
   },
+  overrides: [
+    {
+      files: '*.d.ts',
+      rules: {
+        '@typescript-eslint/indent': ['error', 4],
+      },
+    },
+  ],
 };

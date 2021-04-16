@@ -4,3 +4,10 @@ docs
 test
 npm-debug.log
 yarn-error.log
+dist/src/
+.github
+.yarn.lock
+*.log
+.api-extractor
+.eslintrc
+.gitignore

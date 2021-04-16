@@ -7,3 +7,5 @@ test/unit/coverage
 *.map
 .vscode
 docs/
+temp/
+dist/src/
