@@ -2,7 +2,7 @@
 
 # Vue.js notifications
 
-This is fork and port of Vue 2 [vue-notifications](https://github.com/euvl/vue-notification) created by [euvl](https://github.com/euvl). Please use this version if you use Vue 2.x
+This is a fork and port of Vue 2 [vue-notifications](https://github.com/euvl/vue-notification) created by [euvl](https://github.com/euvl) to now support Vue 3. If you're using Vue 2.x use his version.
 
 <p align="center">
   <img src="https://media.giphy.com/media/xUn3C6FmbGmszMem64/giphy.gif">
