@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/dm/vue-notification.svg)](https://www.npmjs.com/package/@iwannabeacool/vue-notification)
+[![npm](https://img.shields.io/npm/dm/vue-notification.svg)](https://www.npmjs.com/package/@kyvg/vue-notification)
 
 # Vue.js notifications
 
@@ -12,6 +12,8 @@ This is a fork and port of Vue 2 [vue-notifications](https://github.com/euvl/vue
 
 ```bash
 npm install --save @kyvg/vue3-notification
+
+yarn add @kyvg/vue3-notification
 ```
 
 Add dependencies to your `main.js`:
@@ -21,7 +23,7 @@ import { createApp } from 'vue'
 import Notifications from '@kyvg/vue3-notification'
 
 const app = createApp({...})
-app.use(Notifications())
+app.use(Notifications)
 ```
 
 Add the global component to your `App.vue`:
@@ -57,9 +59,20 @@ notify({
 ```
 
 ### Migration
+#### Vue 2.x syntax
+```javascript
+Vue.notify({
+  title: "Vue 2 notification",
+});
+```
+#### Vue 3.x syntax
+```javascript
+import { notify } from "@kyvg/vue3-notification";
 
-Migration from vue2 lib
-
+notify({
+  title: "Vue 3 notification 🎉",
+});
+```
 ### Component props
 
 The majority of settings for the Notifications component are configured using props:
