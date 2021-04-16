@@ -28,3 +28,5 @@ export declare const notify: {
     close(id: unknown): void;
 };
 
+export { }
+}
