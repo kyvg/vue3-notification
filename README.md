@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/dm/vue-notification.svg)](https://www.npmjs.com/package/@kyvg/vue-notification)
+[![npm](https://img.shields.io/npm/dm/@kyvg/vue3-notification)](https://www.npmjs.com/package/@kyvg/vue3-notification)
 
 # Vue.js notifications
 
