@@ -350,7 +350,7 @@ import Notifications from '@kyvg/vue3-notification'
 import velocity from 'velocity-animate'
 
 const app = createApp({...})
-app.use(Notifications({ velocity }))
+app.use(Notifications, { velocity ))
 ```
 
 In the template, set the `animation-type` prop:
