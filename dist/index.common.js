@@ -334,18 +334,20 @@ var script = vue.defineComponent({
             }
         },
         pauseTimeout() {
+            var _a;
             if (this.pauseOnHover) {
-                this.timerControl?.pause();
+                (_a = this.timerControl) === null || _a === void 0 ? void 0 : _a.pause();
             }
         },
         resumeTimeout() {
+            var _a;
             if (this.pauseOnHover) {
-                this.timerControl?.resume();
+                (_a = this.timerControl) === null || _a === void 0 ? void 0 : _a.resume();
             }
         },
         addItem(event = {}) {
-            event.group ||= '';
-            event.data ||= {};
+            event.group || (event.group = '');
+            event.data || (event.data = {});
             if (this.group !== event.group) {
                 return;
             }
@@ -407,10 +409,11 @@ var script = vue.defineComponent({
             this.destroyById(id);
         },
         notifyClass(item) {
+            var _a;
             return [
                 'vue-notification-template',
                 this.classes,
-                item.type ?? '',
+                (_a = item.type) !== null && _a !== void 0 ? _a : '',
             ];
         },
         notifyWrapperStyle(item) {
@@ -436,7 +439,8 @@ var script = vue.defineComponent({
             this.active.forEach(this.destroy);
         },
         getAnimation(index, el) {
-            const animation = this.animation?.[index];
+            var _a;
+            const animation = (_a = this.animation) === null || _a === void 0 ? void 0 : _a[index];
             return typeof animation === 'function'
                 ? animation.call(this, el)
                 : animation;
