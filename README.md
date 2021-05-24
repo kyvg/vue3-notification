@@ -410,16 +410,6 @@ computed: {
 Check closed issues with `FAQ` label to get answers for most asked questions.
 
 ## Development
-
-To run a local demo:
-
-```bash
-# run the demo
-cd demo
-npm install
-npm run dev
-```
-
 To contribute to the library:
 
 ```bash
