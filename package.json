@@ -11,7 +11,7 @@
     "build": "rm -rf dist/ && rollup -c",
     "release": "npm run build && npm run build:dts",
     "build:demo": "vite build",
-    "build:dts": "api-extractor run --local --verbose && tail -n +7 src/globalExtensions.ts >> dist/index.d.ts",
+    "build:dts": "api-extractor run --local --verbose && tail -n +3 src/globalExtensions.ts >> dist/index.d.ts",
     "dev": "vite serve",
     "unit": "jest",
     "unit:watch": "jest --watch",
