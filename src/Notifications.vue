@@ -364,7 +364,6 @@ export default defineComponent({
 
     enter(el: Element, complete: () => void): void {
       if (!this.isVA) {
-        complete();
         return;
       }
       const animation = this.getAnimation('enter', el);
@@ -377,7 +376,6 @@ export default defineComponent({
 
     leave(el: Element, complete: () => void) {
       if (!this.isVA) {
-        complete();
         return;
       }
       const animation = this.getAnimation('leave', el);
