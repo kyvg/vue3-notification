@@ -1,4 +1,4 @@
-import { defineComponent, TransitionGroup, openBlock, createBlock, withCtx, renderSlot, resolveDynamicComponent, Fragment, renderList, createCommentVNode, createVNode } from 'vue';
+import { defineComponent, openBlock, createBlock, TransitionGroup, withCtx, renderSlot, resolveDynamicComponent, Fragment, renderList, createCommentVNode, createVNode } from 'vue';
 
 function mitt(n){return {all:n=n||new Map,on:function(t,e){var i=n.get(t);i&&i.push(e)||n.set(t,[e]);},off:function(t,e){var i=n.get(t);i&&i.splice(i.indexOf(e)>>>0,1);},emit:function(t,e){(n.get(t)||[]).slice().map(function(n){n(e);}),(n.get("*")||[]).slice().map(function(n){n(t,e);});}}}
 
@@ -84,9 +84,6 @@ var defaults = {
 
 var script$2 = defineComponent({
     name: 'velocity-group',
-    components: {
-        TransitionGroup,
-    },
     emits: ['afterLeave', 'leave', 'enter'],
     methods: {
         enter(el, complete) {
@@ -121,9 +118,6 @@ script$2.__file = "src/VelocityGroup.vue";
 
 var script$1 = defineComponent({
     name: 'css-group',
-    components: {
-        TransitionGroup,
-    },
     props: {
         name: { type: String, required: true },
     },
@@ -443,7 +437,6 @@ var script = defineComponent({
         },
         enter(el, complete) {
             if (!this.isVA) {
-                complete();
                 return;
             }
             const animation = this.getAnimation('enter', el);
@@ -454,7 +447,6 @@ var script = defineComponent({
         },
         leave(el, complete) {
             if (!this.isVA) {
-                complete();
                 return;
             }
             const animation = this.getAnimation('leave', el);

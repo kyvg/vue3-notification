@@ -88,9 +88,6 @@ var defaults = {
 
 var script$2 = vue.defineComponent({
     name: 'velocity-group',
-    components: {
-        TransitionGroup: vue.TransitionGroup,
-    },
     emits: ['afterLeave', 'leave', 'enter'],
     methods: {
         enter(el, complete) {
@@ -125,9 +122,6 @@ script$2.__file = "src/VelocityGroup.vue";
 
 var script$1 = vue.defineComponent({
     name: 'css-group',
-    components: {
-        TransitionGroup: vue.TransitionGroup,
-    },
     props: {
         name: { type: String, required: true },
     },
@@ -447,7 +441,6 @@ var script = vue.defineComponent({
         },
         enter(el, complete) {
             if (!this.isVA) {
-                complete();
                 return;
             }
             const animation = this.getAnimation('enter', el);
@@ -458,7 +451,6 @@ var script = vue.defineComponent({
         },
         leave(el, complete) {
             if (!this.isVA) {
-                complete();
                 return;
             }
             const animation = this.getAnimation('leave', el);
