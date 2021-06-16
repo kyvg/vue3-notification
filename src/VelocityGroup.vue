@@ -15,7 +15,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'velocity-group',
-  emits: ['afterLeave', 'leave', 'enter'],
+  emits: ['after-leave', 'leave', 'enter'],
   methods: {
     enter(el: Element, complete: () => void) {
       this.$emit('enter', { el, complete });
@@ -24,7 +24,7 @@ export default defineComponent({
       this.$emit('leave', { el, complete });
     },
     afterLeave() {
-      this.$emit('afterLeave');
+      this.$emit('after-leave');
     },
   },
 });

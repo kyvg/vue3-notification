@@ -327,7 +327,7 @@ export default defineComponent({
 
     notifyWrapperStyle(item: NotificationItemExtended) {
       return this.isVA
-        ? null
+        ? undefined
         : { transition: `all ${item.speed}ms` };
     },
 
