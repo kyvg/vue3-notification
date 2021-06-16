@@ -84,7 +84,7 @@ var defaults = {
 
 var script$2 = defineComponent({
     name: 'velocity-group',
-    emits: ['afterLeave', 'leave', 'enter'],
+    emits: ['after-leave', 'leave', 'enter'],
     methods: {
         enter(el, complete) {
             this.$emit('enter', { el, complete });
@@ -93,7 +93,7 @@ var script$2 = defineComponent({
             this.$emit('leave', { el, complete });
         },
         afterLeave() {
-            this.$emit('afterLeave');
+            this.$emit('after-leave');
         },
     },
 });
@@ -118,6 +118,7 @@ script$2.__file = "src/VelocityGroup.vue";
 
 var script$1 = defineComponent({
     name: 'css-group',
+    inheritAttrs: false,
     props: {
         name: { type: String, required: true },
     },
@@ -408,7 +409,7 @@ var script = defineComponent({
         },
         notifyWrapperStyle(item) {
             return this.isVA
-                ? null
+                ? undefined
                 : { transition: `all ${item.speed}ms` };
         },
         destroy(item) {
