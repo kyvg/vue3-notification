@@ -59,13 +59,17 @@ notify({
 ```
 
 ### Migration
+
 #### Vue 2.x syntax
+
 ```javascript
 Vue.notify({
   title: "Vue 2 notification",
 });
 ```
+
 #### Vue 3.x syntax
+
 ```javascript
 import { notify } from "@kyvg/vue3-notification";
 
@@ -73,6 +77,7 @@ notify({
   title: "Vue 3 notification 🎉",
 });
 ```
+
 ### Component props
 
 The majority of settings for the Notifications component are configured using props:
@@ -350,7 +355,7 @@ import Notifications from '@kyvg/vue3-notification'
 import velocity from 'velocity-animate'
 
 const app = createApp({...})
-app.use(Notifications, { velocity ))
+app.use(Notifications, { velocity })
 ```
 
 In the template, set the `animation-type` prop:
@@ -410,6 +415,7 @@ computed: {
 Check closed issues with `FAQ` label to get answers for most asked questions.
 
 ## Development
+
 To contribute to the library:
 
 ```bash
