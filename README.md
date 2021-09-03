@@ -318,7 +318,7 @@ To completely replace notification content, use Vue's slots system:
 
 ```vue
 <notifications>
-  <template slot="body" slot-scope="{ item, close }">
+  <template #body="props">
     <div class="my-notification">
       <p class="title">
         {{ item.title }}
