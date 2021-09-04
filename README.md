@@ -410,6 +410,21 @@ computed: {
 }
 ```
 
+## Programatically Closing
+
+```javascript
+
+const id = Date.now() // This can be any unique number
+
+this.$notify({
+  id,
+  text: 'This message will be removed immediately'
+});
+
+this.$notify.close(id);
+
+```
+
 ## FAQ
 
 Check closed issues with `FAQ` label to get answers for most asked questions.
