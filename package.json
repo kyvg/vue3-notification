@@ -7,6 +7,10 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "vetur": {
+    "tags": "vetur/tags.json",
+    "attributes": "vetur/attributes.json"
+  },
   "scripts": {
     "build": "rm -rf dist/ && rollup -c",
     "release": "npm run build && npm run build:dts",
