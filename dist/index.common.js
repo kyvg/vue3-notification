@@ -4,9 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var vue = require('vue');
 
-function mitt(n){return {all:n=n||new Map,on:function(t,e){var i=n.get(t);i&&i.push(e)||n.set(t,[e]);},off:function(t,e){var i=n.get(t);i&&i.splice(i.indexOf(e)>>>0,1);},emit:function(t,e){(n.get(t)||[]).slice().map(function(n){n(e);}),(n.get("*")||[]).slice().map(function(n){n(t,e);});}}}
+function mitt(n){return {all:n=n||new Map,on:function(t,e){var i=n.get(t);i?i.push(e):n.set(t,[e]);},off:function(t,e){var i=n.get(t);i&&(e?i.splice(i.indexOf(e)>>>0,1):n.set(t,[]));},emit:function(t,e){var i=n.get(t);i&&i.slice().map(function(n){n(e);}),(i=n.get("*"))&&i.slice().map(function(n){n(t,e);});}}}
 
-const events = mitt();
+const emitter = mitt();
 
 const params = new Map();
 
@@ -318,8 +318,8 @@ var script = vue.defineComponent({
         },
     },
     mounted() {
-        events.on('add', this.addItem);
-        events.on('close', this.closeItem);
+        emitter.on('add', this.addItem);
+        emitter.on('close', this.closeItem);
     },
     methods: {
         destroyIfNecessary(item) {
@@ -556,11 +556,11 @@ const notify = (args) => {
         args = { title: '', text: args };
     }
     if (typeof args === 'object') {
-        events.emit('add', args);
+        emitter.emit('add', args);
     }
 };
 notify.close = function (id) {
-    events.emit('close', id);
+    emitter.emit('close', id);
 };
 
 function install(app, args = {}) {
@@ -574,5 +574,5 @@ var index = {
     install,
 };
 
-exports.default = index;
+exports['default'] = index;
 exports.notify = notify;
