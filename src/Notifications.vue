@@ -48,7 +48,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { events } from './events';
+import { emitter } from './events';
 import { params } from './params';
 import { Id, listToDirection, Timer, NotificationItemWithTimer } from './util';
 import defaults from './defaults';
@@ -216,8 +216,8 @@ export default defineComponent({
     },
   },
   mounted() {
-    events.on<NotificationsOptions>('add', this.addItem);
-    events.on('close', this.closeItem);
+    emitter.on('add', this.addItem);
+    emitter.on('close', this.closeItem);
   },
   methods: {
     destroyIfNecessary(item: NotificationItemExtended) {
