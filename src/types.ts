@@ -11,6 +11,7 @@ export interface NotificationsOptions {
   clean?: boolean;
   clear?: boolean;
   ignoreDuplicates?: boolean;
+  closeOnClick?: boolean;
 }
 export interface NotificationsPluginOptions {
   name?: string;
