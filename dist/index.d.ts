@@ -15,6 +15,7 @@ export declare interface NotificationsOptions {
     clean?: boolean;
     clear?: boolean;
     ignoreDuplicates?: boolean;
+    closeOnClick?: boolean;
 }
 
 export declare interface NotificationsPluginOptions {
@@ -29,8 +30,3 @@ export declare const notify: {
 };
 
 export { }
-declare module '@vue/runtime-core' {
-  export interface ComponentCustomProperties {
-    $notify: typeof notify;
-  }
-}
