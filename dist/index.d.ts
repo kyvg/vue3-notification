@@ -30,3 +30,8 @@ export declare const notify: {
 };
 
 export { }
+declare module '@vue/runtime-core' {
+  export interface ComponentCustomProperties {
+    $notify: typeof notify;
+  }
+}

@@ -91,10 +91,10 @@ var script$2 = vue.defineComponent({
     emits: ['after-leave', 'leave', 'enter'],
     methods: {
         enter(el, complete) {
-            this.$emit('enter', { el, complete });
+            this.$emit('enter', el, complete);
         },
         leave(el, complete) {
-            this.$emit('leave', { el, complete });
+            this.$emit('leave', el, complete);
         },
         afterLeave() {
             this.$emit('after-leave');
@@ -419,9 +419,7 @@ var script = vue.defineComponent({
         destroy(item) {
             clearTimeout(item.timer);
             item.state = STATE.DESTROYED;
-            if (!this.isVA) {
-                this.clean();
-            }
+            this.clean();
             this.$emit('destroy', item);
         },
         destroyById(id) {
@@ -545,7 +543,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = "\n.vue-notification-group {\r\n  display: block;\r\n  position: fixed;\r\n  z-index: 5000;\n}\n.vue-notification-wrapper {\r\n  display: block;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  margin: 0;\r\n  padding: 0;\n}\n.notification-title {\r\n  font-weight: 600;\n}\n.vue-notification-template {\r\n  display: block;\r\n  box-sizing: border-box;\r\n  background: white;\r\n  text-align: left;\n}\n.vue-notification {\r\n  display: block;\r\n  box-sizing: border-box;\r\n  text-align: left;\r\n  font-size: 12px;\r\n  padding: 10px;\r\n  margin: 0 5px 5px;\r\n\r\n  color: white;\r\n  background: #44A4FC;\r\n  border-left: 5px solid #187FE7;\n}\n.vue-notification.warn {\r\n  background: #ffb648;\r\n  border-left-color: #f48a06;\n}\n.vue-notification.error {\r\n  background: #E54D42;\r\n  border-left-color: #B82E24;\n}\n.vue-notification.success {\r\n  background: #68CD86;\r\n  border-left-color: #42A85F;\n}\n.vn-fade-enter-active, .vn-fade-leave-active, .vn-fade-move  {\r\n  transition: all .5s;\n}\n.vn-fade-enter-from, .vn-fade-leave-to {\r\n  opacity: 0;\n}\r\n\r\n";
+var css_248z = "\n.vue-notification-group {\n  display: block;\n  position: fixed;\n  z-index: 5000;\n}\n.vue-notification-wrapper {\n  display: block;\n  overflow: hidden;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n}\n.notification-title {\n  font-weight: 600;\n}\n.vue-notification-template {\n  display: block;\n  box-sizing: border-box;\n  background: white;\n  text-align: left;\n}\n.vue-notification {\n  display: block;\n  box-sizing: border-box;\n  text-align: left;\n  font-size: 12px;\n  padding: 10px;\n  margin: 0 5px 5px;\n\n  color: white;\n  background: #44A4FC;\n  border-left: 5px solid #187FE7;\n}\n.vue-notification.warn {\n  background: #ffb648;\n  border-left-color: #f48a06;\n}\n.vue-notification.error {\n  background: #E54D42;\n  border-left-color: #B82E24;\n}\n.vue-notification.success {\n  background: #68CD86;\n  border-left-color: #42A85F;\n}\n.vn-fade-enter-active, .vn-fade-leave-active, .vn-fade-move  {\n  transition: all .5s;\n}\n.vn-fade-enter-from, .vn-fade-leave-to {\n  opacity: 0;\n}\n\n";
 styleInject(css_248z);
 
 script.render = render;
