@@ -335,9 +335,7 @@ export default defineComponent({
       clearTimeout(item.timer);
       item.state = STATE.DESTROYED;
 
-      if (!this.isVA) {
-        this.clean();
-      }
+      this.clean();
 
       this.$emit('destroy', item);
     },
