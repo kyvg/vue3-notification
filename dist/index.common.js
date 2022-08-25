@@ -464,10 +464,15 @@ var script = vue.defineComponent({
     },
 });
 
+const _hoisted_1 = ["data-id"];
+const _hoisted_2 = ["onClick"];
+const _hoisted_3 = ["innerHTML"];
+const _hoisted_4 = ["innerHTML"];
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (vue.openBlock(), vue.createBlock("div", {
+  return (vue.openBlock(), vue.createElementBlock("div", {
     class: "vue-notification-group",
-    style: _ctx.styles
+    style: vue.normalizeStyle(_ctx.styles)
   }, [
     (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(_ctx.componentName), {
       name: _ctx.animationName,
@@ -476,43 +481,43 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onAfterLeave: _ctx.clean
     }, {
       default: vue.withCtx(() => [
-        (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.active, (item) => {
-          return (vue.openBlock(), vue.createBlock("div", {
+        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.active, (item) => {
+          return (vue.openBlock(), vue.createElementBlock("div", {
             key: item.id,
             class: "vue-notification-wrapper",
-            style: _ctx.notifyWrapperStyle(item),
+            style: vue.normalizeStyle(_ctx.notifyWrapperStyle(item)),
             "data-id": item.id,
-            onMouseenter: _cache[1] || (_cache[1] = (...args) => (_ctx.pauseTimeout && _ctx.pauseTimeout(...args))),
-            onMouseleave: _cache[2] || (_cache[2] = (...args) => (_ctx.resumeTimeout && _ctx.resumeTimeout(...args)))
+            onMouseenter: _cache[0] || (_cache[0] = (...args) => (_ctx.pauseTimeout && _ctx.pauseTimeout(...args))),
+            onMouseleave: _cache[1] || (_cache[1] = (...args) => (_ctx.resumeTimeout && _ctx.resumeTimeout(...args)))
           }, [
             vue.renderSlot(_ctx.$slots, "body", {
-              class: [_ctx.classes, item.type],
+              class: vue.normalizeClass([_ctx.classes, item.type]),
               item: item,
               close: () => _ctx.destroy(item)
             }, () => [
               vue.createCommentVNode(" Default slot template "),
-              vue.createVNode("div", {
-                class: _ctx.notifyClass(item),
+              vue.createElementVNode("div", {
+                class: vue.normalizeClass(_ctx.notifyClass(item)),
                 onClick: $event => (_ctx.destroyIfNecessary(item))
               }, [
                 (item.title)
-                  ? (vue.openBlock(), vue.createBlock("div", {
+                  ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 0,
                       class: "notification-title",
                       innerHTML: item.title
-                    }, null, 8 /* PROPS */, ["innerHTML"]))
+                    }, null, 8 /* PROPS */, _hoisted_3))
                   : vue.createCommentVNode("v-if", true),
-                vue.createVNode("div", {
+                vue.createElementVNode("div", {
                   class: "notification-content",
                   innerHTML: item.text
-                }, null, 8 /* PROPS */, ["innerHTML"])
-              ], 10 /* CLASS, PROPS */, ["onClick"])
+                }, null, 8 /* PROPS */, _hoisted_4)
+              ], 10 /* CLASS, PROPS */, _hoisted_2)
             ])
-          ], 44 /* STYLE, PROPS, HYDRATE_EVENTS */, ["data-id"]))
+          ], 44 /* STYLE, PROPS, HYDRATE_EVENTS */, _hoisted_1))
         }), 128 /* KEYED_FRAGMENT */))
       ]),
       _: 3 /* FORWARDED */
-    }, 8 /* PROPS */, ["name", "onEnter", "onLeave", "onAfterLeave"]))
+    }, 40 /* PROPS, HYDRATE_EVENTS */, ["name", "onEnter", "onLeave", "onAfterLeave"]))
   ], 4 /* STYLE */))
 }
 

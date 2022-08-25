@@ -1,4 +1,4 @@
-import { defineComponent, openBlock, createBlock, TransitionGroup, withCtx, renderSlot, resolveDynamicComponent, Fragment, renderList, createCommentVNode, createVNode } from 'vue';
+import { defineComponent, openBlock, createBlock, TransitionGroup, withCtx, renderSlot, createElementBlock, normalizeStyle, resolveDynamicComponent, Fragment, renderList, normalizeClass, createCommentVNode, createElementVNode } from 'vue';
 
 function mitt(n){return {all:n=n||new Map,on:function(t,e){var i=n.get(t);i?i.push(e):n.set(t,[e]);},off:function(t,e){var i=n.get(t);i&&(e?i.splice(i.indexOf(e)>>>0,1):n.set(t,[]));},emit:function(t,e){var i=n.get(t);i&&i.slice().map(function(n){n(e);}),(i=n.get("*"))&&i.slice().map(function(n){n(t,e);});}}}
 
@@ -460,10 +460,15 @@ var script = defineComponent({
     },
 });
 
+const _hoisted_1 = ["data-id"];
+const _hoisted_2 = ["onClick"];
+const _hoisted_3 = ["innerHTML"];
+const _hoisted_4 = ["innerHTML"];
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createBlock("div", {
+  return (openBlock(), createElementBlock("div", {
     class: "vue-notification-group",
-    style: _ctx.styles
+    style: normalizeStyle(_ctx.styles)
   }, [
     (openBlock(), createBlock(resolveDynamicComponent(_ctx.componentName), {
       name: _ctx.animationName,
@@ -472,43 +477,43 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onAfterLeave: _ctx.clean
     }, {
       default: withCtx(() => [
-        (openBlock(true), createBlock(Fragment, null, renderList(_ctx.active, (item) => {
-          return (openBlock(), createBlock("div", {
+        (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.active, (item) => {
+          return (openBlock(), createElementBlock("div", {
             key: item.id,
             class: "vue-notification-wrapper",
-            style: _ctx.notifyWrapperStyle(item),
+            style: normalizeStyle(_ctx.notifyWrapperStyle(item)),
             "data-id": item.id,
-            onMouseenter: _cache[1] || (_cache[1] = (...args) => (_ctx.pauseTimeout && _ctx.pauseTimeout(...args))),
-            onMouseleave: _cache[2] || (_cache[2] = (...args) => (_ctx.resumeTimeout && _ctx.resumeTimeout(...args)))
+            onMouseenter: _cache[0] || (_cache[0] = (...args) => (_ctx.pauseTimeout && _ctx.pauseTimeout(...args))),
+            onMouseleave: _cache[1] || (_cache[1] = (...args) => (_ctx.resumeTimeout && _ctx.resumeTimeout(...args)))
           }, [
             renderSlot(_ctx.$slots, "body", {
-              class: [_ctx.classes, item.type],
+              class: normalizeClass([_ctx.classes, item.type]),
               item: item,
               close: () => _ctx.destroy(item)
             }, () => [
               createCommentVNode(" Default slot template "),
-              createVNode("div", {
-                class: _ctx.notifyClass(item),
+              createElementVNode("div", {
+                class: normalizeClass(_ctx.notifyClass(item)),
                 onClick: $event => (_ctx.destroyIfNecessary(item))
               }, [
                 (item.title)
-                  ? (openBlock(), createBlock("div", {
+                  ? (openBlock(), createElementBlock("div", {
                       key: 0,
                       class: "notification-title",
                       innerHTML: item.title
-                    }, null, 8 /* PROPS */, ["innerHTML"]))
+                    }, null, 8 /* PROPS */, _hoisted_3))
                   : createCommentVNode("v-if", true),
-                createVNode("div", {
+                createElementVNode("div", {
                   class: "notification-content",
                   innerHTML: item.text
-                }, null, 8 /* PROPS */, ["innerHTML"])
-              ], 10 /* CLASS, PROPS */, ["onClick"])
+                }, null, 8 /* PROPS */, _hoisted_4)
+              ], 10 /* CLASS, PROPS */, _hoisted_2)
             ])
-          ], 44 /* STYLE, PROPS, HYDRATE_EVENTS */, ["data-id"]))
+          ], 44 /* STYLE, PROPS, HYDRATE_EVENTS */, _hoisted_1))
         }), 128 /* KEYED_FRAGMENT */))
       ]),
       _: 3 /* FORWARDED */
-    }, 8 /* PROPS */, ["name", "onEnter", "onLeave", "onAfterLeave"]))
+    }, 40 /* PROPS, HYDRATE_EVENTS */, ["name", "onEnter", "onLeave", "onAfterLeave"]))
   ], 4 /* STYLE */))
 }
 
