@@ -103,6 +103,7 @@ Note that all props are optional.
 | reverse          | Boolean       | false              | Show notifications in reverse order                                                                                     |
 | ignoreDuplicates | Boolean       | false              | Ignore repeated instances of the same notification                                                                      |
 | closeOnClick     | Boolean       | true               | Close notification when clicked                                                                                         |
+| pauseOnHover     | Boolean       | false              | Keep the notification open while mouse hovers on notification                                                           |
 
 ### API
 
