@@ -26,7 +26,7 @@ export declare interface NotificationsPluginOptions {
 
 export declare const notify: {
     (args: NotificationsOptions | string): void;
-    close(id: unknown): void;
+    close: (id: unknown) => void;
 };
 
 export { }

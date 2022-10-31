@@ -562,9 +562,10 @@ const notify = (args) => {
         emitter.emit('add', args);
     }
 };
-notify.close = function (id) {
+const close = (id) => {
     emitter.emit('close', id);
 };
+notify.close = close;
 
 function install(app, args = {}) {
     Object.entries(args).forEach((entry) => params.set(...entry));
