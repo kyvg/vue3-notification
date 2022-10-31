@@ -29,6 +29,14 @@ export declare const notify: {
     close: (id: unknown) => void;
 };
 
+export declare const useNotification: () => {
+    notify: {
+        (args: NotificationsOptions | string): void;
+        close: (id: unknown) => void;
+    };
+    close: (id: unknown) => void;
+};
+
 export { }
 declare module '@vue/runtime-core' {
   export interface ComponentCustomProperties {

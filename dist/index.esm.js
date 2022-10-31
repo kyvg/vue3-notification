@@ -561,6 +561,12 @@ const notify = (args) => {
 const close = (id) => {
     emitter.emit('close', id);
 };
+const useNotification = () => {
+    return {
+        notify,
+        close,
+    };
+};
 notify.close = close;
 
 function install(app, args = {}) {
@@ -574,4 +580,4 @@ var index = {
     install,
 };
 
-export { index as default, notify };
+export { index as default, notify, useNotification };
