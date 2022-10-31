@@ -257,7 +257,7 @@ describe('Notifications', () => {
             speed,
           };
 
-          jest.useFakeTimers('modern');
+          jest.useFakeTimers();
 
           const wrapper = mount(Notifications, { props });
           const event = {
