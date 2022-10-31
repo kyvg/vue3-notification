@@ -1,0 +1,23 @@
+
+{
+  "notifications": {
+    "attributes": [
+      "group",
+      "width",
+      "reverse",
+      "position",
+      "classes",
+      "animation-type",
+      "animation",
+      "animation-name",
+      "speed",
+      "duration",
+      "delay",
+      "max",
+      "ignore-duplicates",
+      "close-on-click",
+      "pause-on-hover"
+    ],
+    "description": "Component that renders notifications group"
+  }
+}

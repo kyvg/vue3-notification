@@ -4,9 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var vue = require('vue');
 
-function mitt(n){return {all:n=n||new Map,on:function(t,e){var i=n.get(t);i&&i.push(e)||n.set(t,[e]);},off:function(t,e){var i=n.get(t);i&&i.splice(i.indexOf(e)>>>0,1);},emit:function(t,e){(n.get(t)||[]).slice().map(function(n){n(e);}),(n.get("*")||[]).slice().map(function(n){n(t,e);});}}}
+function mitt(n){return {all:n=n||new Map,on:function(t,e){var i=n.get(t);i?i.push(e):n.set(t,[e]);},off:function(t,e){var i=n.get(t);i&&(e?i.splice(i.indexOf(e)>>>0,1):n.set(t,[]));},emit:function(t,e){var i=n.get(t);i&&i.slice().map(function(n){n(e);}),(i=n.get("*"))&&i.slice().map(function(n){n(t,e);});}}}
 
-const events = mitt();
+const emitter = mitt();
 
 const params = new Map();
 
@@ -91,10 +91,10 @@ var script$2 = vue.defineComponent({
     emits: ['after-leave', 'leave', 'enter'],
     methods: {
         enter(el, complete) {
-            this.$emit('enter', { el, complete });
+            this.$emit('enter', el, complete);
         },
         leave(el, complete) {
-            this.$emit('leave', { el, complete });
+            this.$emit('leave', el, complete);
         },
         afterLeave() {
             this.$emit('after-leave');
@@ -318,8 +318,8 @@ var script = vue.defineComponent({
         },
     },
     mounted() {
-        events.on('add', this.addItem);
-        events.on('close', this.closeItem);
+        emitter.on('add', this.addItem);
+        emitter.on('close', this.closeItem);
     },
     methods: {
         destroyIfNecessary(item) {
@@ -419,9 +419,7 @@ var script = vue.defineComponent({
         destroy(item) {
             clearTimeout(item.timer);
             item.state = STATE.DESTROYED;
-            if (!this.isVA) {
-                this.clean();
-            }
+            this.clean();
             this.$emit('destroy', item);
         },
         destroyById(id) {
@@ -466,10 +464,15 @@ var script = vue.defineComponent({
     },
 });
 
+const _hoisted_1 = ["data-id"];
+const _hoisted_2 = ["onClick"];
+const _hoisted_3 = ["innerHTML"];
+const _hoisted_4 = ["innerHTML"];
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (vue.openBlock(), vue.createBlock("div", {
+  return (vue.openBlock(), vue.createElementBlock("div", {
     class: "vue-notification-group",
-    style: _ctx.styles
+    style: vue.normalizeStyle(_ctx.styles)
   }, [
     (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(_ctx.componentName), {
       name: _ctx.animationName,
@@ -478,43 +481,43 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onAfterLeave: _ctx.clean
     }, {
       default: vue.withCtx(() => [
-        (vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList(_ctx.active, (item) => {
-          return (vue.openBlock(), vue.createBlock("div", {
+        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.active, (item) => {
+          return (vue.openBlock(), vue.createElementBlock("div", {
             key: item.id,
             class: "vue-notification-wrapper",
-            style: _ctx.notifyWrapperStyle(item),
+            style: vue.normalizeStyle(_ctx.notifyWrapperStyle(item)),
             "data-id": item.id,
-            onMouseenter: _cache[1] || (_cache[1] = (...args) => (_ctx.pauseTimeout && _ctx.pauseTimeout(...args))),
-            onMouseleave: _cache[2] || (_cache[2] = (...args) => (_ctx.resumeTimeout && _ctx.resumeTimeout(...args)))
+            onMouseenter: _cache[0] || (_cache[0] = (...args) => (_ctx.pauseTimeout && _ctx.pauseTimeout(...args))),
+            onMouseleave: _cache[1] || (_cache[1] = (...args) => (_ctx.resumeTimeout && _ctx.resumeTimeout(...args)))
           }, [
             vue.renderSlot(_ctx.$slots, "body", {
-              class: [_ctx.classes, item.type],
+              class: vue.normalizeClass([_ctx.classes, item.type]),
               item: item,
               close: () => _ctx.destroy(item)
             }, () => [
               vue.createCommentVNode(" Default slot template "),
-              vue.createVNode("div", {
-                class: _ctx.notifyClass(item),
+              vue.createElementVNode("div", {
+                class: vue.normalizeClass(_ctx.notifyClass(item)),
                 onClick: $event => (_ctx.destroyIfNecessary(item))
               }, [
                 (item.title)
-                  ? (vue.openBlock(), vue.createBlock("div", {
+                  ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 0,
                       class: "notification-title",
                       innerHTML: item.title
-                    }, null, 8 /* PROPS */, ["innerHTML"]))
+                    }, null, 8 /* PROPS */, _hoisted_3))
                   : vue.createCommentVNode("v-if", true),
-                vue.createVNode("div", {
+                vue.createElementVNode("div", {
                   class: "notification-content",
                   innerHTML: item.text
-                }, null, 8 /* PROPS */, ["innerHTML"])
-              ], 10 /* CLASS, PROPS */, ["onClick"])
+                }, null, 8 /* PROPS */, _hoisted_4)
+              ], 10 /* CLASS, PROPS */, _hoisted_2)
             ])
-          ], 44 /* STYLE, PROPS, HYDRATE_EVENTS */, ["data-id"]))
+          ], 44 /* STYLE, PROPS, HYDRATE_EVENTS */, _hoisted_1))
         }), 128 /* KEYED_FRAGMENT */))
       ]),
       _: 3 /* FORWARDED */
-    }, 8 /* PROPS */, ["name", "onEnter", "onLeave", "onAfterLeave"]))
+    }, 40 /* PROPS, HYDRATE_EVENTS */, ["name", "onEnter", "onLeave", "onAfterLeave"]))
   ], 4 /* STYLE */))
 }
 
@@ -556,12 +559,13 @@ const notify = (args) => {
         args = { title: '', text: args };
     }
     if (typeof args === 'object') {
-        events.emit('add', args);
+        emitter.emit('add', args);
     }
 };
-notify.close = function (id) {
-    events.emit('close', id);
+const close = (id) => {
+    emitter.emit('close', id);
 };
+notify.close = close;
 
 function install(app, args = {}) {
     Object.entries(args).forEach((entry) => params.set(...entry));
@@ -574,5 +578,5 @@ var index = {
     install,
 };
 
-exports.default = index;
+exports["default"] = index;
 exports.notify = notify;

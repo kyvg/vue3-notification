@@ -1,4 +1,4 @@
-import { events } from './events';
+import { emitter } from './events';
 import { NotificationsOptions } from './types';
 
 export const notify = (args: NotificationsOptions | string): void => {
@@ -7,10 +7,19 @@ export const notify = (args: NotificationsOptions | string): void => {
   }
 
   if (typeof args === 'object') {
-    events.emit('add', args);
+    emitter.emit('add', args);
   }
 };
 
-notify.close = function(id: unknown): void {
-  events.emit('close', id);
+const close = (id: unknown): void => {
+  emitter.emit('close', id);
 };
+
+export const useNotification = () => {
+  return {
+    notify,
+    close,
+  };
+};
+
+notify.close = close;

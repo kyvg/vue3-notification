@@ -61,13 +61,13 @@ module.exports = {
       'shouldMatchCase': false,
     }],
     'vue/max-attributes-per-line': ['error', {
-      'singleline': 2,
+      'singleline': {
+        'max': 2,
+      },
       'multiline': {
         'max': 1,
-        'allowFirstLine': false,
       },
     }],
-    'vue/name-property-casing': ['error', 'kebab-case'],
     'vue/no-deprecated-scope-attribute': 'error',
     'vue/no-deprecated-slot-scope-attribute': 'error',
     'vue/no-irregular-whitespace': 'error',

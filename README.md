@@ -58,14 +58,31 @@ notify({
 });
 ```
 
+Or use Composition API style:
+
+```javascript
+import { useNotification } from "@kyvg/vue3-notification";
+
+const { notify}  = useNotification()
+
+notify({
+  title: "Authorization",
+  text: "You have been logged in!",
+});
+```
+
 ### Migration
+
 #### Vue 2.x syntax
+
 ```javascript
 Vue.notify({
   title: "Vue 2 notification",
 });
 ```
+
 #### Vue 3.x syntax
+
 ```javascript
 import { notify } from "@kyvg/vue3-notification";
 
@@ -73,6 +90,30 @@ notify({
   title: "Vue 3 notification 🎉",
 });
 ```
+
+#### Vue 3.x Composition API syntax
+
+```javascript
+import { useNotification } from "@kyvg/vue3-notification";
+
+const notification = useNotification()
+
+notification.notify({
+  title: "Vue 3 notification 🎉",
+});
+```
+
+Also you can use [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+```javascript
+import { useNotification } from "@kyvg/vue3-notification";
+
+const { notify } = useNotification()
+
+notify({
+  title: "Vue 3 notification 🎉",
+});
+```
+
 ### Component props
 
 The majority of settings for the Notifications component are configured using props:
@@ -98,6 +139,7 @@ Note that all props are optional.
 | reverse          | Boolean       | false              | Show notifications in reverse order                                                                                     |
 | ignoreDuplicates | Boolean       | false              | Ignore repeated instances of the same notification                                                                      |
 | closeOnClick     | Boolean       | true               | Close notification when clicked                                                                                         |
+| pauseOnHover     | Boolean       | false              | Keep the notification open while mouse hovers on notification                                                           |
 
 ### API
 
@@ -313,10 +355,10 @@ To completely replace notification content, use Vue's slots system:
 
 ```vue
 <notifications>
-  <template slot="body" slot-scope="{ item, close }">
+  <template #body="props">
     <div class="my-notification">
       <p class="title">
-        {{ item.title }}
+        {{ props.item.title }}
       </p>
       <button class="close" @click="close">
         <i class="fa fa-fw fa-close"></i>
@@ -350,7 +392,7 @@ import Notifications from '@kyvg/vue3-notification'
 import velocity from 'velocity-animate'
 
 const app = createApp({...})
-app.use(Notifications, { velocity ))
+app.use(Notifications, { velocity })
 ```
 
 In the template, set the `animation-type` prop:
@@ -405,11 +447,44 @@ computed: {
 }
 ```
 
+## Programatically Closing
+
+```javascript
+
+const id = Date.now() // This can be any unique number
+
+this.$notify({
+  id,
+  text: 'This message will be removed immediately'
+});
+
+this.$notify.close(id);
+```
+
+Or with composition API style:
+
+```javascript
+import { useNotification } from "@kyvg/vue3-notification"
+
+const notification = useNotification()
+
+const id = Date.now() // This can be any unique number
+
+notification.notify({
+  id,
+  text: 'This message will be removed immediately'
+})
+
+notification.close(id)
+
+```
+
 ## FAQ
 
 Check closed issues with `FAQ` label to get answers for most asked questions.
 
 ## Development
+
 To contribute to the library:
 
 ```bash

@@ -18,10 +18,10 @@ export default defineComponent({
   emits: ['after-leave', 'leave', 'enter'],
   methods: {
     enter(el: Element, complete: () => void) {
-      this.$emit('enter', { el, complete });
+      this.$emit('enter', el, complete);
     },
     leave(el: Element, complete: () => void) {
-      this.$emit('leave', { el, complete });
+      this.$emit('leave', el, complete);
     },
     afterLeave() {
       this.$emit('after-leave');
