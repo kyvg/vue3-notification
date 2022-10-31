@@ -58,6 +58,19 @@ notify({
 });
 ```
 
+Or use Composition API style:
+
+```javascript
+import { useNotification } from "@kyvg/vue3-notification";
+
+const { notify}  = useNotification()
+
+notify({
+  title: "Authorization",
+  text: "You have been logged in!",
+});
+```
+
 ### Migration
 
 #### Vue 2.x syntax
@@ -72,6 +85,29 @@ Vue.notify({
 
 ```javascript
 import { notify } from "@kyvg/vue3-notification";
+
+notify({
+  title: "Vue 3 notification 🎉",
+});
+```
+
+#### Vue 3.x Composition API syntax
+
+```javascript
+import { useNotification } from "@kyvg/vue3-notification";
+
+const notification = useNotification()
+
+notification.notify({
+  title: "Vue 3 notification 🎉",
+});
+```
+
+Also you can use [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+```javascript
+import { useNotification } from "@kyvg/vue3-notification";
+
+const { notify } = useNotification()
 
 notify({
   title: "Vue 3 notification 🎉",
@@ -423,6 +459,23 @@ this.$notify({
 });
 
 this.$notify.close(id);
+```
+
+Or with composition API style:
+
+```javascript
+import { useNotification } from "@kyvg/vue3-notification"
+
+const notification = useNotification()
+
+const id = Date.now() // This can be any unique number
+
+notification.notify({
+  id,
+  text: 'This message will be removed immediately'
+})
+
+notification.close(id)
 
 ```
 

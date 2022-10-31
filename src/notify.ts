@@ -11,6 +11,15 @@ export const notify = (args: NotificationsOptions | string): void => {
   }
 };
 
-notify.close = function(id: unknown): void {
+const close = (id: unknown): void => {
   emitter.emit('close', id);
 };
+
+export const useNotification = () => {
+  return {
+    notify,
+    close,
+  };
+};
+
+notify.close = close;
