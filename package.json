@@ -1,7 +1,7 @@
 {
   "name": "@kyvg/vue3-notification",
   "description": "Vue.js Notification Library",
-  "version": "2.5.0-beta-0",
+  "version": "2.5.0-beta-1",
   "author": "kyvg",
   "private": false,
   "publishConfig": {
