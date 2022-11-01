@@ -190,7 +190,7 @@ this.$notify({
 Configure the plugin itself using an additional options object:
 
 ```js
-app.use(Notifications({ name: "alert" }));
+app.use(Notifications, { name: "alert" });
 ```
 
 All options are optional:
