@@ -190,15 +190,16 @@ this.$notify({
 Configure the plugin itself using an additional options object:
 
 ```js
-app.use(Notifications({ name: "alert" }));
+app.use(Notifications, { name: "alert" });
 ```
 
 All options are optional:
 
-| Name          | Type   | Default       | Description                                                                   |
-| ------------- | ------ | ------------- | ----------------------------------------------------------------------------- |
-| name          | String | notify        | Defines the instance name. It's prefixed with the dollar sign. E.g. `$notify` |
-| componentName | String | notifications | The component's name                                                          |
+| Name          | Type   | Default        | Description                                                                   |
+| ------------- | ------ |----------------|-------------------------------------------------------------------------------|
+| name          | String | notify         | Defines the instance name. It's prefixed with the dollar sign. E.g. `$notify` |
+| componentName | String | notifications  | The component's name                                                          |
+ | velocity      | Object | undefined      | A Velocity library object (see **Animation**)                                 |
 
 > **Note**: setting `componentName` can cause issues when using SSR.
 
