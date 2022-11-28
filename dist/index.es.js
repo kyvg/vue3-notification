@@ -402,7 +402,7 @@ const ut = () => ({ notify: A });
 function rt(t, e = {}) {
   Object.entries(e).forEach((n) => C.set(...n));
   const i = e.name || "notify";
-  t.config.globalProperties["$" + i] = A, t.component(e.componentName || "notifications", ot);
+  t.config.globalProperties["$" + i] = A, t.component(e.componentName || "Notifications", ot);
 }
 const pt = {
   install: rt
