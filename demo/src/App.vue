@@ -7,14 +7,14 @@
       <a href="https://github.com/kyvg/vue3-notification/" target="issues">Github</a>
     </h2>
     <!-- CSS animation example -->
-    <notifications
+    <Notifications
       group="foo-css"
       position="bottom left"
       :speed="500"
     />
 
     <!-- Velocity animation example -->
-    <notifications
+    <Notifications
       group="foo-velocity"
       position="bottom right"
       animation-type="velocity"
