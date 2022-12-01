@@ -10,5 +10,5 @@ export function install(app: App, args: NotificationsPluginOptions = {}): void {
   const name = args.name || 'notify';
 
   app.config.globalProperties['$' + name] = notify;
-  app.component(args.componentName || 'notifications', Notifications);
+  app.component(args.componentName || 'Notifications', Notifications);
 }

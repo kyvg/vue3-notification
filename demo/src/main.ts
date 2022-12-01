@@ -1,7 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-// @ts-expect-error
-import notification from '../../dist/index.esm';
+import notification from '../../src';
 // @ts-expect-error
 import velocity from 'velocity-animate';
 
