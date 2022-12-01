@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "release": "npm run build && npm run build:ts && npm run build:dts",
+    "release": "npm run build && npm run build:ts && npm run build:dts && npm run build:demo",
     "build:demo": "vite build -c vite.demo.config.js",
     "build:ts": "NODE_ENV=production tsc --emitDeclarationOnly -p ./tsconfig.build.json",
     "build:dts": "api-extractor run --local --verbose && tail -n +3 src/globalExtensions.ts >> dist/index.d.ts",
