@@ -161,7 +161,7 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: ['click', 'destroy'],
+  emits: ['click', 'destroy', 'start'],
   data(): Data {
     return {
       list: [],
@@ -296,12 +296,14 @@ export default defineComponent({
 
       if (direction) {
         this.list.push(item);
+        this.$emit('start', item);
 
         if (this.active.length > this.max) {
           indexToDestroy = 0;
         }
       } else {
         this.list.unshift(item);
+        this.$emit('start', item);
 
         if (this.active.length > this.max) {
           indexToDestroy = this.active.length - 1;
