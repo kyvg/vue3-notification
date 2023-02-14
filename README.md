@@ -141,6 +141,12 @@ Note that all props are optional.
 | closeOnClick     | Boolean       | true               | Close notification when clicked                                                                                         |
 | pauseOnHover     | Boolean       | false              | Keep the notification open while mouse hovers on notification                                                           |
 
+### Component events
+| Name             | Type                             | Description                                  |
+| ---------------- | -------------------------------- | -------------------------------------------- |
+| click            | (item: NotificationItem) => void | The callback function that is triggered when notification was clicked
+| destroy          | (item: NotificationItem) => void | The callback function that is triggered when notification was destroyes
+| start            | (item: NotificationItem) => void | The callback function that is triggered when notification was appeared
 ### API
 
 Notifications are triggered via the API:
