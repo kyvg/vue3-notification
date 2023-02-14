@@ -59,7 +59,7 @@ export class Timer {
   private start!: number;
   private remaining: number;
   private notifyItem: NotificationItemWithTimer;
-  private callback: () => void
+  private callback: () => void;
 
   constructor(callback: () => void, delay: number, notifItem: NotificationItemWithTimer) {
     this.remaining = delay;
