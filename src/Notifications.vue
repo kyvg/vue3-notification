@@ -323,7 +323,7 @@ export default defineComponent({
       return [
         'vue-notification-template',
         this.classes,
-        item.type ?? '',
+        item.type || '',
       ];
     },
 
