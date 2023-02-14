@@ -297,7 +297,7 @@ const q = /* @__PURE__ */ v(F, [["render", P]]), h = "[-+]?[0-9]*.?[0-9]+", L = 
       return [
         "vue-notification-template",
         this.classes,
-        t.type ?? ""
+        t.type || ""
       ];
     },
     notifyWrapperStyle(t) {
