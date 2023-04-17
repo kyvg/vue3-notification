@@ -482,7 +482,7 @@ notification.notify({
   text: 'This message will be removed immediately'
 })
 
-notification.close(id)
+notification.notify.close(id)
 
 ```
 
