@@ -25,11 +25,11 @@
     "preversion": "npm run test && npm run release && git add -A dist"
   },
   "typings": "./dist/index.d.ts",
-  "types": "./dist/index.d.ts",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "style": "./dist/index.css",
   "exports": {
+    "types": "./dist/index.d.ts",
     "import": "./dist/index.es.js",
     "require": "./dist/index.umd.js"
   },
