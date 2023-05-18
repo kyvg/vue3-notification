@@ -11,21 +11,21 @@ describe('util functions', () => {
 
   describe('split', () => {
     it('splits space-separated string into array', () => {
-      const value = 'taco pizza sushi'
+      const value = 'taco pizza sushi';
       const result = split(value);
 
       expect(result).toStrictEqual(['taco', 'pizza', 'sushi']);
     });
 
     it('splits tab-separated string into array', () => {
-      const value = 'taco\tpizza\tsushi'
+      const value = 'taco\tpizza\tsushi';
       const result = split(value);
 
       expect(result).toStrictEqual(['taco', 'pizza', 'sushi']);
     });
 
     it('removes empty string items', () => {
-      const value = 'taco \n \n \n'
+      const value = 'taco \n \n \n';
       const result = split(value);
 
       expect(result).toStrictEqual(['taco']);
@@ -38,7 +38,7 @@ describe('util functions', () => {
         null,
         {},
         [],
-      ]
+      ];
 
       values.forEach((value) => {
         const result = split(value);
@@ -52,12 +52,12 @@ describe('util functions', () => {
     describe('when value is array', () => {
       it('returns object with x and y keys representing position', () => {
         const scenarios = [
-          { value: ['top', 'left'], result: { x: 'left', y: 'top'}},
-          { value: ['top', 'center'], result: { x: 'center', y: 'top'}},
-          { value: ['top', 'right'], result: { x: 'right', y: 'top'}},
-          { value: ['bottom', 'left'], result: { x: 'left', y: 'bottom'}},
-          { value: ['bottom', 'center'], result: { x: 'center', y: 'bottom'}},
-          { value: ['bottom', 'right'], result: { x: 'right', y: 'bottom'}},
+          { value: ['top', 'left'], result: { x: 'left', y: 'top' } },
+          { value: ['top', 'center'], result: { x: 'center', y: 'top' } },
+          { value: ['top', 'right'], result: { x: 'right', y: 'top' } },
+          { value: ['bottom', 'left'], result: { x: 'left', y: 'bottom' } },
+          { value: ['bottom', 'center'], result: { x: 'center', y: 'bottom' } },
+          { value: ['bottom', 'right'], result: { x: 'right', y: 'bottom' } },
         ];
 
         scenarios.forEach((scenario) => {
@@ -71,12 +71,12 @@ describe('util functions', () => {
     describe('when value is string', () => {
       it('returns object with x and y keys representing position', () => {
         const scenarios = [
-          { value: 'top left', result: { x: 'left', y: 'top'}},
-          { value: 'top center', result: { x: 'center', y: 'top'}},
-          { value: 'top right', result: { x: 'right', y: 'top'}},
-          { value: 'bottom left', result: { x: 'left', y: 'bottom'}},
-          { value: 'bottom center', result: { x: 'center', y: 'bottom'}},
-          { value: 'bottom right', result: { x: 'right', y: 'bottom'}},
+          { value: 'top left', result: { x: 'left', y: 'top' } },
+          { value: 'top center', result: { x: 'center', y: 'top' } },
+          { value: 'top right', result: { x: 'right', y: 'top' } },
+          { value: 'bottom left', result: { x: 'left', y: 'bottom' } },
+          { value: 'bottom center', result: { x: 'center', y: 'bottom' } },
+          { value: 'bottom right', result: { x: 'right', y: 'bottom' } },
         ];
 
         scenarios.forEach((scenario) => {
@@ -91,9 +91,9 @@ describe('util functions', () => {
       // TODO: may need to handle invalid cases better
       it('returns null for the respective x or y key', () => {
         const scenarios = [
-          { value: 'top pizza', result: { x: null, y: 'top' }},
-          { value: 'pizza right', result: { x: 'right', y: null }},
-          { value: 'taco pizza', result: { x: null, y: null }},
+          { value: 'top pizza', result: { x: null, y: 'top' } },
+          { value: 'pizza right', result: { x: 'right', y: null } },
+          { value: 'taco pizza', result: { x: null, y: null } },
         ];
 
         scenarios.forEach((scenario) => {

@@ -2,30 +2,30 @@
   <transition-group
     tag="span"
     :css="false"
-    @enter="enter"
-    @leave="leave"
-    @after-leave="afterLeave"
+    @enter="handleEnter"
+    @leave="handleLeave"
+    @after-leave="handleAfterLeave"
   >
     <slot />
   </transition-group>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+const emit = defineEmits<{
+  (event: 'enter', element: Element, done: () => void): void,
+  (event: 'leave', element: Element, done: () => void): void,
+  (event: 'after-leave'): void
+}>();
 
-export default defineComponent({
-  name: 'velocity-group',
-  emits: ['after-leave', 'leave', 'enter'],
-  methods: {
-    enter(el: Element, complete: () => void) {
-      this.$emit('enter', el, complete);
-    },
-    leave(el: Element, complete: () => void) {
-      this.$emit('leave', el, complete);
-    },
-    afterLeave() {
-      this.$emit('after-leave');
-    },
-  },
-});
+const handleEnter = (element: Element, done: () => void) => {
+  emit('enter', element, done);
+};
+
+const handleLeave = (element: Element, done: () => void) => {
+  emit('leave', element, done);
+};
+
+const handleAfterLeave = () => {
+  emit('after-leave');
+};
 </script>

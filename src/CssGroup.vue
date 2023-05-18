@@ -6,14 +6,13 @@
     <slot />
   </transition-group>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'css-group',
+<script setup lang="ts">
+defineOptions({
   inheritAttrs: false,
-  props: {
-    name: { type: String, required: true },
-  },
 });
+
+defineProps<{
+  name: string
+}>();
 </script>
