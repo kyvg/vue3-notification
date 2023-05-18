@@ -63,7 +63,7 @@ Or use Composition API style:
 ```javascript
 import { useNotification } from "@kyvg/vue3-notification";
 
-const { notify}  = useNotification()
+const { notify }  = useNotification()
 
 notify({
   title: "Authorization",
