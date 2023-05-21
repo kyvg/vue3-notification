@@ -10,6 +10,7 @@
     <Notifications
       group="foo-css"
       position="bottom left"
+      dangerously-set-inner-html
       :speed="500"
     />
 
@@ -18,6 +19,7 @@
       group="foo-velocity"
       position="bottom right"
       animation-type="velocity"
+      dangerously-set-inner-html
       :speed="500"
     />
 
@@ -26,6 +28,7 @@
       group="custom-style"
       position="top center"
       classes="n-light"
+      dangerously-set-inner-html
       :max="3"
       :width="400"
     />
@@ -37,6 +40,7 @@
       :width="500"
       animation-name="v-fade-left"
       position="top left"
+      dangerously-set-inner-html
     >
       <template #body="{ item }">
         <div class="custom-template">
@@ -70,6 +74,7 @@
     <notifications
       group="full-width"
       width="100%"
+      dangerously-set-inner-html
     />
 
     <div class="content">
