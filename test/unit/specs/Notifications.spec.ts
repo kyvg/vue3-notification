@@ -1,8 +1,9 @@
+import { describe, it, expect, vi } from 'vitest';
 import { mount, config } from '@vue/test-utils';
-import Notifications from '../../../src/Notifications.vue';
-import CssGroup from '../../../src/CssGroup.vue';
-import VelocityGroup from '../../../src/VelocityGroup.vue';
-import Plugin from '../../../src';
+import Notifications from '@/components/Notifications.vue';
+import CssGroup from '@/components/group/CssGroup.vue';
+import VelocityGroup from '@/components/group/VelocityGroup.vue';
+import Plugin from '@/index';
 
 describe('Notifications', () => {
   describe('defaults', () => {
@@ -256,7 +257,7 @@ describe('Notifications', () => {
             speed,
           };
 
-          jest.useFakeTimers();
+          vi.useFakeTimers();
 
           const wrapper = mount(Notifications, { props });
           const event = {
@@ -269,7 +270,7 @@ describe('Notifications', () => {
 
           expect(wrapper.vm.list.length).toEqual(1);
 
-          jest.advanceTimersByTime(expectedLength);
+          vi.advanceTimersByTime(expectedLength);
 
           expect(wrapper.vm.list.length).toEqual(0);
         });
@@ -328,7 +329,7 @@ describe('Notifications', () => {
 
   describe('rendering', () => {
     describe('notification wrapper', () => {
-      it('adds notification item with correct title and text', (done) => {
+      it('adds notification item with correct title and text', async () => {
         const wrapper = mount(Notifications);
 
         const event = {
@@ -339,22 +340,21 @@ describe('Notifications', () => {
 
         wrapper.vm.addItem(event);
 
-        wrapper.vm.$nextTick(async () => {
-          const notifications = wrapper.findAll('.vue-notification-wrapper');
+        await wrapper.vm.$nextTick();
 
-          expect(notifications.length).toEqual(1);
+        const notifications = wrapper.findAll('.vue-notification-wrapper');
 
-          const title = wrapper.find('.notification-title').text();
-          expect(title).toEqual('Title');
+        expect(notifications.length).toEqual(1);
 
-          const text = wrapper.find('.notification-content').text();
-          expect(text).toEqual('Text');
+        const title = wrapper.find('.notification-title').text();
+        expect(title).toEqual('Title');
 
-          done();
-        });
+        const text = wrapper.find('.notification-content').text();
+        expect(text).toEqual('Text');
+
       });
 
-      it('adds notification with correct inline styling', (done) => {
+      it('adds notification with correct inline styling', async () => {
         const wrapper = mount(Notifications);
 
         const event = {
@@ -365,16 +365,15 @@ describe('Notifications', () => {
 
         wrapper.vm.addItem(event);
 
-        wrapper.vm.$nextTick(() => {
-          const notification = wrapper.get<HTMLElement>('.vue-notification-wrapper');
+        await wrapper.vm.$nextTick();
 
-          expect(notification.element.style.transition).toEqual('all 300ms');
+        const notification = wrapper.get<HTMLElement>('.vue-notification-wrapper');
 
-          done();
-        });
+        expect(notification.element.style.transition).toEqual('all 300ms');
+
       });
 
-      it('adds the event type as css class body', (done) => {
+      it('adds the event type as css class body', async () => {
         const wrapper = mount(Notifications);
 
         const event = {
@@ -385,17 +384,16 @@ describe('Notifications', () => {
 
         wrapper.vm.addItem(event);
 
-        wrapper.vm.$nextTick(() => {
-          const notification = wrapper.get('.vue-notification-wrapper > div');
+        await wrapper.vm.$nextTick();
 
-          expect(notification.classes()).toContain('vue-notification');
-          expect(notification.classes()).toContain('success');
+        const notification = wrapper.get('.vue-notification-wrapper > div');
 
-          done();
-        });
+        expect(notification.classes()).toContain('vue-notification');
+        expect(notification.classes()).toContain('success');
+
       });
 
-      it('has correct default body classes', (done) => {
+      it('has correct default body classes', async () => {
         const wrapper = mount(Notifications);
 
         const event = {
@@ -406,16 +404,15 @@ describe('Notifications', () => {
 
         wrapper.vm.addItem(event);
 
-        wrapper.vm.$nextTick(() => {
-          const notification = wrapper.get('.vue-notification-wrapper > div');
+        await wrapper.vm.$nextTick();
 
-          expect(notification.classes()).toContain('vue-notification');
+        const notification = wrapper.get('.vue-notification-wrapper > div');
 
-          done();
-        });
+        expect(notification.classes()).toContain('vue-notification');
+
       });
 
-      it('body classes can be customized via prop', (done) => {
+      it('body classes can be customized via prop', async () => {
         const props = {
           classes: 'pizza taco-sushi',
         };
@@ -430,15 +427,14 @@ describe('Notifications', () => {
 
         wrapper.vm.addItem(event);
 
-        wrapper.vm.$nextTick(() => {
-          const notification = wrapper.get('.vue-notification-wrapper > div');
+        await wrapper.vm.$nextTick();
 
-          expect(notification.element).toBeDefined();
-          expect(notification.classes()).toContain('pizza');
-          expect(notification.classes()).toContain('taco-sushi');
+        const notification = wrapper.get('.vue-notification-wrapper > div');
 
-          done();
-        });
+        expect(notification.element).toBeDefined();
+        expect(notification.classes()).toContain('pizza');
+        expect(notification.classes()).toContain('taco-sushi');
+
       });
     });
 
@@ -464,10 +460,10 @@ describe('Notifications', () => {
   });
 
   describe('with velocity animation library', () => {
-    const velocity = jest.fn();
+    const velocity = vi.fn();
     config.global.plugins = [[Plugin, { velocity }]];
 
-    it('applies no additional inline styling to notification', (done) => {
+    it('applies no additional inline styling to notification', async () => {
       const props = {
         animationType: 'velocity',
       };
@@ -482,13 +478,11 @@ describe('Notifications', () => {
 
       wrapper.vm.addItem(event);
 
-      wrapper.vm.$nextTick(() => {
-        const notification = wrapper.get<HTMLElement>('.vue-notification-wrapper');
+      await wrapper.vm.$nextTick();
+      
+      const notification = wrapper.get<HTMLElement>('.vue-notification-wrapper');
 
-        expect(notification.element.style.transition).toEqual('');
-
-        done();
-      });
+      expect(notification.element.style.transition).toEqual('');
     });
 
     it('adds item to list', () => {

@@ -56,14 +56,12 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import { emitter } from './events';
-import { params } from './params';
-import { Id, listToDirection, Timer, NotificationItemWithTimer } from './util';
-import defaults from './defaults';
-import VelocityGroup from './VelocityGroup.vue';
-import CssGroup from './CssGroup.vue';
-import parseNumericValue from './parser';
-import { NotificationItem, NotificationsOptions } from './types';
+import { params } from '@/params';
+import { Id, listToDirection, Timer, NotificationItemWithTimer, emitter, parse } from '@/utils';
+import defaults from '@/defaults';
+import { NotificationItem, NotificationsOptions } from '@/types';
+import VelocityGroup from './group/VelocityGroup.vue';
+import CssGroup from './group/CssGroup.vue';
 
 const STATE = {
   IDLE: 0,
@@ -135,7 +133,7 @@ const active = computed<NotificationItemExtended[]>(() => {
 });
 
 const actualWidth = computed(() => {
-  return parseNumericValue(props.width);
+  return parse(props.width);
 });
 
 const styles = computed(() => {

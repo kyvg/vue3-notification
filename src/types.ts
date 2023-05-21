@@ -13,6 +13,7 @@ export interface NotificationsOptions {
   ignoreDuplicates?: boolean;
   closeOnClick?: boolean;
 }
+
 export interface NotificationsPluginOptions {
   name?: string;
   componentName?: string;

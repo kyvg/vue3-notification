@@ -1,4 +1,7 @@
-import type { NotificationItem } from './types';
+export * from './timer';
+export * from './emitter';
+export * from './parser';
+
 interface Direction {
   x: null | string;
   y: null | string;
@@ -50,33 +53,3 @@ export const listToDirection = (value: string | string[]): Direction => {
 
   return { x, y };
 };
-
-export type NotificationItemWithTimer = NotificationItem & {
-  timer?: number;
-}
-
-export class Timer {
-  private start!: number;
-  private remaining: number;
-  private notifyItem: NotificationItemWithTimer;
-  private callback: () => void;
-
-  constructor(callback: () => void, delay: number, notifyItem: NotificationItemWithTimer) {
-    this.remaining = delay;
-    this.callback = callback;
-    this.notifyItem = notifyItem;
-    this.resume();
-  }
-
-  pause(): void {
-    clearTimeout(this.notifyItem.timer);
-    this.remaining -= Date.now() - this.start;
-  }
-
-  resume(): void {
-    this.start = Date.now();
-    clearTimeout(this.notifyItem.timer);
-    // @ts-ignore FIXME Node.js timer type
-    this.notifyItem.timer = setTimeout(this.callback, this.remaining);
-  }
-}

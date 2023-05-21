@@ -1,4 +1,5 @@
-import { Id, split, listToDirection } from '../../../src/util';
+import { describe, it, expect } from 'vitest';
+import { Id, split, listToDirection } from '@/utils';
 
 describe('util functions', () => {
   describe('Id', () => {
