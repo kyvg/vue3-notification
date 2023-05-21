@@ -30,15 +30,23 @@
             :class="notifyClass(item)"
             @click="destroyIfNecessary(item)"
           >
-            <div
-              v-if="item.title"
-              class="notification-title"
-              v-html="item.title"
-            />
-            <div
-              class="notification-content"
-              v-html="item.text"
-            />
+            <template v-if="dangerouslySetInnerHTML">
+              <div
+                v-if="item.title"
+                class="notification-title"
+                v-html="item.timer"
+              />
+              <div class="notification-content" v-html="item.text" />
+            </template>
+
+            <template v-else>
+              <div v-if="item.title" class="notification-title">
+                {{ item.title }}
+              </div>
+              <div class="notification-content">
+                {{ item.text }}
+              </div>
+            </template>
           </div>
         </slot>
       </div>
@@ -84,6 +92,7 @@ const props = withDefaults(defineProps<{
   ignoreDuplicates?: boolean
   closeOnClick?: boolean
   pauseOnHover?: boolean
+  dangerouslySetInnerHTML?: boolean
 }>(), {
   group: '',
   width: 300,
@@ -100,12 +109,13 @@ const props = withDefaults(defineProps<{
   ignoreDuplicates: false,
   closeOnClick: true,
   pauseOnHover: false,
+  dangerouslySetInnerHTML: false,
 });
 
 const emit = defineEmits<{
-  (event: 'click', item: NotificationItem): void
-  (event: 'destroy', item: NotificationItem): void
-  (event: 'start', item: NotificationItem): void
+  click: [item: NotificationItem],
+  destroy: [item: NotificationItem],
+  start: [item: NotificationItem],
 }>();
 
 const list = ref<NotificationItemExtended[]>([]);

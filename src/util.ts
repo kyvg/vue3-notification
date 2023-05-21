@@ -5,8 +5,8 @@ interface Direction {
 }
 
 const directions = {
-  x: ['left', 'center', 'right'],
-  y: ['top', 'bottom'],
+  x: new Set(['left', 'center', 'right']),
+  y: new Set(['top', 'bottom']),
 };
 
 /**
@@ -22,7 +22,7 @@ export const split = (value: unknown): string[] => {
     return [];
   }
 
-  return value.split(/\s+/gi).filter(v => v);
+  return value.split(/\s+/gi).filter(Boolean);
 };
 
 /**
@@ -40,10 +40,10 @@ export const listToDirection = (value: string | string[]): Direction => {
   let y = null;
 
   value.forEach(v => {
-    if (directions.y.indexOf(v) !== -1) {
+    if (directions.y.has(v)) {
       y = v;
     }
-    if (directions.x.indexOf(v) !== -1) {
+    if (directions.x.has(v)) {
       x = v;
     }
   });
@@ -61,10 +61,10 @@ export class Timer {
   private notifyItem: NotificationItemWithTimer;
   private callback: () => void;
 
-  constructor(callback: () => void, delay: number, notifItem: NotificationItemWithTimer) {
+  constructor(callback: () => void, delay: number, notifyItem: NotificationItemWithTimer) {
     this.remaining = delay;
     this.callback = callback;
-    this.notifyItem = notifItem;
+    this.notifyItem = notifyItem;
     this.resume();
   }
 
