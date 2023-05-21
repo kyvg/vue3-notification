@@ -30,7 +30,7 @@
             :class="notifyClass(item)"
             @click="destroyIfNecessary(item)"
           >
-            <template v-if="dangerouslySetInnerHTML">
+            <template v-if="dangerouslySetInnerHtml">
               <div
                 v-if="item.title"
                 class="notification-title"
@@ -90,7 +90,7 @@ const props = withDefaults(defineProps<{
   ignoreDuplicates?: boolean
   closeOnClick?: boolean
   pauseOnHover?: boolean
-  dangerouslySetInnerHTML?: boolean
+  dangerouslySetInnerHtml?: boolean
 }>(), {
   group: '',
   width: 300,
@@ -107,7 +107,7 @@ const props = withDefaults(defineProps<{
   ignoreDuplicates: false,
   closeOnClick: true,
   pauseOnHover: false,
-  dangerouslySetInnerHTML: false,
+  dangerouslySetInnerHtml: false,
 });
 
 const emit = defineEmits<{
