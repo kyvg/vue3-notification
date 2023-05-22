@@ -1,4 +1,5 @@
 [![npm](https://img.shields.io/npm/dm/@kyvg/vue3-notification)](https://www.npmjs.com/package/@kyvg/vue3-notification)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@kyvg/vue3-notification)
 
 # Vue.js notifications
 
