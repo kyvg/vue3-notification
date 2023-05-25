@@ -9,5 +9,10 @@ export default defineConfig({
     outDir: path.resolve(__dirname, './docs'),
     emptyOutDir: true,
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
   base: './',
 });
