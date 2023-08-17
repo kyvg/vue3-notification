@@ -1,4 +1,5 @@
 [![npm](https://img.shields.io/npm/dm/@kyvg/vue3-notification)](https://www.npmjs.com/package/@kyvg/vue3-notification)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@kyvg/vue3-notification)
 
 # Vue.js notifications
 
@@ -126,20 +127,21 @@ Note that all props are optional.
 
 | Name             | Type          | Default            | Description                                                                                                             |
 | ---------------- | ------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| position         | String/Array  | 'top right'        | Part of the screen where notifications will pop out                                                                     |
-| width            | Number/String | 300                | Width of notification holder, can be `%`, `px` string or number.<br>Valid values: '100%', '200px', 200                  |
-| classes          | String/Array  | 'vue-notification' | List of classes that will be applied to notification element                                                            |
-| group            | String        | null               | Name of the notification holder, if specified                                                                           |
-| duration         | Number        | 3000               | Time (in ms) to keep the notification on screen (if **negative** - notification will stay **forever** or until clicked) |
-| speed            | Number        | 300                | Time (in ms) to show / hide notifications                                                                               |
-| animation-type   | String        | 'css'              | Type of animation, currently supported types are `css` and `velocity`                                                   |
-| animation-name   | String        | null               | Animation name required for `css` animation                                                                             |
-| animation        | Object        | Custom             | Animation configuration for [Velocity](#Animation]) animation                                                           |
-| max              | Number        | Infinity           | Maximum number of notifications that can be shown in notification holder                                                |
-| reverse          | Boolean       | false              | Show notifications in reverse order                                                                                     |
-| ignoreDuplicates | Boolean       | false              | Ignore repeated instances of the same notification                                                                      |
-| closeOnClick     | Boolean       | true               | Close notification when clicked                                                                                         |
-| pauseOnHover     | Boolean       | false              | Keep the notification open while mouse hovers on notification                                                           |
+| position                | String/Array  | 'top right'        | Part of the screen where notifications will pop out                                                                     |
+| width                   | Number/String | 300                | Width of notification holder, can be `%`, `px` string or number.<br>Valid values: '100%', '200px', 200                  |
+| classes                 | String/Array  | 'vue-notification' | List of classes that will be applied to notification element                                                            |
+| group                   | String        | null               | Name of the notification holder, if specified                                                                           |
+| duration                | Number        | 3000               | Time (in ms) to keep the notification on screen (if **negative** - notification will stay **forever** or until clicked) |
+| speed                   | Number        | 300                | Time (in ms) to show / hide notifications                                                                               |
+| animation-type          | String        | 'css'              | Type of animation, currently supported types are `css` and `velocity`                                                   |
+| animation-name          | String        | null               | Animation name required for `css` animation                                                                             |
+| animation               | Object        | Custom             | Animation configuration for [Velocity](#Animation]) animation                                                           |
+| max                     | Number        | Infinity           | Maximum number of notifications that can be shown in notification holder                                                |
+| reverse                 | Boolean       | false              | Show notifications in reverse order                                                                                     |
+| ignoreDuplicates        | Boolean       | false              | Ignore repeated instances of the same notification                                                                      |
+| closeOnClick            | Boolean       | true               | Close notification when clicked                                                                                         |
+| pauseOnHover            | Boolean       | false              | Keep the notification open while mouse hovers on notification                                                           |
+| dangerouslySetInnerHtml | Boolean       | false              | Use [v-html](https://vuejs.org/api/built-in-directives.html#v-html) to set `title` and `text` |
 
 ### Component events
 | Name             | Type                             | Description                                  |

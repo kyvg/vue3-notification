@@ -1,6 +1,6 @@
 const floatRegexp = '[-+]?[0-9]*.?[0-9]+';
 
-export type ValueType = {
+type ValueType = {
   type: string;
   value: number | string;
 }
@@ -58,5 +58,3 @@ export const parse = (value: number | string) => {
       return { type: '', value };
   }
 };
-
-export default parse;

@@ -1,4 +1,4 @@
-import { emitter } from './events';
+import { emitter } from '@/utils/emitter';
 import { NotificationsOptions } from './types';
 
 export const notify = (args: NotificationsOptions | string): void => {
