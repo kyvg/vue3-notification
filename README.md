@@ -1,6 +1,10 @@
 [![npm](https://img.shields.io/npm/dm/@kyvg/vue3-notification)](https://www.npmjs.com/package/@kyvg/vue3-notification)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@kyvg/vue3-notification)
 
+## Upgrade to v3.x
+### Breacking changes
+- `title` and `text` no longer render with [`v-html`](https://vuejs.org/api/built-in-directives.html#v-html). Use `dangerouslySetInnerHtml` prop to render `title` and `text` with [`v-html`](https://vuejs.org/api/built-in-directives.html#v-html)
+
 # Vue.js notifications
 
 This is a fork and port of Vue 2 [vue-notifications](https://github.com/euvl/vue-notification) created by [euvl](https://github.com/euvl) to now support Vue 3. If you're using Vue 2.x use his version.
