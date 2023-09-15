@@ -34,7 +34,7 @@
               <div
                 v-if="item.title"
                 class="notification-title"
-                v-html="item.timer"
+                v-html="item.title"
               />
               <div class="notification-content" v-html="item.text" />
             </template>
