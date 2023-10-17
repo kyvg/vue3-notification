@@ -148,8 +148,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-
-button {
+.content {
+  button {
     border: none;
     border-radius: 2000px;
     padding: 10px 20px;
@@ -170,11 +170,13 @@ button {
     }
   }
 
-.block {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  width: 100%;
+
+  .block {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+  }
 }
 /*
   EXAMPLES
