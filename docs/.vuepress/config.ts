@@ -6,7 +6,9 @@ export default defineUserConfig({
   base: "/vue3-notification/",
   theme: defaultTheme({
     repo: "https://github.com/kyvg/vue3-notification",
-    editLink: false,
+    contributors: false,
+    editLink: true,
+    docsBranch: 'master',
     colorMode: "light",
     colorModeSwitch: false,
     navbar: [
