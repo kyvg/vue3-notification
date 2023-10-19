@@ -1,24 +1,9 @@
 <template>
-  <div id="app">
-    <h2>
-      Vue.js Notification
-      <br>
-      <a href="https://github.com/kyvg/vue3-notification/blob/master/README.md" target="readme">Readme</a>
-      <a href="https://github.com/kyvg/vue3-notification/" target="issues">Github</a>
-    </h2>
+  
     <!-- CSS animation example -->
     <Notifications
       group="foo-css"
       position="bottom left"
-      dangerously-set-inner-html
-      :speed="500"
-    />
-
-    <!-- Velocity animation example -->
-    <Notifications
-      group="foo-velocity"
-      position="bottom right"
-      animation-type="velocity"
       dangerously-set-inner-html
       :speed="500"
     />
@@ -105,33 +90,6 @@
         </button>
       </div>
 
-      <p>
-        Velocity animation:
-      </p>
-
-      <div class="block">
-        <button
-          class="success"
-          @click="show('foo-velocity', 'success')"
-        >
-          <i class="icon ion-information-circled" />
-          SUCCESS
-        </button>
-        <button
-          class="warn"
-          @click="show('foo-velocity', 'warn')"
-        >
-          <i class="icon ion-alert-circled" />
-          WARNING
-        </button>
-        <button
-          class="error"
-          @click="show('foo-velocity', 'error')"
-        >
-          <i class="icon ion-close-circled" />
-          ERROR
-        </button>
-      </div>
       <div>
         <p>Custom style:</p>
         <button @click="show('custom-style')">
@@ -151,7 +109,6 @@
         </button>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -162,17 +119,6 @@ export default defineComponent({
   data() {
     return {
       id: 0,
-      animation: {
-        enter: {
-          opacity: [1, 0],
-          translateX: [0, -300],
-          scale: [1, 0.2],
-        },
-        leave: {
-          opacity: 0,
-          height: 0,
-        },
-      },
     };
   },
   methods: {
@@ -202,86 +148,36 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-body {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  padding: 0;
-  padding-top: 80px;
-  margin: 0;
-
-  h2 {
-    font-weight: 300;
-
-    a {
-      color: black;
-      font-size: 12px;
-    }
-  }
-
+.content {
   button {
-    display: inline-block;
-    box-sizing: border-box;
-
-    border: 0;
-    border-radius: 3px;
-    color: white;
-    vertical-align: top;
-    text-decoration: none;
-    font-size: 12px;
-    font-family: inherit;
-    cursor: pointer;
-
-    outline: none;
-
-
-    transition: all 500ms;
-    padding: 12px;
-    box-shadow: none;
-    background: #02ccba;
-    font-weight: 600;
-    width: 100%;
-
-    letter-spacing: 1px;
-    box-shadow: 0 5px 15px 0px rgba(46,61,73,0.1);
+    border: none;
+    border-radius: 2000px;
+    padding: 10px 20px;
+    color: #FFFFFF;
+    background-color: var(--code-bg-color);
 
     &.success {
-      background: #68CD86;
+      background: var(--c-tip);
     }
 
     &.warn {
-      background: #ffb648;
+      background: var(--c-warning);
     }
+
 
     &.error {
-      background: #E54D42;
-    }
-
-    &:active {
-      opacity: 0.8;
+      background: var(--c-danger);
     }
   }
 
-  #app {
-    text-align: center;
-    color: #2c3e50;
 
-    .content {
-      margin: 0 auto;
-      max-width: 420px;
-    }
+  .block {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
   }
 }
-
-.sub-button {
-  display: inline-block;
-  float: right;
-  background: #E54D42;
-  padding: 4px;
-  box-shadow: 0 5px 15px 0px rgba(46, 61, 73, 0.1);
-}
-
 /*
   EXAMPLES
 */
