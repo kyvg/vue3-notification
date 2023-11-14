@@ -76,6 +76,7 @@ notify({
 });
 ```
 
+Please note that this library does not inherently support Nuxt 3. To enable compatibility with Nuxt 3, use the [`nuxt3-notifications`](https://github.com/windx-foobar/nuxt3-notifications) wrapper
 ### Migration
 
 #### Vue 2.x syntax
