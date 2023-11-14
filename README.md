@@ -37,6 +37,7 @@ Add the global component to your `App.vue`:
 <notifications />
 ```
 
+Please note that this library does not inherently support Nuxt 3. To enable compatibility with Nuxt 3, use the [`nuxt3-notifications`](https://github.com/windx-foobar/nuxt3-notifications) wrapper
 ## Usage
 
 Trigger notifications from your `.vue` files:
@@ -75,8 +76,6 @@ notify({
   text: "You have been logged in!",
 });
 ```
-
-Please note that this library does not inherently support Nuxt 3. To enable compatibility with Nuxt 3, use the [`nuxt3-notifications`](https://github.com/windx-foobar/nuxt3-notifications) wrapper
 ### Migration
 
 #### Vue 2.x syntax
