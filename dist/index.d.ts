@@ -1,3 +1,4 @@
+import type { default as Notifications_2 } from '@/components/Notifications.vue';
 import { Plugin as Plugin_2 } from 'vue';
 
 declare const _default: Plugin_2;
@@ -6,6 +7,8 @@ export default _default;
 export declare type NotificationItem = Pick<NotificationsOptions, 'id' | 'title' | 'text' | 'type' | 'speed' | 'data'> & {
     length: number;
 };
+
+export declare type Notifications = typeof Notifications_2;
 
 export declare interface NotificationsOptions {
     id?: number;
