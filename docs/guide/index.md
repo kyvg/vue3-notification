@@ -5,21 +5,16 @@ title: Get started
 ## Installation
 
 - **Step 1**: Install `@kyvg/vue3-notification` locally
-<CodeGroup>
-  <CodeGroupItem title="npm">
+::: code-group
 
-```bash
+```bash [npm]
 npm install --save @kyvg/vue3-notification
 ```
-  </CodeGroupItem>
-  <CodeGroupItem title="yarn">
 
-```bash
+```bash [yarn]
 yarn add @kyvg/vue3-notification
 ```
-  </CodeGroupItem>
-</CodeGroup>
-
+:::
 - **Step 2**: Add dependencies to your `main.js`:
 
 ```javascript
@@ -59,10 +54,9 @@ this.$notify({
 
 Or trigger notifications from other files, for example, your router:
 
-<CodeGroup>
-  <CodeGroupItem title="Composition API">
+::: code-group
   
-```javascript
+```js [Composition API]
 import { useNotification } from "@kyvg/vue3-notification";
 
 const { notify }  = useNotification()
@@ -72,10 +66,8 @@ notify({
   text: "You have been logged in!",
 });
 ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Options API">
 
-```javascript
+```js [Options API]
 import { notify } from "@kyvg/vue3-notification";
 
 notify({
@@ -83,9 +75,8 @@ notify({
   text: "You have been logged in!",
 });
 ```
-  </CodeGroupItem>
-</CodeGroup>
 
+:::
 ### Position
 
 Position the component on the screen using the `position` prop:
@@ -107,7 +98,7 @@ Default is `"top right"`.
 
 Width can be set using a `number` or `string` with optional `%` or `px` extensions:
 
-::: tip
+::: info
 Value without extensions will be parsed as `px`
 :::
 
@@ -152,11 +143,9 @@ this.$notify({ group: "auth", text: "Wrong password, please try again" });
 
 ### Programatically Closing
 
-<CodeGroup>
+::: code-group
 
-  <CodeGroupItem title="Composition API" >
-
-```javascript
+```js [Composition API]
 import { useNotification } from "@kyvg/vue3-notification"
 
 const { notify } = useNotification()
@@ -170,10 +159,8 @@ notify({
 
 notify.close(id)
 ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Options API">
 
-```javascript
+```js [Options API]
 
 const id = Date.now() // This can be any unique number
 
@@ -184,8 +171,8 @@ this.$notify({
 
 this.$notify.close(id);
 ```
-  </CodeGroupItem>
-</CodeGroup>
+
+:::
 
 
 ## Customisation

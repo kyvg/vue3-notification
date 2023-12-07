@@ -10,3 +10,4 @@ temp/
 dist/src/
 .temp
 .cache
+cache

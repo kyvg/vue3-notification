@@ -154,19 +154,19 @@ export default defineComponent({
     border-radius: 2000px;
     padding: 10px 20px;
     color: #FFFFFF;
-    background-color: var(--code-bg-color);
+    background-color: var(--vp-c-brand-1);
 
     &.success {
-      background: var(--c-tip);
+      background-color: var(--vp-c-tip-1  );
     }
 
     &.warn {
-      background: var(--c-warning);
+      background-color: var(--vp-c-warning-3);
     }
 
 
     &.error {
-      background: var(--c-danger);
+      background-color: var(--vp-c-danger-3);
     }
   }
 
