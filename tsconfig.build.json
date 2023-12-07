@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,                         /* Generates corresponding '.d.ts' file. */
-    "declarationDir": "dist/src"
+    "declarationDir": "dist"
   },
   "exclude": ["test", "demo"]
 }

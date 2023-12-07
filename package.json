@@ -13,10 +13,10 @@
   },
   "scripts": {
     "build": "vite build",
-    "release": "npm run build && npm run build:ts && npm run build:dts && npm run build:demo",
-    "build:demo": "vite build -c vite.demo.config.js",
+    "release": "npm run build && npm run build:resolver && npm run build:ts && npm run build:dts",
+    "build:resolver": "vite build -c vite.resolver.config.js",
     "build:ts": "NODE_ENV=production tsc --emitDeclarationOnly -p ./tsconfig.build.json",
-    "build:dts": "api-extractor run --local --verbose && tail -n +3 src/globalExtensions.ts >> dist/index.d.ts",
+    "build:dts": "api-extractor run --local --verbose && tail -n +3 src/global-extensions.ts >> dist/index.d.ts && mv dist/src/auto-import-resolver.d.ts dist/auto-import-resolver.d.ts",
     "dev": "vite serve -c vite.demo.config.js",
     "unit": "vitest",
     "unit:watch": "vitest  --watch",
@@ -31,9 +31,15 @@
   "module": "./dist/index.es.js",
   "style": "./dist/index.css",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.es.js",
-    "require": "./dist/index.umd.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    },
+    "./auto-import-resolver": {
+      "types": "./dist/auto-import-resolver.d.ts",
+      "import": "./dist/auto-import-resolver.js.mjs"
+    }
   },
   "files": [
     "src",
@@ -75,6 +81,7 @@
     "mitt": "^3.0.0",
     "sass": "^1.57.1",
     "typescript": "^5.0.4",
+    "unplugin-vue-components": "^0.26.0",
     "velocity-animate": "^1.5.2",
     "vite": "^4.3.8",
     "vite-plugin-css-injected-by-js": "^3.1.1",

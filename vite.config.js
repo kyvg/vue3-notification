@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [vue(), cssInjectedByJsPlugin({ useStrictCSP: true })],
   build: {
     lib: {
-      name: 'test',
+      name: 'notifications',
       entry:  path.resolve(__dirname, './src/index.ts'),
       fileName: (type) => `index.${type}.js`,
     },
