@@ -1,8 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "declaration": true,                         /* Generates corresponding '.d.ts' file. */
-    "declarationDir": "dist"
-  },
-  "exclude": ["test", "demo"]
-}
