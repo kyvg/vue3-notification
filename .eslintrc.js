@@ -34,7 +34,7 @@ module.exports = {
     'no-multi-spaces': 'error',
     'no-multiple-empty-lines': 'error',
     'no-shadow': ['error', { 'allow': ['required', 'numeric', 'between', 'minLength'] }],
-    'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
+    'no-unused-vars': 'off',
     'no-var': 'error',
     'object-curly-spacing': ['error', 'always'],
     'object-shorthand': 'error',

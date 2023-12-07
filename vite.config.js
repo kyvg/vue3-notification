@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 
 export default defineConfig({
-  plugins: [vue(), cssInjectedByJsPlugin({ useStrictCSP: true })],
+  plugins: [vueJsx(), cssInjectedByJsPlugin({ useStrictCSP: true })],
   build: {
     lib: {
-      name: 'test',
+      name: 'notifications',
       entry:  path.resolve(__dirname, './src/index.ts'),
       fileName: (type) => `index.${type}.js`,
     },
@@ -15,6 +15,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue'],
       output: {
+        exports: 'named',
         globals: {
           vue: 'Vue',
         },
