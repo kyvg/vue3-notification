@@ -38,7 +38,8 @@
     },
     "./auto-import-resolver": {
       "types": "./dist/auto-import-resolver.d.ts",
-      "import": "./dist/auto-import-resolver.js.mjs"
+      "import": "./dist/auto-import-resolver.es.js",
+      "require": "./dist/auto-import-resolver.umd.js"
     }
   },
   "files": [
