@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     vueJsx(), 
     cssInjectedByJsPlugin({ useStrictCSP: true }), 
-    dts({ rollupTypes: true })
+    dts({ rollupTypes: true }),
   ],
   build: {
     lib: {

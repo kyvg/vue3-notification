@@ -127,7 +127,7 @@ export default defineComponent({
     start: (item: NotificationItem) => true,
     /* eslint-enable @typescript-eslint/no-unused-vars */
   },
-  setup: (props, { emit, slots }: SetupContext<Emit, Slots>) => {
+  setup: (props, { emit, slots, expose }: SetupContext<Emit, Slots>) => {
     const list = ref<NotificationItemExtended[]>([]);
     const timerControl = ref<Timer | null>(null);
     const velocity = ref(params.get('velocity'));
@@ -354,6 +354,13 @@ export default defineComponent({
       emitter.on('add', addItem);
       emitter.on('close', closeItem);
     });
+
+    if (import.meta.env.DEV) {
+      expose({
+        list,
+        addItem,
+      });
+    }
 
 
     return () => (
