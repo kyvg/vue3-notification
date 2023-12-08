@@ -12,7 +12,7 @@
     "attributes": "vetur/attributes.json"
   },
   "scripts": {
-    "release": "npm run build && npm run build:resolver",
+    "release": "npm run build && npm run build:resolver && tail -n +3 src/global-extensions.d.ts >> dist/index.d.ts",
     "build": "vite build",
     "build:resolver": "vite build -c vite.resolver.config.js",
     "dev": "vite serve -c vite.demo.config.js",

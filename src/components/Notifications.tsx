@@ -37,7 +37,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
-
+    /** 
+     * Width of notification holder, can be `%`, `px` string or number.
+     * @example '100%', '200px', 200 
+     * */
     width: {
       type: [Number, String],
       default: 300,
@@ -47,14 +50,12 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-
     position: {
       type: [String, Array] as PropType<string | string[]>,
       default: () => {
         return defaults.position;
       },
     },
-
     classes: {
       type: String,
       default: 'vue-notification',
@@ -79,12 +80,11 @@ export default defineComponent({
       type: String,
       default: defaults.cssAnimation,
     },
-
     speed: {
       type: Number,
       default: 300,
     },
-
+    /** Time (in ms) to keep the notification on screen (if **negative** - notification will stay **forever** or until clicked) */
     duration: {
       type: Number,
       default: 3000,
@@ -114,7 +114,7 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-
+    /** Use [v-html](https://vuejs.org/api/built-in-directives.html#v-html) to set `title` and `text` */
     dangerouslySetInnerHtml: {
       type: Boolean,
       default: false,
