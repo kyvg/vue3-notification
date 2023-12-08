@@ -40,7 +40,6 @@
     }
   },
   "files": [
-    "src",
     "dist"
   ],
   "repository": {
