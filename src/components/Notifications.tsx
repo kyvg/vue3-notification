@@ -1,4 +1,4 @@
-import { PropType, SetupContext, SlotsType, computed, defineComponent, onMounted, ref } from 'vue';
+import { HTMLAttributes, PropType, SetupContext, SlotsType, computed, defineComponent, onMounted, ref } from 'vue';
 import { params } from '@/params';
 import { Id, listToDirection, Timer, NotificationItemWithTimer, emitter, parse } from '@/utils';
 import defaults from '@/defaults';
@@ -25,7 +25,7 @@ type Emit = {
 }
 
 type Slots = SlotsType<{
-  body?: (props: { class: string, item: NotificationItem, close: () => void }) => any;
+  body?: (props: { class: string, item: HTMLAttributes['class'], close: () => void }) => any;
 }>
 
 // defineSlots

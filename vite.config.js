@@ -2,9 +2,10 @@ import { defineConfig } from 'vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-  plugins: [vueJsx(), cssInjectedByJsPlugin({ useStrictCSP: true })],
+  plugins: [vueJsx(), cssInjectedByJsPlugin({ useStrictCSP: true }), dts({ rollupTypes: true })],
   build: {
     lib: {
       name: 'notifications',
