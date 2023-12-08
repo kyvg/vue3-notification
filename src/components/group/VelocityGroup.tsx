@@ -3,7 +3,7 @@ import { SetupContext, TransitionGroup, defineComponent } from 'vue';
 type Emit = {
   enter: [element: Element, done: () => void],
   leave: [element: Element, done: () => void],
-  'after-leave': [],
+  afterLeave: [],
 }
 
 export default defineComponent(
@@ -20,7 +20,7 @@ export default defineComponent(
       /* eslint-disable @typescript-eslint/no-unused-vars */
       enter: (item: Element, done: () => void) => true,
       leave: (item: Element, done: () => void) => true,
-      'after-leave': () => true,
+      afterLeave: () => true,
       /* eslint-enable @typescript-eslint/no-unused-vars */
     },
     setup: (props, { slots, emit }: SetupContext<Emit>) => {
@@ -35,7 +35,7 @@ export default defineComponent(
       };
       
       const handleAfterLeave = () => {
-        emit('after-leave');
+        emit('afterLeave');
       };
 
       return () => (

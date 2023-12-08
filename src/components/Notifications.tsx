@@ -28,7 +28,6 @@ type Slots = SlotsType<{
   body?: (props: { class: string, item: HTMLAttributes['class'], close: () => void }) => any;
 }>
 
-// defineSlots
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'notifications',
@@ -130,7 +129,7 @@ export default defineComponent({
   setup: (props, { emit, slots, expose }: SetupContext<Emit, Slots>) => {
     const list = ref<NotificationItemExtended[]>([]);
     const timerControl = ref<Timer | null>(null);
-    const velocity = ref(params.get('velocity'));
+    const velocity = params.get('velocity');
 
     const isVA = computed(() => {
       return props.animationType === 'velocity';
@@ -327,7 +326,7 @@ export default defineComponent({
       }
       const animation = getAnimation('enter', el);
 
-      velocity.value(el, animation, {
+      velocity(el, animation, {
         duration: props.speed,
         complete,
       });
@@ -339,7 +338,7 @@ export default defineComponent({
       }
       const animation = getAnimation('leave', el);
 
-      velocity.value(el, animation, {
+      velocity(el, animation, {
         duration: props.speed,
         complete,
       });
@@ -372,7 +371,7 @@ export default defineComponent({
           name={props.animationName}
           onEnter={enter}
           onLeave={leave}
-          onAfter-leave={clean}
+          onAfterLeave={clean}
         >
           {
             active.value.map((item) => {
