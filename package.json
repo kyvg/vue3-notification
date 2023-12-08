@@ -1,7 +1,7 @@
 {
   "name": "@kyvg/vue3-notification",
   "description": "Vue.js Notification Library",
-  "version": "3.0.2",
+  "version": "3.1.0-3",
   "author": "kyvg",
   "private": false,
   "publishConfig": {
@@ -12,11 +12,9 @@
     "attributes": "vetur/attributes.json"
   },
   "scripts": {
+    "release": "npm run build && npm run build:resolver",
     "build": "vite build",
-    "release": "npm run build && npm run build:resolver && npm run build:ts && npm run build:dts",
     "build:resolver": "vite build -c vite.resolver.config.js",
-    "build:ts": "NODE_ENV=production tsc --emitDeclarationOnly -p ./tsconfig.build.json",
-    "build:dts": "api-extractor run --local --verbose && tail -n +3 src/global-extensions.ts >> dist/index.d.ts && mv dist/src/auto-import-resolver.d.ts dist/auto-import-resolver.d.ts",
     "dev": "vite serve -c vite.demo.config.js",
     "unit": "vitest",
     "unit:watch": "vitest  --watch",
@@ -31,9 +29,16 @@
   "module": "./dist/index.es.js",
   "style": "./dist/index.css",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.es.js",
-    "require": "./dist/index.umd.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    },
+    "./auto-import-resolver": {
+      "types": "./dist/auto-import-resolver/index.d.ts",
+      "import": "./dist/auto-import-resolver/index.es.js",
+      "require": "./dist/auto-import-resolver/index.umd.js"
+    }
   },
   "files": [
     "src",
@@ -61,7 +66,6 @@
     "vue-notifications"
   ],
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.33.5",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "@vitejs/plugin-vue": "^4.5.2",
@@ -78,10 +82,10 @@
     "typescript": "^5.0.4",
     "unplugin-vue-components": "^0.26.0",
     "velocity-animate": "^1.5.2",
-    "vite": "^5.0.6",
-    "vite-plugin-css-injected-by-js": "^3.3.0",
+    "vite": "^4.3.8",
+    "vite-plugin-css-injected-by-js": "^3.1.1",
     "vite-plugin-dts": "^3.6.4",
-    "vitest": "^1.0.2",
+    "vitest": "^0.31.1",
     "vue": "^3.3.4",
     "vuepress": "^2.0.0-beta.67"
   }
