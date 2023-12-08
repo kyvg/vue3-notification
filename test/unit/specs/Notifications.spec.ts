@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { mount, config } from '@vue/test-utils';
-import Notifications from '@/components/Notifications.vue';
-import CssGroup from '@/components/group/CssGroup.vue';
-import VelocityGroup from '@/components/group/VelocityGroup.vue';
+import Notifications from '@/components/Notifications';
+import CssGroup from '@/components/group/CssGroup';
+import VelocityGroup from '@/components/group/VelocityGroup';
 import Plugin from '@/index';
 
 describe('Notifications', () => {

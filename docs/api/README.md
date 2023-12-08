@@ -62,4 +62,4 @@ All options are optional:
 | Name          | Type   | Default        | Description                                                                   |
 | ------------- | ------ |----------------|-------------------------------------------------------------------------------|
 | name          | String | notify         | Defines the instance name. It's prefixed with the dollar sign. E.g. `this.$notify` |
-| componentName | String | notifications  | The component's name                                                          |
+| componentName | String | Notifications  | The component's name                                                          |
