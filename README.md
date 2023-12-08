@@ -210,13 +210,13 @@ All options are optional:
 | Name          | Type   | Default        | Description                                                                   |
 | ------------- | ------ |----------------|-------------------------------------------------------------------------------|
 | name          | String | notify         | Defines the instance name. It's prefixed with the dollar sign. E.g. `$notify` |
-| componentName | String | notifications  | The component's name                                                          |
+| componentName | String | Notifications  | The component's name                                                          |
  | velocity      | Object | undefined      | A Velocity library object (see **Animation**)                                 |
 
 > **Note**: setting `componentName` can cause issues when using SSR.
 
 ## TypeScript Support
-This library is written with TypeScript.  since the notification component is registered globally, you need to register its types.
+This library is written with TypeScript. Since the notification component is registered globally, you need to register its types.
 
 You can do this manually:
 ```ts
@@ -228,7 +228,7 @@ declare module 'vue' {
   }
 }
 ```
-Or, you can use built-in `unplugin-vue-components` resolver. This resolver allows you to seamlessly integrate this library with Vue projects using (`unplugin-vue-components`)[https://github.com/unplugin/unplugin-vue-components]. It automates the import of components, making your development process more efficient.
+Or, you can use built-in `unplugin-vue-components` resolver. This resolver allows you to seamlessly integrate this library with Vue projects using [`unplugin-vue-components`](https://github.com/unplugin/unplugin-vue-components). It automates the import of components, making your development process more efficient.
 
 ### Installation
 To get started, install the necessary packages using npm or yarn:
@@ -255,8 +255,9 @@ Specify the custom component's name if you have configured it:
 ```js
 // main.js
 // ...
-app.use(Notifications, { componentName: "alert" });
+app.use(Notifications, { componentName: "Alert" });
 ```
+Note that component name should be in PascalCase
 
 ```js
 import Components from 'unplugin-vue-components/vite';
@@ -265,7 +266,7 @@ import NotificationsResolver from '@kyvg/vue3-notification/auto-import-resolver'
 export default {
   plugins: [
     Components({
-      resolvers: [NotificationsResolver("alert")],
+      resolvers: [NotificationsResolver("Alert")],
     }),
   ],
 }
