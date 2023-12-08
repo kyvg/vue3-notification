@@ -170,6 +170,10 @@ const x = {
       type: String,
       default: ""
     },
+    /** 
+     * Width of notification holder, can be `%`, `px` string or number.
+     * @example '100%', '200px', 200 
+     * */
     width: {
       type: [Number, String],
       default: 300
@@ -207,6 +211,7 @@ const x = {
       type: Number,
       default: 300
     },
+    /** Time (in ms) to keep the notification on screen (if **negative** - notification will stay **forever** or until clicked) */
     duration: {
       type: Number,
       default: 3e3
@@ -231,6 +236,7 @@ const x = {
       type: Boolean,
       default: !1
     },
+    /** Use [v-html](https://vuejs.org/api/built-in-directives.html#v-html) to set `title` and `text` */
     dangerouslySetInnerHtml: {
       type: Boolean,
       default: !1

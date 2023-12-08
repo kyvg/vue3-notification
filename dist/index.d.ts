@@ -19,6 +19,10 @@ export declare const Notifications: DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    /**
+     * Width of notification holder, can be `%`, `px` string or number.
+     * @example '100%', '200px', 200
+     * */
     width: {
         type: (StringConstructor | NumberConstructor)[];
         default: number;
@@ -61,6 +65,7 @@ export declare const Notifications: DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    /** Time (in ms) to keep the notification on screen (if **negative** - notification will stay **forever** or until clicked) */
     duration: {
         type: NumberConstructor;
         default: number;
@@ -85,6 +90,7 @@ export declare const Notifications: DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    /** Use [v-html](https://vuejs.org/api/built-in-directives.html#v-html) to set `title` and `text` */
     dangerouslySetInnerHtml: {
         type: BooleanConstructor;
         default: boolean;
@@ -98,6 +104,10 @@ export declare const Notifications: DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    /**
+     * Width of notification holder, can be `%`, `px` string or number.
+     * @example '100%', '200px', 200
+     * */
     width: {
         type: (StringConstructor | NumberConstructor)[];
         default: number;
@@ -140,6 +150,7 @@ export declare const Notifications: DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    /** Time (in ms) to keep the notification on screen (if **negative** - notification will stay **forever** or until clicked) */
     duration: {
         type: NumberConstructor;
         default: number;
@@ -164,6 +175,7 @@ export declare const Notifications: DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    /** Use [v-html](https://vuejs.org/api/built-in-directives.html#v-html) to set `title` and `text` */
     dangerouslySetInnerHtml: {
         type: BooleanConstructor;
         default: boolean;
@@ -225,3 +237,8 @@ export declare const useNotification: () => {
 };
 
 export { }
+declare module '@vue/runtime-core' {
+    export interface ComponentCustomProperties {
+        $notify: typeof notify;
+    }
+}
