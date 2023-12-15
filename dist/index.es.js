@@ -122,7 +122,7 @@ const T = ot(), b = "[-+]?[0-9]*.?[0-9]+", M = [
       o("afterLeave");
     };
     return () => l(H, {
-      tag: "name",
+      tag: "div",
       css: !1,
       name: t.name,
       onEnter: a,
@@ -147,7 +147,7 @@ const T = ot(), b = "[-+]?[0-9]*.?[0-9]+", M = [
   setup: (t, {
     slots: n
   }) => () => l(H, {
-    tag: "name",
+    tag: "div",
     name: t.name
   }, {
     default: () => {
