@@ -40,7 +40,7 @@ export default defineComponent(
 
       return () => (
         <TransitionGroup 
-          tag='name' 
+          tag='div' 
           css={false} 
           name={props.name} 
           onEnter={handleEnter}
