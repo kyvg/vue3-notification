@@ -12,7 +12,7 @@ export default defineComponent(
     },
     setup: (props, { slots }) => {
       return () => (
-        <TransitionGroup tag='name' name={props.name}>{
+        <TransitionGroup tag='div' name={props.name}>{
           slots.default?.()
         }</TransitionGroup>
       );
