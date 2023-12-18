@@ -254,7 +254,7 @@ const x = {
     slots: o,
     expose: a
   }) => {
-    const s = $([]), h = $(null), c = R.get("velocity"), u = g(() => t.animationType === "velocity"), j = g(() => u.value ? ut : ft), f = g(() => s.value.filter((e) => e.state !== x.DESTROYED)), N = g(() => rt(t.width)), A = g(() => {
+    const s = $([]), h = $(null), c = R.get("velocity"), u = g(() => t.animationType === "velocity"), B = g(() => u.value ? ut : ft), f = g(() => s.value.filter((e) => e.state !== x.DESTROYED)), N = g(() => rt(t.width)), A = g(() => {
       const {
         x: e,
         y: i
@@ -262,7 +262,7 @@ const x = {
         width: r + d
       };
       return i && (m[i] = "0px"), e && (e === "center" ? m.left = `calc(50% - ${+r / 2}${d})` : m[e] = "0px"), m;
-    }), w = g(() => "bottom" in A.value), B = (e) => {
+    }), w = g(() => "bottom" in A.value), j = (e) => {
       n("click", e), t.closeOnClick && y(e);
     }, V = () => {
       var e;
@@ -340,7 +340,7 @@ const x = {
       return l("div", {
         class: "vue-notification-group",
         style: A.value
-      }, [l(j.value, {
+      }, [l(B.value, {
         name: t.animationName,
         onEnter: z,
         onLeave: J,
@@ -354,11 +354,11 @@ const x = {
         onMouseleave: Y
       }, [o.body ? o.body({
         item: i,
-        class: [t.classes, i.type].join(""),
+        class: [t.classes, i.type],
         close: () => y(i)
       }) : l("div", {
         class: F(i),
-        onClick: () => B(i)
+        onClick: () => j(i)
       }, [t.dangerouslySetInnerHtml ? l(C, null, [i.title ? l("div", {
         class: "notification-title",
         innerHTML: i.title
