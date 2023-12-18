@@ -25,7 +25,7 @@ type Emit = {
 }
 
 type Slots = SlotsType<{
-  body?: (props: { class: string, item: HTMLAttributes['class'], close: () => void }) => any;
+  body?: (props: { class: HTMLAttributes['class'], item: NotificationItem, close: () => void }) => any;
 }>
 
 export default defineComponent({
@@ -387,7 +387,7 @@ export default defineComponent({
                   {
                     slots.body ? slots.body({
                       item,
-                      class: [props.classes, item.type].join(''),
+                      class: [props.classes, item.type],
                       close: () => destroy(item),
                     }) : (
                       <div
