@@ -1,10 +1,4 @@
-import { SetupContext, TransitionGroup, defineComponent } from 'vue';
-
-type Emit = {
-  enter: [element: Element, done: () => void],
-  leave: [element: Element, done: () => void],
-  afterLeave: [],
-}
+import { TransitionGroup, defineComponent } from 'vue';
 
 export default defineComponent(
   {
@@ -23,7 +17,7 @@ export default defineComponent(
       afterLeave: () => true,
       /* eslint-enable @typescript-eslint/no-unused-vars */
     },
-    setup: (props, { slots, emit }: SetupContext<Emit>) => {
+    setup: (props, { slots, emit }) => {
 
 
       const handleEnter = (element: Element, done: () => void) => {

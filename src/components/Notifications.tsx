@@ -1,4 +1,4 @@
-import { HTMLAttributes, PropType, SetupContext, SlotsType, computed, defineComponent, onMounted, ref } from 'vue';
+import { HTMLAttributes, PropType, SlotsType, computed, defineComponent, onMounted, ref } from 'vue';
 import { params } from '@/params';
 import { Id, listToDirection, Timer, NotificationItemWithTimer, emitter, parse } from '@/utils';
 import defaults from '@/defaults';
@@ -17,16 +17,6 @@ type NotificationItemState = typeof STATE;
 type NotificationItemExtended = NotificationItemWithTimer & {
   state: NotificationItemState[keyof NotificationItemState];
 }
-
-type Emit = {
-  click: [item: NotificationItem],
-  destroy: [item: NotificationItem],
-  start: [item: NotificationItem],
-}
-
-type Slots = SlotsType<{
-  body?: (props: { class: HTMLAttributes['class'], item: NotificationItem, close: () => void }) => any;
-}>
 
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
@@ -126,7 +116,10 @@ export default defineComponent({
     start: (item: NotificationItem) => true,
     /* eslint-enable @typescript-eslint/no-unused-vars */
   },
-  setup: (props, { emit, slots, expose }: SetupContext<Emit, Slots>) => {
+  slots: Object as SlotsType<{
+    body?: (props: { class: HTMLAttributes['class'], item: NotificationItem, close: () => void }) => any;
+  }>,
+  setup: (props, { emit, slots, expose }) => {
     const list = ref<NotificationItemExtended[]>([]);
     const timerControl = ref<Timer | null>(null);
     const velocity = params.get('velocity');
