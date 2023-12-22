@@ -2,7 +2,7 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@kyvg/vue3-notification)
 
 ## Upgrade to v3.x
-### Breacking changes
+### Breaking changes
 - `title` and `text` no longer render with [`v-html`](https://vuejs.org/api/built-in-directives.html#v-html). Use `dangerouslySetInnerHtml` prop to render `title` and `text` with [`v-html`](https://vuejs.org/api/built-in-directives.html#v-html)
 
 # Vue.js notifications
