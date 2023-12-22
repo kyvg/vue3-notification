@@ -1,4 +1,4 @@
-(function(){var o;"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.nonce=(o=document.head.querySelector("meta[property=csp-nonce]"))==null?void 0:o.content,e.appendChild(document.createTextNode(".vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{display:block;box-sizing:border-box;background:white;text-align:left}.vue-notification{display:block;box-sizing:border-box;text-align:left;font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44A4FC;border-left:5px solid #187FE7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#E54D42;border-left-color:#b82e24}.vue-notification.success{background:#68CD86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter-from,.vn-fade-leave-to{opacity:0}")),document.head.appendChild(e)}}catch(i){console.error("vite-plugin-css-injected-by-js",i)}})();
+(function(){"use strict";var o;try{if(typeof document<"u"){var e=document.createElement("style");e.nonce=(o=document.head.querySelector("meta[property=csp-nonce]"))==null?void 0:o.content,e.appendChild(document.createTextNode(".vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{display:block;box-sizing:border-box;background:#fff;text-align:left}.vue-notification{display:block;box-sizing:border-box;text-align:left;font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44a4fc;border-left:5px solid #187FE7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#e54d42;border-left-color:#b82e24}.vue-notification.success{background:#68cd86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter-from,.vn-fade-leave-to{opacity:0}")),document.head.appendChild(e)}}catch(n){console.error("vite-plugin-css-injected-by-js",n)}})();
 import { defineComponent as D, createVNode as l, TransitionGroup as H, ref as $, computed as g, onMounted as et, Fragment as C, isVNode as nt } from "vue";
 const R = /* @__PURE__ */ new Map();
 class it {
@@ -28,14 +28,14 @@ function ot(t) {
     });
   } };
 }
-const T = ot(), b = "[-+]?[0-9]*.?[0-9]+", M = [
+const b = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
   {
     name: "px",
-    regexp: new RegExp(`^${b}px$`)
+    regexp: new RegExp(`^${T}px$`)
   },
   {
     name: "%",
-    regexp: new RegExp(`^${b}%$`)
+    regexp: new RegExp(`^${T}%$`)
   },
   /**
    * Fallback option
@@ -43,7 +43,7 @@ const T = ot(), b = "[-+]?[0-9]*.?[0-9]+", M = [
    */
   {
     name: "px",
-    regexp: new RegExp(`^${b}$`)
+    regexp: new RegExp(`^${T}$`)
   }
 ], at = (t) => {
   if (t === "auto")
@@ -75,7 +75,7 @@ const T = ot(), b = "[-+]?[0-9]*.?[0-9]+", M = [
 }, k = {
   x: /* @__PURE__ */ new Set(["left", "center", "right"]),
   y: /* @__PURE__ */ new Set(["top", "bottom"])
-}, st = ((t) => () => t++)(0), lt = (t) => typeof t != "string" ? [] : t.split(/\s+/gi).filter(Boolean), ct = (t) => {
+}, st = /* @__PURE__ */ ((t) => () => t++)(0), lt = (t) => typeof t != "string" ? [] : t.split(/\s+/gi).filter(Boolean), ct = (t) => {
   typeof t == "string" && (t = lt(t));
   let n = null, o = null;
   return t.forEach((a) => {
@@ -249,20 +249,21 @@ const x = {
     start: (t) => !0
     /* eslint-enable @typescript-eslint/no-unused-vars */
   },
+  slots: Object,
   setup: (t, {
     emit: n,
     slots: o,
     expose: a
   }) => {
-    const s = $([]), h = $(null), c = R.get("velocity"), u = g(() => t.animationType === "velocity"), B = g(() => u.value ? ut : ft), f = g(() => s.value.filter((e) => e.state !== x.DESTROYED)), N = g(() => rt(t.width)), A = g(() => {
+    const s = $([]), h = $(null), c = R.get("velocity"), u = g(() => t.animationType === "velocity"), j = g(() => u.value ? ut : ft), f = g(() => s.value.filter((e) => e.state !== x.DESTROYED)), A = g(() => rt(t.width)), N = g(() => {
       const {
         x: e,
         y: i
-      } = ct(t.position), r = N.value.value, d = N.value.type, m = {
+      } = ct(t.position), r = A.value.value, d = A.value.type, m = {
         width: r + d
       };
       return i && (m[i] = "0px"), e && (e === "center" ? m.left = `calc(50% - ${+r / 2}${d})` : m[e] = "0px"), m;
-    }), w = g(() => "bottom" in A.value), j = (e) => {
+    }), O = g(() => "bottom" in N.value), B = (e) => {
       n("click", e), t.closeOnClick && y(e);
     }, V = () => {
       var e;
@@ -294,7 +295,7 @@ const x = {
         data: U
       };
       i >= 0 && (h.value = new it(() => y(p), p.length, p));
-      const Z = t.reverse ? !w.value : w.value;
+      const Z = t.reverse ? !O.value : O.value;
       let v = -1;
       const tt = f.value.some((L) => L.title === e.title && L.text === e.text);
       (!d || !tt) && (Z ? (s.value.push(p), n("start", p), f.value.length > t.max && (v = 0)) : (s.value.unshift(p), n("start", p), f.value.length > t.max && (v = f.value.length - 1)), v !== -1 && y(f.value[v]));
@@ -309,14 +310,14 @@ const x = {
       i && y(i);
     }, q = () => {
       f.value.forEach(y);
-    }, O = (e, i) => {
+    }, w = (e, i) => {
       var d;
       const r = (d = t.animation) == null ? void 0 : d[e];
       return typeof r == "function" ? r(i) : r;
     }, z = (e, i) => {
       if (!u.value)
         return;
-      const r = O("enter", e);
+      const r = w("enter", e);
       c(e, r, {
         duration: t.speed,
         complete: i
@@ -324,7 +325,7 @@ const x = {
     }, J = (e, i) => {
       if (!u.value)
         return;
-      const r = O("leave", e);
+      const r = w("leave", e);
       c(e, r, {
         duration: t.speed,
         complete: i
@@ -334,13 +335,13 @@ const x = {
       s.value = s.value.filter((e) => e.state !== x.DESTROYED);
     }
     return et(() => {
-      T.on("add", G), T.on("close", _);
+      b.on("add", G), b.on("close", _);
     }), () => {
       let e;
       return l("div", {
         class: "vue-notification-group",
-        style: A.value
-      }, [l(B.value, {
+        style: N.value
+      }, [l(j.value, {
         name: t.animationName,
         onEnter: z,
         onLeave: J,
@@ -358,7 +359,7 @@ const x = {
         close: () => y(i)
       }) : l("div", {
         class: F(i),
-        onClick: () => j(i)
+        onClick: () => B(i)
       }, [t.dangerouslySetInnerHtml ? l(C, null, [i.title ? l("div", {
         class: "notification-title",
         innerHTML: i.title
@@ -375,10 +376,10 @@ const x = {
     };
   }
 }), S = (t) => {
-  typeof t == "string" && (t = { title: "", text: t }), typeof t == "object" && T.emit("add", t);
+  typeof t == "string" && (t = { title: "", text: t }), typeof t == "object" && b.emit("add", t);
 };
 S.close = (t) => {
-  T.emit("close", t);
+  b.emit("close", t);
 };
 const vt = () => ({ notify: S }), yt = "Notifications";
 function mt(t, n = {}) {

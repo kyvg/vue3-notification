@@ -3,8 +3,10 @@ import { ComponentCustomProps } from 'vue';
 import { ComponentOptionsMixin } from 'vue';
 import { DefineComponent } from 'vue';
 import { ExtractPropTypes } from 'vue';
+import { HTMLAttributes } from 'vue';
 import type { Plugin as Plugin_2 } from 'vue';
 import { PropType } from 'vue';
+import { SlotsType } from 'vue';
 import { VNodeProps } from 'vue';
 
 declare const _default: Plugin_2;
@@ -96,9 +98,9 @@ export declare const Notifications: DefineComponent<{
         default: boolean;
     };
 }, () => JSX.Element, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    click: (item: NotificationItem) => boolean;
-    destroy: (item: NotificationItem) => boolean;
-    start: (item: NotificationItem) => boolean;
+    click: (item: NotificationItem) => true;
+    destroy: (item: NotificationItem) => true;
+    start: (item: NotificationItem) => true;
 }, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     group: {
         type: StringConstructor;
@@ -201,7 +203,13 @@ export declare const Notifications: DefineComponent<{
     max: number;
     pauseOnHover: boolean;
     dangerouslySetInnerHtml: boolean;
-}, {}>;
+}, SlotsType<{
+    body?: ((props: {
+        class: HTMLAttributes['class'];
+        item: NotificationItem;
+        close: () => void;
+    }) => any) | undefined;
+}>>;
 
 export declare interface NotificationsOptions {
     id?: number;
