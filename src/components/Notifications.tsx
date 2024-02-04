@@ -46,7 +46,7 @@ export default defineComponent({
       },
     },
     classes: {
-      type: String,
+      type: [String, Array] as PropType<string | string[]>,
       default: 'vue-notification',
     },
 
@@ -270,7 +270,7 @@ export default defineComponent({
       destroyById(id);
     };
 
-    const notifyClass = (item: NotificationItemExtended): string[] => {
+    const notifyClass = (item: NotificationItemExtended): HTMLAttributes['class'] => {
       return [
         'vue-notification-template',
         props.classes,
