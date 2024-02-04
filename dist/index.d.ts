@@ -38,7 +38,7 @@ export declare const Notifications: DefineComponent<{
         default: () => string[];
     };
     classes: {
-        type: StringConstructor;
+        type: PropType<string | string[]>;
         default: string;
     };
     animationType: {
@@ -123,7 +123,7 @@ export declare const Notifications: DefineComponent<{
         default: () => string[];
     };
     classes: {
-        type: StringConstructor;
+        type: PropType<string | string[]>;
         default: string;
     };
     animationType: {
@@ -195,7 +195,7 @@ export declare const Notifications: DefineComponent<{
     reverse: boolean;
     width: string | number;
     position: string | string[];
-    classes: string;
+    classes: string | string[];
     animationType: "css" | "velocity";
     animation: Record<"enter" | "leave", unknown>;
     animationName: string;
