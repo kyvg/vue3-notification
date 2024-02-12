@@ -1,8 +1,10 @@
-import { HTMLAttributes, PropType, SlotsType, TransitionGroup, computed, defineComponent, onMounted, ref } from 'vue';
+import { HTMLAttributes, PropType, SlotsType, computed, defineComponent, onMounted, ref } from 'vue';
 import { params } from '@/params';
 import { Id, listToDirection, Timer, NotificationItemWithTimer, emitter, parse } from '@/utils';
 import defaults from '@/defaults';
 import { NotificationItem, NotificationsOptions } from '@/types';
+import VelocityGroup from './group/VelocityGroup';
+import CssGroup from './group/CssGroup';
 import './Notifications.css';
 
 const STATE = {
@@ -119,11 +121,15 @@ export default defineComponent({
   }>,
   setup: (props, { emit, slots, expose }) => {
     const list = ref<NotificationItemExtended[]>([]);
-    const timerControl = ref<Timer | null>(null);    
+    const timerControl = ref<Timer | null>(null);
     const velocity = params.get('velocity');
 
     const isVA = computed(() => {
       return props.animationType === 'velocity';
+    });
+
+    const Component = computed(() => {
+      return isVA.value ? VelocityGroup : CssGroup;
     });
 
     const active = computed<NotificationItemExtended[]>(() => {
@@ -331,9 +337,10 @@ export default defineComponent({
       });
     };
 
-    const clean = () => {
+    function clean() {
       list.value = list.value.filter(item => item.state !== STATE.DESTROYED);
-    };
+    }
+
 
     onMounted(() => {
       emitter.on('add', addItem);
@@ -353,10 +360,8 @@ export default defineComponent({
         class='vue-notification-group'
         style={styles.value}
       >
-        <TransitionGroup
-          tag='div'
+        <Component.value
           name={props.animationName}
-          css={!isVA.value}
           onEnter={enter}
           onLeave={leave}
           onAfterLeave={clean}
@@ -414,7 +419,7 @@ export default defineComponent({
             })
           }
       
-        </TransitionGroup>
+        </Component.value>
       </div>
     );
   },
