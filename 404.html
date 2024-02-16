@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.67">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title>Vue.js Notification</title><meta name="description" content="">
+    <link rel="preload" href="/vue3-notification/assets/style-3f49cc56.css" as="style"><link rel="stylesheet" href="/vue3-notification/assets/style-3f49cc56.css">
+    <link rel="modulepreload" href="/vue3-notification/assets/app-f6a72ae9.js"><link rel="modulepreload" href="/vue3-notification/assets/404.html-60b35caa.js"><link rel="modulepreload" href="/vue3-notification/assets/404.html-d5627713.js"><link rel="prefetch" href="/vue3-notification/assets/index.html-89cd4bb5.js" as="script"><link rel="prefetch" href="/vue3-notification/assets/index.html-9b7fc63f.js" as="script"><link rel="prefetch" href="/vue3-notification/assets/index.html-f5a07932.js" as="script"><link rel="prefetch" href="/vue3-notification/assets/index.html-8e34e0f7.js" as="script"><link rel="prefetch" href="/vue3-notification/assets/index.html-246ac974.js" as="script"><link rel="prefetch" href="/vue3-notification/assets/index.html-7a71d927.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><main class="page"><div class="theme-default-content"><h1>404</h1><blockquote>How did we get here?</blockquote><a href="/vue3-notification/" class="">Take me home</a></div></main></div><!----><!--]--></div>
+    <script type="module" src="/vue3-notification/assets/app-f6a72ae9.js" defer></script>
+  </body>
+</html>
