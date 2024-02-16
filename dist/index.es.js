@@ -1,6 +1,6 @@
 (function(){var o;"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.nonce=(o=document.head.querySelector("meta[property=csp-nonce]"))==null?void 0:o.content,e.appendChild(document.createTextNode(".vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{display:block;box-sizing:border-box;background:white;text-align:left}.vue-notification{display:block;box-sizing:border-box;text-align:left;font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44A4FC;border-left:5px solid #187FE7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#E54D42;border-left-color:#b82e24}.vue-notification.success{background:#68CD86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter-from,.vn-fade-leave-to{opacity:0}")),document.head.appendChild(e)}}catch(i){console.error("vite-plugin-css-injected-by-js",i)}})();
-import { defineComponent as D, createVNode as l, TransitionGroup as H, ref as $, computed as g, onMounted as et, Fragment as C, isVNode as nt } from "vue";
-const R = /* @__PURE__ */ new Map();
+import { defineComponent as S, createVNode as l, TransitionGroup as R, ref as C, computed as g, onMounted as et, Fragment as M, isVNode as nt } from "vue";
+const j = /* @__PURE__ */ new Map();
 class it {
   constructor(n, o, a) {
     this.remaining = o, this.callback = n, this.notifyItem = a, this.resume();
@@ -28,7 +28,7 @@ function ot(t) {
     });
   } };
 }
-const b = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
+const b = ot(), T = "[-+]?[0-9]*.?[0-9]+", k = [
   {
     name: "px",
     regexp: new RegExp(`^${T}px$`)
@@ -51,8 +51,8 @@ const b = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
       type: t,
       value: 0
     };
-  for (let n = 0; n < M.length; n++) {
-    const o = M[n];
+  for (let n = 0; n < k.length; n++) {
+    const o = k[n];
     if (o.regexp.test(t))
       return {
         type: o.name,
@@ -72,14 +72,14 @@ const b = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
     default:
       return { type: "", value: t };
   }
-}, k = {
+}, H = {
   x: /* @__PURE__ */ new Set(["left", "center", "right"]),
   y: /* @__PURE__ */ new Set(["top", "bottom"])
 }, st = ((t) => () => t++)(0), lt = (t) => typeof t != "string" ? [] : t.split(/\s+/gi).filter(Boolean), ct = (t) => {
   typeof t == "string" && (t = lt(t));
   let n = null, o = null;
   return t.forEach((a) => {
-    k.y.has(a) && (o = a), k.x.has(a) && (n = a);
+    H.y.has(a) && (o = a), H.x.has(a) && (n = a);
   }), { x: n, y: o };
 }, E = {
   position: ["top", "right"],
@@ -94,7 +94,7 @@ const b = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
       opacity: [0, 1]
     }
   }
-}, ut = /* @__PURE__ */ D({
+}, ut = /* @__PURE__ */ S({
   name: "velocity-group",
   inheritAttrs: !1,
   props: {
@@ -121,7 +121,7 @@ const b = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
     }, h = () => {
       o("afterLeave");
     };
-    return () => l(H, {
+    return () => l(R, {
       tag: "div",
       css: !1,
       name: t.name,
@@ -135,7 +135,7 @@ const b = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
       }
     });
   }
-}), ft = /* @__PURE__ */ D({
+}), ft = /* @__PURE__ */ S({
   name: "css-group",
   inheritAttrs: !1,
   props: {
@@ -146,7 +146,7 @@ const b = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
   },
   setup: (t, {
     slots: n
-  }) => () => l(H, {
+  }) => () => l(R, {
     tag: "div",
     name: t.name
   }, {
@@ -162,7 +162,7 @@ function dt(t) {
 const x = {
   IDLE: 0,
   DESTROYED: 2
-}, pt = /* @__PURE__ */ D({
+}, pt = /* @__PURE__ */ S({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "notifications",
   props: {
@@ -255,77 +255,82 @@ const x = {
     slots: o,
     expose: a
   }) => {
-    const s = $([]), h = $(null), c = R.get("velocity"), u = g(() => t.animationType === "velocity"), j = g(() => u.value ? ut : ft), f = g(() => s.value.filter((e) => e.state !== x.DESTROYED)), A = g(() => rt(t.width)), N = g(() => {
+    const s = C([]), h = C(null), c = j.get("velocity"), u = g(() => t.animationType === "velocity"), B = g(() => u.value ? ut : ft), f = g(() => s.value.filter((e) => e.state !== x.DESTROYED)), N = g(() => rt(t.width)), O = g(() => {
       const {
         x: e,
         y: i
-      } = ct(t.position), r = A.value.value, d = A.value.type, m = {
+      } = ct(t.position), r = N.value.value, d = N.value.type, m = {
         width: r + d
       };
       return i && (m[i] = "0px"), e && (e === "center" ? m.left = `calc(50% - ${+r / 2}${d})` : m[e] = "0px"), m;
-    }), O = g(() => "bottom" in N.value), B = (e) => {
+    }), w = g(() => "bottom" in O.value), V = (e) => {
       n("click", e), t.closeOnClick && y(e);
-    }, V = () => {
-      var e;
-      t.pauseOnHover && ((e = h.value) == null || e.pause());
     }, Y = () => {
       var e;
+      t.pauseOnHover && ((e = h.value) == null || e.pause());
+    }, G = () => {
+      var e;
       t.pauseOnHover && ((e = h.value) == null || e.resume());
-    }, G = (e = {}) => {
+    }, _ = (e = {}) => {
       if (e.group || (e.group = ""), e.data || (e.data = {}), t.group !== e.group)
         return;
       if (e.clean || e.clear) {
-        q();
+        z();
         return;
       }
       const i = typeof e.duration == "number" ? e.duration : t.duration, r = typeof e.speed == "number" ? e.speed : t.speed, d = typeof e.ignoreDuplicates == "boolean" ? e.ignoreDuplicates : t.ignoreDuplicates, {
         title: m,
-        text: K,
-        type: Q,
-        data: U,
-        id: X
+        text: Q,
+        type: U,
+        data: X,
+        id: Z
       } = e, p = {
-        id: X || st(),
+        id: Z || st(),
         title: m,
-        text: K,
-        type: Q,
+        text: Q,
+        type: U,
         state: x.IDLE,
         speed: r,
         length: i + 2 * r,
-        data: U
+        data: X,
+        duplicates: 0
       };
       i >= 0 && (h.value = new it(() => y(p), p.length, p));
-      const Z = t.reverse ? !O.value : O.value;
+      const tt = t.reverse ? !w.value : w.value;
       let v = -1;
-      const tt = f.value.some((L) => L.title === e.title && L.text === e.text);
-      (!d || !tt) && (Z ? (s.value.push(p), n("start", p), f.value.length > t.max && (v = 0)) : (s.value.unshift(p), n("start", p), f.value.length > t.max && (v = f.value.length - 1)), v !== -1 && y(f.value[v]));
-    }, _ = (e) => {
-      W(e);
-    }, F = (e) => ["vue-notification-template", t.classes, e.type || ""], P = (e) => u.value ? void 0 : {
+      const L = f.value.find(($) => $.title === e.title && $.text === e.text);
+      if (d && L) {
+        L.duplicates++;
+        return;
+      }
+      tt ? (s.value.push(p), n("start", p), f.value.length > t.max && (v = 0)) : (s.value.unshift(p), n("start", p), f.value.length > t.max && (v = f.value.length - 1)), v !== -1 && y(f.value[v]);
+    }, F = (e) => {
+      q(e);
+    }, P = (e) => ["vue-notification-template", t.classes, e.type || ""], W = (e) => u.value ? void 0 : {
       transition: `all ${e.speed}ms`
     }, y = (e) => {
       clearTimeout(e.timer), e.state = x.DESTROYED, I(), n("destroy", e);
-    }, W = (e) => {
+    }, q = (e) => {
       const i = s.value.find((r) => r.id === e);
       i && y(i);
-    }, q = () => {
+    }, z = () => {
       f.value.forEach(y);
-    }, w = (e, i) => {
+    }, A = (e, i) => {
       var d;
       const r = (d = t.animation) == null ? void 0 : d[e];
       return typeof r == "function" ? r(i) : r;
-    }, z = (e, i) => {
+    }, J = (e, i) => {
       if (!u.value)
         return;
-      const r = w("enter", e);
+      const r = A("enter", e);
       c(e, r, {
         duration: t.speed,
         complete: i
       });
-    }, J = (e, i) => {
+    }, K = (e, i) => {
       if (!u.value)
         return;
-      const r = w("leave", e);
+      const r = A("leave", e);
       c(e, r, {
         duration: t.speed,
         complete: i
@@ -335,38 +340,38 @@ const x = {
       s.value = s.value.filter((e) => e.state !== x.DESTROYED);
     }
     return et(() => {
-      b.on("add", G), b.on("close", _);
+      b.on("add", _), b.on("close", F);
     }), () => {
       let e;
       return l("div", {
         class: "vue-notification-group",
-        style: N.value
-      }, [l(j.value, {
+        style: O.value
+      }, [l(B.value, {
         name: t.animationName,
-        onEnter: z,
-        onLeave: J,
+        onEnter: J,
+        onLeave: K,
         onAfterLeave: I
       }, dt(e = f.value.map((i) => l("div", {
         key: i.id,
         class: "vue-notification-wrapper",
-        style: P(i),
+        style: W(i),
         "data-id": i.id,
-        onMouseenter: V,
-        onMouseleave: Y
+        onMouseenter: Y,
+        onMouseleave: G
       }, [o.body ? o.body({
         item: i,
         class: [t.classes, i.type],
         close: () => y(i)
       }) : l("div", {
-        class: F(i),
-        onClick: () => B(i)
-      }, [t.dangerouslySetInnerHtml ? l(C, null, [i.title ? l("div", {
+        class: P(i),
+        onClick: () => V(i)
+      }, [t.dangerouslySetInnerHtml ? l(M, null, [i.title ? l("div", {
         class: "notification-title",
         innerHTML: i.title
       }, null) : null, l("div", {
         class: "notification-content",
         innerHTML: i.text
-      }, null)]) : l(C, null, [i.title ? l("div", {
+      }, null)]) : l(M, null, [i.title ? l("div", {
         class: "notification-title"
       }, [i.title]) : null, l("div", {
         class: "notification-content"
@@ -375,24 +380,24 @@ const x = {
       })]);
     };
   }
-}), S = (t) => {
+}), D = (t) => {
   typeof t == "string" && (t = { title: "", text: t }), typeof t == "object" && b.emit("add", t);
 };
-S.close = (t) => {
+D.close = (t) => {
   b.emit("close", t);
 };
-const vt = () => ({ notify: S }), yt = "Notifications";
+const ht = () => ({ notify: D }), yt = "Notifications";
 function mt(t, n = {}) {
-  Object.entries(n).forEach((a) => R.set(...a));
+  Object.entries(n).forEach((a) => j.set(...a));
   const o = n.name || "notify";
-  t.config.globalProperties["$" + o] = S, t.component(n.componentName || yt, pt);
+  t.config.globalProperties["$" + o] = D, t.component(n.componentName || yt, pt);
 }
-const xt = {
+const vt = {
   install: mt
 };
 export {
   pt as Notifications,
-  xt as default,
-  S as notify,
-  vt as useNotification
+  vt as default,
+  D as notify,
+  ht as useNotification
 };

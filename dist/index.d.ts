@@ -14,6 +14,7 @@ export default _default;
 
 export declare type NotificationItem = Pick<NotificationsOptions, 'id' | 'title' | 'text' | 'type' | 'speed' | 'data'> & {
     length: number;
+    duplicates: number;
 };
 
 export declare const Notifications: DefineComponent<{
