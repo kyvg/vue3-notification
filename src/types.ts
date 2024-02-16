@@ -22,4 +22,5 @@ export interface NotificationsPluginOptions {
 
 export type NotificationItem = Pick<NotificationsOptions, 'id' | 'title' | 'text' | 'type' | 'speed' | 'data'> & {
   length: number;
+  duplicates: number;
 }

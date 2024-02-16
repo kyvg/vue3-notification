@@ -223,6 +223,7 @@ export default defineComponent({
         speed,
         length: duration + 2 * speed,
         data,
+        duplicates: 0,
       };
 
       if (duration >= 0) {
@@ -235,13 +236,13 @@ export default defineComponent({
 
       let indexToDestroy = -1;
 
-      const isDuplicate = active.value.some(i => {
+      const duplicate = active.value.find(i => {
         return i.title === event.title && i.text === event.text;
       });
 
-      const canAdd = ignoreDuplicates ? !isDuplicate : true;
+      if (ignoreDuplicates && duplicate) {
+        duplicate.duplicates++;
 
-      if (!canAdd) {
         return;
       }
 
