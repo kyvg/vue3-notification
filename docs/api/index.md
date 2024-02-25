@@ -2,7 +2,7 @@
 title: API Reference
 ---
 
-<h2> API Reference </h2>
+# API Reference
 
 The majority of settings for the Notifications component are configured using props:
 
@@ -14,7 +14,7 @@ The majority of settings for the Notifications component are configured using pr
 />
 ```
 
-### Props
+## Props
 
 ::: tip
 Note that all props are optional.
@@ -36,16 +36,16 @@ Note that all props are optional.
 | ignoreDuplicates        | Boolean       | false              | Ignore repeated instances of the same notification                                                                      |
 | closeOnClick            | Boolean       | true               | Close notification when clicked                                                                                         |
 | pauseOnHover            | Boolean       | false              | Keep the notification open while mouse hovers on notification                                                           |
-| dangerouslySetInnerHtml | Boolean       | false              | Use [v-html](https://vuejs.org/api/built-in-directives.html#v-html) to set `title` and `text` |
+| dangerouslySetInnerHtml  | Boolean       | false              | Use [v-html](https://vuejs.org/api/built-in-directives.html#v-html) to set `title` and `text` |
 
-### Events
+## Events
 | Name             | Type                             | Description                                  |
 | ---------------- | -------------------------------- | -------------------------------------------- |
 | click            | (item: NotificationItem) => void | The callback function that is triggered when notification was clicked
 | destroy          | (item: NotificationItem) => void | The callback function that is triggered when notification was destroyes
 | start            | (item: NotificationItem) => void | The callback function that is triggered when notification was appeared
 
-### Plugin options
+## Plugin options
 
 Configure the plugin itself using an additional options object:
 

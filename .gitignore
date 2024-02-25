@@ -2,11 +2,11 @@
 node_modules/
 npm-debug.log
 yarn-error.log
-demo/dist
 test/unit/coverage
 *.map
 .vscode
 temp/
 dist/src/
 .temp
-.cache
+docs/.vitepress/dist
+docs/.vitepress/cache
