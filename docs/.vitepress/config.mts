@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Vue.js Notification",
+  base: '/vue3-notification/',
   themeConfig: {
     nav: [
       { text: 'Demo', link: '/' },
