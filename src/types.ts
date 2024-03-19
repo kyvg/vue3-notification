@@ -3,7 +3,7 @@ export interface NotificationsOptions {
   id?: number;
   title?: string;
   text?: string;
-  type?: string;
+  type?: "warn" | "success" | "error";
   group?: string;
   duration?: number;
   speed?: number;
