@@ -216,7 +216,7 @@ export declare interface NotificationsOptions {
     id?: number;
     title?: string;
     text?: string;
-    type?: string;
+    type?: NotificationType;
     group?: string;
     duration?: number;
     speed?: number;
@@ -232,6 +232,8 @@ export declare interface NotificationsPluginOptions {
     componentName?: string;
     velocity?: any;
 }
+
+declare type NotificationType = 'warn' | 'success' | 'error' | (string & {});
 
 export declare const notify: {
     (args: NotificationsOptions | string): void;
