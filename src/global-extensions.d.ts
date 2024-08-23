@@ -1,6 +1,6 @@
 import { notify } from './index';
 
-declare module '@vue/runtime-core' {
+declare module 'vue' {
     export interface ComponentCustomProperties {
         $notify: typeof notify;
     }
