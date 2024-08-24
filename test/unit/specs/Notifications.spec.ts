@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { describe, it, expect, vi } from 'vitest';
 import { mount, config } from '@vue/test-utils';
 import Notifications from '@/components/Notifications';
@@ -15,8 +16,8 @@ describe('Notifications', () => {
       expect(props.position).toStrictEqual(['top', 'right']);
       expect(props.classes).toEqual('vue-notification');
       expect(props.animationType).toEqual('css');
-      expect(props.animation.enter).toBeDefined();
-      expect(props.animation.leave).toBeDefined();
+      expect(props.animation?.enter).toBeDefined();
+      expect(props.animation?.leave).toBeDefined();
       expect(props.speed).toEqual(300);
       expect(props.duration).toEqual(3000);
       expect(props.delay).toEqual(0);
