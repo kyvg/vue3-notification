@@ -4,6 +4,11 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Vue.js Notification",
   base: '/vue3-notification/',
+  head: [
+    ['script',
+    { type: 'module', src: "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" }
+    ]
+  ],
   themeConfig: {
     nav: [
       { text: 'Demo', link: '/' },

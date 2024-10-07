@@ -26,10 +26,10 @@
     position="top left"
     dangerously-set-inner-html
   >
-    <template #body="{ item }">
+    <template #body="{ item, close }">
       <div class="custom-template">
         <div class="custom-template-icon">
-          <i class="icon ion-android-checkmark-circle" />
+          <ion-icon name="checkmark-circle-outline" />
         </div>
         <div class="custom-template-content">
           <div class="custom-template-title">
@@ -48,7 +48,7 @@
           class="custom-template-close"
           @click="close"
         >
-          <i class="icon ion-android-close" />
+          <ion-icon name="close-outline" />
         </div>
       </div>
     </template>
@@ -57,6 +57,7 @@
   <!-- Full width example -->
   <notifications
     group="full-width"
+    position="bottom center"
     width="100%"
     dangerously-set-inner-html
   />
@@ -70,21 +71,21 @@
         class="success"
         @click="show('foo-css', 'success')"
       >
-        <i class="icon ion-information-circled" />
+        <ion-icon name="information-circle-outline" />
         SUCCESS
       </button>
       <button
         class="warn"
         @click="show('foo-css', 'warn')"
       >
-        <i class="icon ion-alert-circled" />
+        <ion-icon name="alert-circle-outline" />
         WARNING
       </button>
       <button
         class="error"
         @click="show('foo-css', 'error')"
       >
-        <i class="icon ion-close-circled" />
+        <ion-icon name="close-circle-outline" />
         ERROR
       </button>
     </div>
@@ -149,9 +150,12 @@ export default defineComponent({
 <style lang="scss">
 .content {
   button {
+    display: flex;
+    gap: 8px;
+    align-items: center;
     border: none;
     border-radius: 2000px;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 16px;
     color: #FFFFFF;
     background-color: var(--vp-c-text-2);
 
@@ -214,24 +218,24 @@ export default defineComponent({
   margin-bottom: 0;
   align-items: center;
   justify-content: center;
+  background: var(--vp-c-default-1);
+  color: var(--vp-c-text-1);
+  border: 1px solid var(--vp-c-border);
+  box-shadow: var(--vp-shadow-2);
 
   &, & > div {
     box-sizing: border-box;
   }
 
-  background: #E8F9F0;
-  border: 2px solid #D0F2E1;
-
-
   .custom-template-icon {
-    flex: 0 1 auto;
-    color: #15C371;
+    flex: 1 1 auto;
+    color: var(--vp-c-success-3);
     font-size: 32px;
     padding: 0 10px;
   }
 
   .custom-template-close {
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     padding: 0 20px;
     font-size: 16px;
     opacity: 0.2;
@@ -244,7 +248,8 @@ export default defineComponent({
 
   .custom-template-content {
     padding: 10px;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
+    margin-bottom: auto;
 
     .custom-template-title {
       letter-spacing: 1px;
