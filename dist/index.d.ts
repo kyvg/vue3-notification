@@ -1,4 +1,5 @@
 import { ComponentOptionsMixin } from 'vue';
+import { ComponentProvideOptions } from 'vue';
 import { DefineComponent } from 'vue';
 import { ExtractPropTypes } from 'vue';
 import { HTMLAttributes } from 'vue';
@@ -16,7 +17,7 @@ export declare type NotificationItem = Pick<NotificationsOptions, 'id' | 'title'
     duplicates: number;
 };
 
-export declare const Notifications: DefineComponent<    {
+export declare const Notifications: DefineComponent<ExtractPropTypes<    {
 group: {
 type: StringConstructor;
 default: string;
@@ -97,7 +98,7 @@ dangerouslySetInnerHtml: {
 type: BooleanConstructor;
 default: boolean;
 };
-}, () => JSX.Element, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}>, () => JSX.Element, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 click: (item: NotificationItem) => true;
 destroy: (item: NotificationItem) => true;
 start: (item: NotificationItem) => true;
@@ -182,18 +183,18 @@ dangerouslySetInnerHtml: {
 type: BooleanConstructor;
 default: boolean;
 };
-}>> & {
+}>> & Readonly<{
 onClick?: ((item: NotificationItem) => any) | undefined;
 onDestroy?: ((item: NotificationItem) => any) | undefined;
 onStart?: ((item: NotificationItem) => any) | undefined;
-}, {
+}>, {
 speed: number;
 group: string;
 duration: number;
 ignoreDuplicates: boolean;
 closeOnClick: boolean;
-reverse: boolean;
 width: string | number;
+reverse: boolean;
 position: string | string[];
 classes: string | string[];
 animationType: "css" | "velocity";
@@ -209,7 +210,7 @@ class: HTMLAttributes["class"];
 item: NotificationItem;
 close: () => void;
 }) => any;
-}>>;
+}>, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 export declare interface NotificationsOptions {
     id?: number;
