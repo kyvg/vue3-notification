@@ -1,10 +1,8 @@
-import { HTMLAttributes, PropType, SlotsType, computed, defineComponent, onMounted, ref } from 'vue';
+import { HTMLAttributes, PropType, SlotsType, TransitionGroup, TransitionGroupProps, computed, defineComponent, onMounted, ref } from 'vue';
 import { params } from '@/params';
 import { Id, listToDirection, Timer, NotificationItemWithTimer, emitter, parse } from '@/utils';
 import defaults from '@/defaults';
 import { NotificationItem, NotificationsOptions } from '@/types';
-import VelocityGroup from './group/VelocityGroup';
-import CssGroup from './group/CssGroup';
 import './Notifications.css';
 
 const STATE = {
@@ -128,10 +126,6 @@ export default defineComponent({
       return props.animationType === 'velocity';
     });
 
-    const Component = computed(() => {
-      return isVA.value ? VelocityGroup : CssGroup;
-    });
-
     const active = computed<NotificationItemExtended[]>(() => {
       return list.value.filter(v => v.state !== STATE.DESTROYED);
     });
@@ -166,8 +160,16 @@ export default defineComponent({
       return styles;
     });
 
-    const botToTop = computed(() => {
-      return 'bottom' in styles.value;
+    const transitionGroupProps = computed<TransitionGroupProps>(() => {
+      if (!isVA.value) {
+        return {};
+      }
+
+      return {
+        onEnter: handleEnter,
+        onLeave: handleLeave,
+        onAfterLeave: clean,
+      };
     });
 
     const destroyIfNecessary = (item: NotificationItemExtended) => {
@@ -230,9 +232,10 @@ export default defineComponent({
         timerControl.value = new Timer(() => destroy(item), item.length, item);
       }
 
+      const botToTop = 'bottom' in styles.value;
       const direction = props.reverse
-        ? !botToTop.value
-        : botToTop.value;
+        ? !botToTop
+        : botToTop;
 
       let indexToDestroy = -1;
 
@@ -314,10 +317,7 @@ export default defineComponent({
         : animation;
     };
 
-    const enter = (el: Element, complete: () => void): void=> {
-      if (!isVA.value) {
-        return;
-      }
+    const handleEnter = (el: Element, complete: () => void): void=> {
       const animation = getAnimation('enter', el);
 
       velocity(el, animation, {
@@ -326,10 +326,7 @@ export default defineComponent({
       });
     };
 
-    const leave = (el: Element, complete: () => void)=> {
-      if (!isVA.value) {
-        return;
-      }
+    const handleLeave = (el: Element, complete: () => void)=> {
       const animation = getAnimation('leave', el);
 
       velocity(el, animation, {
@@ -361,11 +358,11 @@ export default defineComponent({
         class='vue-notification-group'
         style={styles.value}
       >
-        <Component.value
+        <TransitionGroup
+          {...transitionGroupProps.value}
+          tag='div'
+          css={!isVA.value}
           name={props.animationName}
-          onEnter={enter}
-          onLeave={leave}
-          onAfterLeave={clean}
         >
           {
             active.value.map((item) => {
@@ -420,7 +417,7 @@ export default defineComponent({
             })
           }
       
-        </Component.value>
+        </TransitionGroup>
       </div>
     );
   },

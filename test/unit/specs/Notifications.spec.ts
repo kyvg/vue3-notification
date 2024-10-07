@@ -2,9 +2,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { mount, config } from '@vue/test-utils';
 import Notifications from '@/components/Notifications';
-import CssGroup from '@/components/group/CssGroup';
-import VelocityGroup from '@/components/group/VelocityGroup';
 import Plugin from '@/index';
+import { TransitionGroup } from 'vue';
 
 describe('Notifications', () => {
   describe('defaults', () => {
@@ -443,8 +442,8 @@ describe('Notifications', () => {
       it('default is css transition', () => {
         const wrapper = mount(Notifications);
 
-        expect(wrapper.findAllComponents(CssGroup).length).toEqual(1);
-        expect(wrapper.findAllComponents(VelocityGroup).length).toEqual(0);
+        expect(wrapper.findAllComponents(TransitionGroup).length).toEqual(1);
+        expect(wrapper.findComponent(TransitionGroup).attributes().css).toEqual('true');
       });
 
       it('uses using velocity transition when enabled via prop', () => {
@@ -454,8 +453,8 @@ describe('Notifications', () => {
 
         const wrapper = mount(Notifications, { props });
 
-        expect(wrapper.findAllComponents(CssGroup).length).toEqual(0);
-        expect(wrapper.findAllComponents(VelocityGroup).length).toEqual(1);
+        expect(wrapper.findAllComponents(TransitionGroup).length).toEqual(1);
+        expect(wrapper.findComponent(TransitionGroup).attributes().css).toEqual('false');
       });
     });
   });
