@@ -10,7 +10,7 @@
   <!-- Custom style example -->
   <notifications
     group="custom-style"
-    position="top center"
+    position="top right"
     classes="n-light"
     dangerously-set-inner-html
     :max="3"
@@ -93,7 +93,7 @@
     <div>
       <p>Custom style:</p>
       <button @click="show('custom-style')">
-        top center (max=3)
+        top right (max=3)
       </button>
       <p>Custom template:</p>
       <button @click="show('custom-template')">
@@ -185,7 +185,7 @@ export default defineComponent({
   EXAMPLES
 */
 
-.notification.n-light {
+.vue-notification-template.n-light {
   margin: 10px;
   margin-bottom: 0;
 
