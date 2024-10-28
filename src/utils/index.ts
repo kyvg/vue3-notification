@@ -1,4 +1,3 @@
-export * from './timer';
 export * from './emitter';
 export * from './parser';
 

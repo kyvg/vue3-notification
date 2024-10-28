@@ -1,8 +1,9 @@
 import { HTMLAttributes, PropType, SlotsType, TransitionGroup, TransitionGroupProps, computed, defineComponent, onMounted, ref } from 'vue';
 import { params } from '@/params';
-import { Id, listToDirection, Timer, NotificationItemWithTimer, emitter, parse } from '@/utils';
+import { Id, listToDirection, emitter, parse } from '@/utils';
 import defaults from '@/defaults';
 import { NotificationItem, NotificationsOptions } from '@/types';
+import { createTimer, NotificationItemWithTimer } from '@/utils/timer';
 import './Notifications.css';
 
 const STATE = {
@@ -119,7 +120,6 @@ export default defineComponent({
   }>,
   setup: (props, { emit, slots, expose }) => {
     const list = ref<NotificationItemExtended[]>([]);
-    const timerControl = ref<Timer | null>(null);
     const velocity = params.get('velocity');
 
     const isVA = computed(() => {
@@ -179,14 +179,14 @@ export default defineComponent({
       }
     };
 
-    const pauseTimeout = () => {
+    const pauseTimeout = (item: NotificationItemExtended): undefined => {
       if (props.pauseOnHover) {
-        timerControl.value?.pause();
+        item.timer?.stop();
       }
     };
-    const resumeTimeout = () => {
+    const resumeTimeout = (item: NotificationItemExtended): undefined => {
       if (props.pauseOnHover) {
-        timerControl.value?.resume();
+        item.timer?.start();
       }
     };
     const addItem = (event: NotificationsOptions = {}): void => {
@@ -229,7 +229,7 @@ export default defineComponent({
       };
 
       if (duration >= 0) {
-        timerControl.value = new Timer(() => destroy(item), item.length, item);
+        item.timer = createTimer(() => destroy(item), item.length);
       }
 
       const botToTop = 'bottom' in styles.value;
@@ -289,7 +289,7 @@ export default defineComponent({
     };
 
     const destroy = (item: NotificationItemExtended): void => {
-      clearTimeout(item.timer);
+      item.timer?.stop();
       item.state = STATE.DESTROYED;
 
       clean();
@@ -372,8 +372,8 @@ export default defineComponent({
                   class='vue-notification-wrapper'
                   style={notifyWrapperStyle(item)}
                   data-id={item.id}
-                  onMouseenter={pauseTimeout}
-                  onMouseleave={resumeTimeout}
+                  onMouseenter={() => pauseTimeout(item)}
+                  onMouseleave={() => resumeTimeout(item)}
                 >
                   {
                     slots.body ? slots.body({

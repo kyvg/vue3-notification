@@ -459,6 +459,134 @@ describe('Notifications', () => {
     });
   });
 
+  describe('features', () => {
+    describe('pauseOnHover', () => {
+      describe('when pauseOnHover is true', () => {
+        const duration = 50;
+        const speed = 25;
+
+        const props = {
+          pauseOnHover: true,
+          duration,
+          speed,
+        };
+
+        it('pause timer', async () => {
+          const wrapper = mount(Notifications, { props });
+
+          const event = {
+            title: 'Title',
+            text: 'Text',
+            type: 'success',
+          };
+  
+          wrapper.vm.addItem(event);
+      
+          vi.useFakeTimers();
+  
+          await wrapper.vm.$nextTick();
+  
+          const [notification] = wrapper.findAll('.vue-notification-wrapper');
+          notification.trigger('mouseenter');
+
+          await vi.runAllTimersAsync();
+
+          expect(wrapper.vm.list.length).toBe(1);
+        });
+
+        it('resume timer', async () => {
+          const wrapper = mount(Notifications, { props });
+
+          const event = {
+            title: 'Title',
+            text: 'Text',
+            type: 'success',
+          };
+          vi.useFakeTimers();
+  
+          wrapper.vm.addItem(event);
+  
+          await wrapper.vm.$nextTick();
+  
+          const [notification] = wrapper.findAll('.vue-notification-wrapper');
+          notification.trigger('mouseenter');
+          await wrapper.vm.$nextTick();
+          notification.trigger('mouseleave');
+  
+          await vi.runAllTimersAsync();
+
+          expect(wrapper.vm.list.length).toBe(0);
+        });
+
+        it('pause exact notification', async () => {
+          const wrapper = mount(Notifications, { props });
+
+          const event1 = {
+            title: 'Title1',
+            text: 'Text1',
+            type: 'success',
+          };
+
+          const event2 = {
+            title: 'Title2',
+            text: 'Text2',
+            type: 'success',
+          };
+          vi.useFakeTimers();
+  
+          wrapper.vm.addItem(event1);
+          wrapper.vm.addItem(event2);
+          await wrapper.vm.$nextTick();
+          expect(wrapper.vm.list.length).toBe(2);
+  
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const [_, notification] = wrapper.findAll('.vue-notification-wrapper');
+          notification.trigger('mouseenter');
+  
+          await vi.runAllTimersAsync();
+
+          expect(wrapper.vm.list.length).toBe(1);
+          expect(wrapper.vm.list[0].title).toBe('Title1');
+        });
+      });
+
+      describe('when pauseOnHover is false', () => {
+        const duration = 50;
+        const speed = 25;
+
+        const props = {
+          pauseOnHover: false,
+          duration,
+          speed,
+        };
+
+        it('does not pause timer', async () => {
+          const wrapper = mount(Notifications, { props });
+
+          const event = {
+            title: 'Title',
+            text: 'Text',
+            type: 'success',
+          };
+  
+          wrapper.vm.addItem(event);
+      
+          vi.useFakeTimers();
+  
+          await wrapper.vm.$nextTick();
+  
+          const [notification] = wrapper.findAll('.vue-notification-wrapper');
+          notification.trigger('mouseenter');
+
+          await vi.runAllTimersAsync();
+
+          expect(wrapper.vm.list.length).toBe(0);
+        });
+
+      });
+    });
+  });
+
   describe('with velocity animation library', () => {
     const velocity = vi.fn();
     config.global.plugins = [[Plugin, { velocity }]];

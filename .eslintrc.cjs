@@ -17,7 +17,6 @@ module.exports = {
   rules: {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
-    '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
     '@typescript-eslint/prefer-interface': 'off',
@@ -80,12 +79,4 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
   },
-  overrides: [
-    {
-      files: '*.d.ts',
-      rules: {
-        '@typescript-eslint/indent': ['error', 4],
-      },
-    },
-  ],
 };
