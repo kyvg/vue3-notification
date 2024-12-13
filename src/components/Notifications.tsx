@@ -1,4 +1,4 @@
-import { HTMLAttributes, PropType, SlotsType, TransitionGroup, TransitionGroupProps, computed, defineComponent, onMounted, ref } from 'vue';
+import { HTMLAttributes, PropType, SlotsType, TransitionGroup, TransitionGroupProps, computed, defineComponent, onMounted, onUnmounted, ref } from 'vue';
 import { params } from '@/params';
 import { Id, listToDirection, emitter, parse } from '@/utils';
 import defaults from '@/defaults';
@@ -343,6 +343,11 @@ export default defineComponent({
     onMounted(() => {
       emitter.on('add', addItem);
       emitter.on('close', closeItem);
+    });
+
+    onUnmounted(() => {
+      emitter.off('add', addItem);
+      emitter.off('close', closeItem);
     });
 
     if (import.meta.env.DEV) {
