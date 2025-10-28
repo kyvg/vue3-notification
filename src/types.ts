@@ -1,7 +1,7 @@
 type NotificationType = 'warn' | 'success' | 'error' | (string & {});
 
 export interface NotificationsOptions {
-  id?: number;
+  id?: number | string;
   title?: string;
   text?: string;
   type?: NotificationType;

@@ -516,18 +516,25 @@ computed: {
 }
 ```
 
-## Programatically Closing
+## Programmatically Closing
 
 ```javascript
-
-const id = Date.now() // This can be any unique number
+// You can use either a number or a string as a unique ID
+const id = Date.now();
+const strId = 'custom-notification-42';
 
 this.$notify({
-  id,
-  text: 'This message will be removed immediately'
+    id,
+    text: 'This message will be removed immediately'
+});
+
+this.$notify({
+    id: strId,
+    text: 'This message will also be removed immediately'
 });
 
 this.$notify.close(id);
+this.$notify.close(strId);
 ```
 
 Or with composition API style:
@@ -535,16 +542,17 @@ Or with composition API style:
 ```javascript
 import { useNotification } from "@kyvg/vue3-notification"
 
-const notification = useNotification()
+const { notify } = useNotification();
 
-const id = Date.now() // This can be any unique number
+// IDs can be numbers or strings
+const id = Date.now();
+const strId = 'custom-notification-42';
 
-notification.notify({
-  id,
-  text: 'This message will be removed immediately'
-})
+notify({ id, text: 'Numeric ID example' })
+notify({ id: strId, text: 'String ID example' })
 
-notification.notify.close(id)
+notify.close(id);
+notify.close(strId);
 
 ```
 
