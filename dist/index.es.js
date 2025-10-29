@@ -1,7 +1,7 @@
 (function(){"use strict";var o;try{if(typeof document<"u"){var e=document.createElement("style");e.nonce=(o=document.head.querySelector("meta[property=csp-nonce]"))==null?void 0:o.content,e.appendChild(document.createTextNode(".vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{display:block;box-sizing:border-box;background:#fff;text-align:left}.vue-notification{display:block;box-sizing:border-box;text-align:left;font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44a4fc;border-left:5px solid #187FE7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#e54d42;border-left-color:#b82e24}.vue-notification.success{background:#68cd86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter-from,.vn-fade-leave-to{opacity:0}")),document.head.appendChild(e)}}catch(n){console.error("vite-plugin-css-injected-by-js",n)}})();
-import { defineComponent as U, ref as X, computed as g, onMounted as Z, createVNode as l, TransitionGroup as tt, mergeProps as et, Fragment as $, isVNode as nt } from "vue";
-const R = /* @__PURE__ */ new Map();
-function ot(t) {
+import { defineComponent as Q, ref as X, computed as h, onMounted as Z, onUnmounted as tt, createVNode as l, TransitionGroup as et, mergeProps as nt, Fragment as H, isVNode as ot } from "vue";
+const B = /* @__PURE__ */ new Map();
+function it(t) {
   return { all: t = t || /* @__PURE__ */ new Map(), on: function(o, i) {
     var a = t.get(o);
     a ? a.push(i) : t.set(o, [i]);
@@ -17,7 +17,7 @@ function ot(t) {
     });
   } };
 }
-const v = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
+const y = it(), T = "[-+]?[0-9]*.?[0-9]+", R = [
   {
     name: "px",
     regexp: new RegExp(`^${T}px$`)
@@ -34,14 +34,14 @@ const v = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
     name: "px",
     regexp: new RegExp(`^${T}$`)
   }
-], it = (t) => {
+], at = (t) => {
   if (t === "auto")
     return {
       type: t,
       value: 0
     };
-  for (let o = 0; o < M.length; o++) {
-    const i = M[o];
+  for (let o = 0; o < R.length; o++) {
+    const i = R[o];
     if (i.regexp.test(t))
       return {
         type: i.name,
@@ -52,23 +52,23 @@ const v = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
     type: "",
     value: t
   };
-}, at = (t) => {
+}, st = (t) => {
   switch (typeof t) {
     case "number":
       return { type: "px", value: t };
     case "string":
-      return it(t);
+      return at(t);
     default:
       return { type: "", value: t };
   }
-}, H = {
+}, j = {
   x: /* @__PURE__ */ new Set(["left", "center", "right"]),
   y: /* @__PURE__ */ new Set(["top", "bottom"])
-}, st = /* @__PURE__ */ ((t) => () => t++)(0), rt = (t) => typeof t != "string" ? [] : t.split(/\s+/gi).filter(Boolean), lt = (t) => {
-  typeof t == "string" && (t = rt(t));
+}, rt = /* @__PURE__ */ ((t) => () => t++)(0), lt = (t) => typeof t != "string" ? [] : t.split(/\s+/gi).filter(Boolean), ct = (t) => {
+  typeof t == "string" && (t = lt(t));
   let o = null, i = null;
   return t.forEach((a) => {
-    H.y.has(a) && (i = a), H.x.has(a) && (o = a);
+    j.y.has(a) && (i = a), j.x.has(a) && (o = a);
   }), { x: o, y: i };
 }, b = {
   position: ["top", "right"],
@@ -83,25 +83,25 @@ const v = ot(), T = "[-+]?[0-9]*.?[0-9]+", M = [
       opacity: [0, 1]
     }
   }
-}, ct = (t, o) => {
+}, ut = (t, o) => {
   let i, a, r = o;
-  const y = () => {
+  const m = () => {
     a = Date.now(), i = setTimeout(t, r);
-  }, m = () => {
+  }, g = () => {
     clearTimeout(i), r -= Date.now() - a;
   };
-  return y(), {
-    start: y,
-    stop: m
+  return m(), {
+    start: m,
+    stop: g
   };
 };
-function ut(t) {
-  return typeof t == "function" || Object.prototype.toString.call(t) === "[object Object]" && !nt(t);
+function ft(t) {
+  return typeof t == "function" || Object.prototype.toString.call(t) === "[object Object]" && !ot(t);
 }
-const x = {
+const v = {
   IDLE: 0,
   DESTROYED: 2
-}, ft = /* @__PURE__ */ U({
+}, dt = /* @__PURE__ */ Q({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "notifications",
   props: {
@@ -194,27 +194,27 @@ const x = {
     slots: i,
     expose: a
   }) => {
-    const r = X([]), y = R.get("velocity"), m = g(() => t.animationType === "velocity"), c = g(() => r.value.filter((e) => e.state !== x.DESTROYED)), D = g(() => at(t.width)), S = g(() => {
+    const r = X([]), m = B.get("velocity"), g = h(() => t.animationType === "velocity"), c = h(() => r.value.filter((e) => e.state !== v.DESTROYED)), D = h(() => st(t.width)), S = h(() => {
       const {
         x: e,
         y: n
-      } = lt(t.position), s = D.value.value, u = D.value.type, p = {
+      } = ct(t.position), s = D.value.value, u = D.value.type, p = {
         width: s + u
       };
       return n && (p[n] = "0px"), e && (e === "center" ? p.left = `calc(50% - ${+s / 2}${u})` : p[e] = "0px"), p;
-    }), j = g(() => m.value ? {
+    }), L = h(() => g.value ? {
       onEnter: G,
       onLeave: W,
-      onAfterLeave: O
-    } : {}), B = (e) => {
+      onAfterLeave: A
+    } : {}), k = (e) => {
       o("click", e), t.closeOnClick && d(e);
-    }, L = (e) => {
+    }, C = (e) => {
       var n;
       t.pauseOnHover && ((n = e.timer) == null || n.stop());
-    }, k = (e) => {
+    }, P = (e) => {
       var n;
       t.pauseOnHover && ((n = e.timer) == null || n.start());
-    }, C = (e = {}) => {
+    }, N = (e = {}) => {
       if (e.group || (e.group = ""), e.data || (e.data = {}), t.group !== e.group)
         return;
       if (e.clean || e.clear) {
@@ -223,94 +223,96 @@ const x = {
       }
       const n = typeof e.duration == "number" ? e.duration : t.duration, s = typeof e.speed == "number" ? e.speed : t.speed, u = typeof e.ignoreDuplicates == "boolean" ? e.ignoreDuplicates : t.ignoreDuplicates, {
         title: p,
-        text: q,
-        type: z,
-        data: J,
-        id: K
+        text: U,
+        type: q,
+        data: z,
+        id: J
       } = e, f = {
-        id: K || st(),
+        id: J || rt(),
         title: p,
-        text: q,
-        type: z,
-        state: x.IDLE,
+        text: U,
+        type: q,
+        state: v.IDLE,
         speed: s,
         length: n + 2 * s,
-        data: J,
+        data: z,
         duplicates: 0
       };
-      n >= 0 && (f.timer = ct(() => d(f), f.length));
-      const w = "bottom" in S.value, Q = t.reverse ? !w : w;
-      let h = -1;
-      const A = c.value.find((I) => I.title === e.title && I.text === e.text);
-      if (u && A) {
-        A.duplicates++;
+      n >= 0 && (f.timer = ut(() => d(f), f.length));
+      const I = "bottom" in S.value, K = t.reverse ? !I : I;
+      let x = -1;
+      const $ = c.value.find((M) => M.title === e.title && M.text === e.text);
+      if (u && $) {
+        $.duplicates++;
         return;
       }
-      Q ? (r.value.push(f), o("start", f), c.value.length > t.max && (h = 0)) : (r.value.unshift(f), o("start", f), c.value.length > t.max && (h = c.value.length - 1)), h !== -1 && d(c.value[h]);
-    }, P = (e) => {
+      K ? (r.value.push(f), o("start", f), c.value.length > t.max && (x = 0)) : (r.value.unshift(f), o("start", f), c.value.length > t.max && (x = c.value.length - 1)), x !== -1 && d(c.value[x]);
+    }, O = (e) => {
       _(e);
-    }, Y = (e) => ["vue-notification-template", t.classes, e.type || ""], V = (e) => m.value ? void 0 : {
+    }, Y = (e) => ["vue-notification-template", t.classes, e.type || ""], V = (e) => g.value ? void 0 : {
       transition: `all ${e.speed}ms`
     }, d = (e) => {
       var n;
-      (n = e.timer) == null || n.stop(), e.state = x.DESTROYED, O(), o("destroy", e);
+      (n = e.timer) == null || n.stop(), e.state = v.DESTROYED, A(), o("destroy", e);
     }, _ = (e) => {
       const n = r.value.find((s) => s.id === e);
       n && d(n);
     }, F = () => {
       c.value.forEach(d);
-    }, N = (e, n) => {
+    }, w = (e, n) => {
       var u;
       const s = (u = t.animation) == null ? void 0 : u[e];
       return typeof s == "function" ? s(n) : s;
     }, G = (e, n) => {
-      const s = N("enter", e);
-      y(e, s, {
+      const s = w("enter", e);
+      m(e, s, {
         duration: t.speed,
         complete: n
       });
     }, W = (e, n) => {
-      const s = N("leave", e);
-      y(e, s, {
+      const s = w("leave", e);
+      m(e, s, {
         duration: t.speed,
         complete: n
       });
     };
-    function O() {
-      r.value = r.value.filter((e) => e.state !== x.DESTROYED);
+    function A() {
+      r.value = r.value.filter((e) => e.state !== v.DESTROYED);
     }
     return Z(() => {
-      v.on("add", C), v.on("close", P);
+      y.on("add", N), y.on("close", O);
+    }), tt(() => {
+      y.off("add", N), y.off("close", O);
     }), () => {
       let e;
       return l("div", {
         class: "vue-notification-group",
         style: S.value
-      }, [l(tt, et(j.value, {
+      }, [l(et, nt(L.value, {
         tag: "div",
-        css: !m.value,
+        css: !g.value,
         name: t.animationName
-      }), ut(e = c.value.map((n) => l("div", {
+      }), ft(e = c.value.map((n) => l("div", {
         key: n.id,
         class: "vue-notification-wrapper",
         style: V(n),
         "data-id": n.id,
-        onMouseenter: () => L(n),
-        onMouseleave: () => k(n)
+        onMouseenter: () => C(n),
+        onMouseleave: () => P(n)
       }, [i.body ? i.body({
         item: n,
         class: [t.classes, n.type],
         close: () => d(n)
       }) : l("div", {
         class: Y(n),
-        onClick: () => B(n)
-      }, [t.dangerouslySetInnerHtml ? l($, null, [n.title ? l("div", {
+        onClick: () => k(n)
+      }, [t.dangerouslySetInnerHtml ? l(H, null, [n.title ? l("div", {
         class: "notification-title",
         innerHTML: n.title
       }, null) : null, l("div", {
         class: "notification-content",
         innerHTML: n.text
-      }, null)]) : l($, null, [n.title ? l("div", {
+      }, null)]) : l(H, null, [n.title ? l("div", {
         class: "notification-title"
       }, [n.title]) : null, l("div", {
         class: "notification-content"
@@ -320,23 +322,23 @@ const x = {
     };
   }
 }), E = (t) => {
-  typeof t == "string" && (t = { title: "", text: t }), typeof t == "object" && v.emit("add", t);
+  typeof t == "string" && (t = { title: "", text: t }), typeof t == "object" && y.emit("add", t);
 };
 E.close = (t) => {
-  v.emit("close", t);
+  y.emit("close", t);
 };
-const mt = () => ({ notify: E }), dt = "Notifications";
-function pt(t, o = {}) {
-  Object.entries(o).forEach((a) => R.set(...a));
+const gt = () => ({ notify: E }), pt = "Notifications";
+function yt(t, o = {}) {
+  Object.entries(o).forEach((a) => B.set(...a));
   const i = o.name || "notify";
-  t.config.globalProperties["$" + i] = E, t.component(o.componentName || dt, ft);
+  t.config.globalProperties["$" + i] = E, t.component(o.componentName || pt, dt);
 }
-const gt = {
-  install: pt
+const ht = {
+  install: yt
 };
 export {
-  ft as Notifications,
-  gt as default,
+  dt as Notifications,
+  ht as default,
   E as notify,
-  mt as useNotification
+  gt as useNotification
 };
