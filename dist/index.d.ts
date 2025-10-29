@@ -213,7 +213,7 @@ close: () => void;
 }>, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 export declare interface NotificationsOptions {
-    id?: number;
+    id?: number | string;
     title?: string;
     text?: string;
     type?: NotificationType;
