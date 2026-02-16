@@ -112,38 +112,38 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'demo',
-  data() {
-    return {
-      id: 0,
-    };
-  },
-  methods: {
-    show(group, type = '') {
-      const text = `
+	name: "demo",
+	data() {
+		return {
+			id: 0,
+		};
+	},
+	methods: {
+		show(group, type = "") {
+			const text = `
         This is notification text!
         <br>
         Date: ${new Date()}
       `;
 
-      this.$notify({
-        group,
-        title: `Test ${type} notification #${this.id++}`,
-        text,
-        type,
-        data: {
-          randomNumber: Math.random(),
-        },
-      });
-    },
+			this.$notify({
+				group,
+				title: `Test ${type} notification #${this.id++}`,
+				text,
+				type,
+				data: {
+					randomNumber: Math.random(),
+				},
+			});
+		},
 
-    clean(group) {
-      this.$notify({ group, clean: true });
-    },
-  },
+		clean(group) {
+			this.$notify({ group, clean: true });
+		},
+	},
 });
 </script>
 

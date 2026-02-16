@@ -1,10 +1,9 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-    readonly TEST: boolean
+	readonly TEST: boolean;
 }
 
-
 interface ImportMeta {
-    readonly env: ImportMetaEnv
+	readonly env: ImportMetaEnv;
 }

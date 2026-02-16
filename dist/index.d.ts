@@ -3,21 +3,11 @@ import { ComponentProvideOptions } from 'vue';
 import { DefineComponent } from 'vue';
 import { ExtractPropTypes } from 'vue';
 import { HTMLAttributes } from 'vue';
-import { JSX } from 'vue/jsx-runtime';
 import { Plugin as Plugin_2 } from 'vue';
 import { PropType } from 'vue';
 import { PublicProps } from 'vue';
-import { SlotsType } from 'vue';
 
-declare const _default: Plugin_2;
-export default _default;
-
-export declare type NotificationItem = Pick<NotificationsOptions, 'id' | 'title' | 'text' | 'type' | 'speed' | 'data'> & {
-    length: number;
-    duplicates: number;
-};
-
-export declare const Notifications: DefineComponent<ExtractPropTypes<    {
+declare const __VLS_component: DefineComponent<ExtractPropTypes<    {
 group: {
 type: StringConstructor;
 default: string;
@@ -98,10 +88,10 @@ dangerouslySetInnerHtml: {
 type: BooleanConstructor;
 default: boolean;
 };
-}>, () => JSX.Element, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-click: (item: NotificationItem) => true;
-destroy: (item: NotificationItem) => true;
-start: (item: NotificationItem) => true;
+}>, any, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+click: (item: NotificationItem) => any;
+destroy: (item: NotificationItem) => any;
+start: (item: NotificationItem) => any;
 }, string, PublicProps, Readonly<ExtractPropTypes<    {
 group: {
 type: StringConstructor;
@@ -194,7 +184,6 @@ duration: number;
 ignoreDuplicates: boolean;
 closeOnClick: boolean;
 width: string | number;
-reverse: boolean;
 position: string | string[];
 classes: string | string[];
 animationType: "css" | "velocity";
@@ -204,13 +193,45 @@ delay: number;
 max: number;
 pauseOnHover: boolean;
 dangerouslySetInnerHtml: boolean;
-}, SlotsType<{
-body?: (props: {
-class: HTMLAttributes["class"];
-item: NotificationItem;
-close: () => void;
-}) => any;
-}>, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+reverse: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLDivElement>;
+
+declare function __VLS_template(): {
+    attrs: Partial<{}>;
+    slots: Readonly<{
+        body?: (props: {
+            class: HTMLAttributes["class"];
+            item: NotificationItem;
+            close: () => void;
+        }) => void;
+    }> & {
+        body?: (props: {
+            class: HTMLAttributes["class"];
+            item: NotificationItem;
+            close: () => void;
+        }) => void;
+    };
+    refs: {};
+    rootEl: HTMLDivElement;
+};
+
+declare type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
+
+declare type __VLS_WithTemplateSlots<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};
+
+declare const _default: Plugin_2;
+export default _default;
+
+export declare type NotificationItem = Pick<NotificationsOptions, 'id' | 'title' | 'text' | 'type' | 'speed' | 'data'> & {
+    length: number;
+    duplicates: number;
+};
+
+export declare const Notifications: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 
 export declare interface NotificationsOptions {
     id?: number | string;
@@ -249,7 +270,7 @@ export declare const useNotification: () => {
 
 export { }
 declare module 'vue' {
-    export interface ComponentCustomProperties {
-        $notify: typeof notify;
-    }
+	export interface ComponentCustomProperties {
+		$notify: typeof notify;
+	}
 }

@@ -1,7 +1,7 @@
 import { notify } from './index';
 
 declare module 'vue' {
-    export interface ComponentCustomProperties {
-        $notify: typeof notify;
-    }
+	export interface ComponentCustomProperties {
+		$notify: typeof notify;
+	}
 }
